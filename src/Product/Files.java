@@ -20,8 +20,8 @@ public class Files
     // Andrew Emad
     public ArrayList<FatherClass> read(String filePath)
     {
-        ArrayList<FatherClass> products = new ArrayList<>();
-        FatherClass newProduct = new ProductClass();
+        ArrayList<FatherClass> reval = new ArrayList<>();
+        FatherClass newF = new ProductClass();
         // id@name@lastName@quantity@parcode@price@category@EXP@
         try
         {
@@ -30,15 +30,15 @@ public class Files
             {
                 String tmp = in.nextLine();
                 String []data = tmp.split("@");
-                newProduct.setID(data[0]);
-                newProduct.setName(data[1]);
-                newProduct.setLName(data[2]);
-                newProduct.setQuantity(Double.parseDouble(data[3].trim()));
-                newProduct.setParcode(data[4]);
-                newProduct.setPrice(Double.parseDouble(data[5].trim()));
-                newProduct.setCategory(data[6]);
-                newProduct.setEXP(data[7]);
-                products.add(newProduct);
+                newF.setID(data[0]);
+                newF.setName(data[1]);
+                newF.setLName(data[2]);
+                newF.setQuantity(Double.parseDouble(data[3].trim()));
+                newF.setParcode(data[4]);
+                newF.setPrice(Double.parseDouble(data[5].trim()));
+                newF.setCategory(data[6]);
+                newF.setEXP(data[7]);
+                reval.add(newF);
             }
             in.close();
         }
@@ -46,6 +46,6 @@ public class Files
         {
         
         }
-        return products;
+        return reval;
     }
 }
