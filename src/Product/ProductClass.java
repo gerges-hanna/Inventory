@@ -25,6 +25,8 @@ public class ProductClass extends FatherClass {
     private int RemainderDay;
     private long AllDay;
     private String DateCompare;
+    private String Query;
+     
     
     
     public ProductClass() {
@@ -128,9 +130,12 @@ public class ProductClass extends FatherClass {
         
         
     }
-     public void AddInFileProduct()
+     public void AddInFileProduct(String ID, String Name, String LName
+             , double Quantity, String Parcode
+             , double price, String Category, String EXP)
      {
-         
+        Query= ID+"@"+Name +"@"+LName +"@"+Quantity +"@"+Parcode +"@"+price +"@"+Category +"@"+EXP;
+        super.setQueryFile(Query);
      }
     
 }

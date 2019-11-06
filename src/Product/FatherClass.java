@@ -14,6 +14,20 @@ public class FatherClass {
     private String ID;
     private String Name;
     private String LName;
+    private String QueryFile; 
+    private double Quantity;
+    private String Parcode;
+    private double price;
+    private String Category;
+    private String EXP;
+
+    public String getQueryFile() {
+        return QueryFile;
+    }
+
+    public void setQueryFile(String QueryFile) {
+        this.QueryFile = QueryFile;
+    }
 
     public String getLName() {
         return LName;
@@ -22,13 +36,18 @@ public class FatherClass {
     public void setLName(String LName) {
         this.LName = LName;
     }
-    private double Quantity;
-    private String Parcode;
-    private double price;
-    private String Category;
-    private String EXP;
-
     
+
+    public FatherClass(String ID, String Name, String LName, double Quantity, String Parcode, double price, String Category, String EXP) {
+        this.ID = ID;
+        this.Name = Name;
+        this.LName = LName;
+        this.Quantity = Quantity;
+        this.Parcode = Parcode;
+        this.price = price;
+        this.Category = Category;
+        this.EXP = EXP;
+    }
 
     
     public FatherClass(String ID, String Name, double Quantity, String Parcode, double price, String Category, String EXP) {

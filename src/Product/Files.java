@@ -20,8 +20,10 @@ public class Files
     // Andrew Emad
     public ArrayList<FatherClass> read(String filePath)
     {
+        FatherClass newF;
         ArrayList<FatherClass> reval = new ArrayList<>();
-        FatherClass newF = new ProductClass();
+        
+        newF= new ProductClass();
         // id@name@lastName@quantity@parcode@price@category@EXP@
         try
         {
