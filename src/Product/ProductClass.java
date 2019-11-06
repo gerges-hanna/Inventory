@@ -11,6 +11,9 @@ package Product;
  */
 public class ProductClass extends FatherClass {
     
+    String DateNow;
+    String RemainderDay;
+    
     
     
 }
