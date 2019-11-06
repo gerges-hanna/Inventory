@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="inventory">
+  <ClassDiagramComponents>
+    <Class name="STatic" package="" visibility="public" xPosition="874.0" yPosition="87.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="product" package="" visibility="public" xPosition="377.0" yPosition="374.0">
+      <Fields>
+        <Field name="Date" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="CalculateExpire" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="admin" package="" visibility="public" xPosition="562.0" yPosition="365.0">
+      <Fields>
+        <Field name="Supplier" type="double" visibility="private"/>
+        <Field name="SupplierName" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="AddSupplier" returnType="void" visibility="public"/>
+        <Method name="UpdateSup" returnType="void" visibility="public"/>
+        <Method name="Delete" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="client" package="" visibility="public" xPosition="781.0" yPosition="374.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="EditeData" returnType="void" visibility="public"/>
+        <Method name="MakeRequest" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="fatherClass" package="" visibility="public" xPosition="271.0" yPosition="27.0">
+      <Fields>
+        <Field name="NameProduct" type="String" visibility="private"/>
+        <Field name="Quantity" type="double" visibility="private"/>
+        <Field name="ID" type="String" visibility="private"/>
+        <Field name="Parcode" type="String" visibility="private"/>
+        <Field name="Box" type="double" visibility="private"/>
+        <Field name="UnitePerBox" type="double" visibility="private"/>
+        <Field name="UniteAlone" type="double" visibility="private"/>
+        <Field name="Discount" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="CalculateQuantity" returnType="double" visibility="public">
+          <Argument type="Double" name="Box"/>
+          <Argument type="double" name="UnitePerBox"/>
+          <Argument type="double" name="UniteAlone"/>
+          <Argument type="double" name="Quantity"/>
+        </Method>
+        <Method name="Add" returnType="void" visibility="public"/>
+        <Method name="Delete" returnType="Void" visibility="public"/>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="product" target="fatherClass"/>
+    <IsRelation name="is" source="admin" target="fatherClass"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
