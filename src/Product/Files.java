@@ -22,7 +22,7 @@ public class Files
     {
         ArrayList<ProductClass> products = new ArrayList<>();
         ProductClass newProduct = new ProductClass();
-        // id@name@quantity@parcode@price@category@EXP@
+        // id@name@lastName@quantity@parcode@price@category@EXP@
         try
         {
             Scanner in = new Scanner(new File(filePath));
@@ -32,11 +32,12 @@ public class Files
                 String []data = tmp.split("@");
                 newProduct.setID(data[0]);
                 newProduct.setName(data[1]);
-                newProduct.setQuantity(Double.parseDouble(data[2].trim()));
-                newProduct.setParcode(data[3]);
-                newProduct.setPrice(Double.parseDouble(data[4].trim()));
-                newProduct.setCategory(data[5]);
-                newProduct.setEXP(data[6]);
+                newProduct.setLName(data[2]);
+                newProduct.setQuantity(Double.parseDouble(data[3].trim()));
+                newProduct.setParcode(data[4]);
+                newProduct.setPrice(Double.parseDouble(data[5].trim()));
+                newProduct.setCategory(data[6]);
+                newProduct.setEXP(data[7]);
                 products.add(newProduct);
             }
             in.close();
