@@ -18,10 +18,10 @@ public class Files
     // This function is for reading from a file by passing the absolute file path
     // and it returns an ArrayList<> and that array contains every product
     // Andrew Emad
-    public ArrayList<ProductClass> read(String filePath)
+    public ArrayList<FatherClass> read(String filePath)
     {
-        ArrayList<ProductClass> products = new ArrayList<>();
-        ProductClass newProduct = new ProductClass();
+        ArrayList<FatherClass> products = new ArrayList<>();
+        FatherClass newProduct = new ProductClass();
         // id@name@lastName@quantity@parcode@price@category@EXP@
         try
         {
