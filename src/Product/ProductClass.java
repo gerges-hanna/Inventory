@@ -9,6 +9,8 @@ package Product;
  *
  * @author Gerges hanna FCI-H
  */
-public class ProductClass {
+public class ProductClass extends FatherClass {
+    
+    
     
 }
