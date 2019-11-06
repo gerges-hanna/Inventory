@@ -11,14 +11,26 @@ package Product;
  */
 // this class Created By Gerges Hanna
 public class FatherClass {
-    String ID;
-    String Name;
-    double Quantity;
-    String Parcode;
-    double price;
-    String Category;
-    String EXP;
+    private String ID;
+    private String Name;
+    private String LName;
 
+    public String getLName() {
+        return LName;
+    }
+
+    public void setLName(String LName) {
+        this.LName = LName;
+    }
+    private double Quantity;
+    private String Parcode;
+    private double price;
+    private String Category;
+    private String EXP;
+
+    
+
+    
     public FatherClass(String ID, String Name, double Quantity, String Parcode, double price, String Category, String EXP) {
         this.ID = ID;
         this.Name = Name;

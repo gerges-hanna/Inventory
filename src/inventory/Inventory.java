@@ -5,6 +5,8 @@
  */
 package inventory;
 
+import Product.ProductClass;
+
 /**
  *
  * @author Gerges hanna FCI-H
