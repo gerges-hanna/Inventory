@@ -20,7 +20,9 @@ public class FatherClass {
     private double price;
     private String Category;
     private String EXP;
-
+    
+    Files file=new Files();
+    
     public String getQueryFile() {
         return QueryFile;
     }

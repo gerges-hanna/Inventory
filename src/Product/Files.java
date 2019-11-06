@@ -14,7 +14,23 @@ import java.io.*;
 import java.util.Scanner;
 public class Files 
 {
-    
+    public boolean write(String Query,String filePath ,boolean Append)
+    {
+        PrintWriter writer=null;
+        try {
+            System.out.println("Writing Now In .."+filePath);
+            writer=new PrintWriter(new FileWriter(new File(filePath),Append));
+            writer.println(Query);
+            System.out.println("Write Done");
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally
+        {
+            writer.close();
+        }
+        return false;
+    }
     // This function is for reading from a file by passing the absolute file path
     // and it returns an ArrayList<> and that array contains every product
     // Andrew Emad

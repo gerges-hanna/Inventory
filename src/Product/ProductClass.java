@@ -7,6 +7,7 @@ package Product;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,7 @@ public class ProductClass extends FatherClass {
     private String DateCompare;
     private String Query;
      
+    final private String filePath="Product.txt";
     
     
     public ProductClass() {
@@ -105,37 +107,52 @@ public class ProductClass extends FatherClass {
          in RemainderDay Attributs
          it's requre to enter Date Expire(Gerges)
        */
-     public int ExpireRemainder(String DateCompare)
+     public boolean ExpireRemainder()
     {
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-        Date d=new Date();
-        String Date1=s.format(d);
-        String[] currentDate=Date1.split("-");
-        this.DateDay=Integer.parseInt(currentDate[0]);
-        this.DateMonth=Integer.parseInt(currentDate[1]);
-        this.DateYear=Integer.parseInt(currentDate[2]);
-        AllDay=DateDay+DateMonth*30+DateYear*365;
+        try
+        {
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            Date d=new Date();
+            String Date1=s.format(d);
+            String[] currentDate=Date1.split("-");
+            this.DateDay=Integer.parseInt(currentDate[0]);
+            this.DateMonth=Integer.parseInt(currentDate[1]);
+            this.DateYear=Integer.parseInt(currentDate[2]);
+            AllDay=DateDay+DateMonth*30+DateYear*365;
+
+            String[] DateCompareSplit=super.getEXP().split("-");
+            ExpDay=Integer.parseInt(DateCompareSplit[0]);
+            ExpMonth=Integer.parseInt(DateCompareSplit[1]);
+            EXPYear=Integer.parseInt(DateCompareSplit[2]);
+            RemainderDay=(int) ((ExpDay+ExpMonth*30+EXPYear*365)-AllDay);
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
         
-        String[] DateCompareSplit=DateCompare.split("-");
-        ExpDay=Integer.parseInt(DateCompareSplit[0]);
-        ExpMonth=Integer.parseInt(DateCompareSplit[1]);
-        EXPYear=Integer.parseInt(DateCompareSplit[2]);
-        RemainderDay=(int) ((ExpDay+ExpMonth*30+EXPYear*365)-AllDay);
         if(RemainderDay<=60)
         {
-            return 1;
-        }else{return 0;}
+            return true;
+        }else{return false;}
         
         
         
         
     }
-     public void AddInFileProduct(String ID, String Name, String LName
-             , double Quantity, String Parcode
-             , double price, String Category, String EXP)
+     public void AddInFileProduct()
      {
-        Query= ID+"@"+Name +"@"+LName +"@"+Quantity +"@"+Parcode +"@"+price +"@"+Category +"@"+EXP;
-        super.setQueryFile(Query);
+         if(super.getID().trim()!=null || super.getID().trim()!="")
+         {
+             Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
+                +"@"+super.getQuantity() +"@"+super.getParcode() +"@"+
+                super.getPrice() +"@"+super.getCategory() +"@"+super.getEXP();
+                super.setQueryFile(Query);
+                file.write(Query, filePath, true);
+         }else
+         {
+              System.out.println("You must put ID");
+         }
+        
      }
     
 }
