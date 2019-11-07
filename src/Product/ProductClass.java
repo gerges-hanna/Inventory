@@ -133,7 +133,7 @@ public class ProductClass extends FatherClass {
         if(RemainderDay<=60)
         {
             return true;
-        }else{return false;}
+        }else return false;
         
         
         
@@ -141,7 +141,7 @@ public class ProductClass extends FatherClass {
     }
      public void AddInFileProduct()
      {
-         if(super.getID().trim()!=null || super.getID().trim()!="")
+         if(super.getID().trim()!=null || super.getID().trim().equals(""))
          {
              Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
                 +"@"+super.getQuantity() +"@"+super.getParcode() +"@"+
