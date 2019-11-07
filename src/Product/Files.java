@@ -23,11 +23,12 @@ public class Files
             writer.println(Query);
             System.out.println("Write Done");
             return true;
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e);
         }finally
         {
-            writer.close();
+            if(writer !=null)
+                writer.close();
         }
         return false;
     }
