@@ -82,9 +82,7 @@ public class Files
         String checkID;
         for(int i = 0; i < pros.size(); i++)
         {
-            FatherClass s = (FatherClass)pros.get(i);
-            checkID = s.getID();
-            if(checkID.equals(id))
+            if(((FatherClass)pros.get(i)).getID().equals(id))
             {
                 updatingProduct = (FatherClass)pros.get(i);
             }
