@@ -142,8 +142,8 @@ public class Files
                             ((FatherClass)pros.get(i)).getLName()+"@"+
                             Double.toString(((FatherClass)pros.get(i)).
                             getQuantity())+"@"+((FatherClass)pros.get(i)).
-                            getParcode()+"@"+Double.toString(((FatherClass)pros.get(i)).
-                            getPrice())+"@"+((FatherClass)pros.get(i))
+                            getParcode()+"@"+Double.toString(((FatherClass)pros.
+                            get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
                             .getCategory()+"@"+((FatherClass)pros.get(i)).
                             getEXP()+"@";
                 }
