@@ -5,11 +5,13 @@
  */
 package inventory;
 
+import Product.FatherClass;
+
 /**
  *
  * @author Gerges hanna FCI-H
  */
-public class Test {
+public class Test extends FatherClass{
     void test()
     {
         System.out.println("Gerges Hanna ");

@@ -6,6 +6,7 @@
 package Product;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,9 @@ import javax.swing.JOptionPane;
 
 //this class created by Gerges hanna
 public class ProductClass extends FatherClass {
+   public static ArrayList<ProductClass> productList = new ArrayList<ProductClass>();
+
+    
     
     private int DateDay;
     private int DateMonth;
@@ -29,7 +33,7 @@ public class ProductClass extends FatherClass {
     private String Query;
      
     final private String filePath="Product.txt";
-    
+
     
     public ProductClass() {
     }
@@ -146,6 +150,7 @@ public class ProductClass extends FatherClass {
              Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
                 +"@"+super.getQuantity() +"@"+super.getParcode() +"@"+
                 super.getPrice() +"@"+super.getCategory() +"@"+super.getEXP();
+             
                 super.setQueryFile(Query);
                 file.write(Query, filePath, true);
          }else
@@ -153,6 +158,11 @@ public class ProductClass extends FatherClass {
               System.out.println("You must put ID");
          }
         
+     }
+     public void ReadData()
+     {
+         
+         productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
      }
     
 }

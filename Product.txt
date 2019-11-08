@@ -2,3 +2,5 @@
 160@null@null@0.0@null@0.0@null@null
 1650@null@null@0.0@null@0.0@null@null
 @null@null@0.0@null@0.0@null@null
+67@medicine@null@0.0@null@0.0@null@null
+57@medicine@null@0.0@null@0.0@null@null

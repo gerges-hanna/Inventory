@@ -32,13 +32,14 @@ public class Files
         }
         return false;
     }
+    
     // This function is for reading from a file by passing the absolute file path
     // and it returns an ArrayList<> and that array contains every product
     // Andrew Emad
-    public ArrayList<FatherClass> read(String filePath)
+    public ArrayList<Object> read(String filePath)
     {
         FatherClass newF;
-        ArrayList<FatherClass> reval = new ArrayList<>();
+        ArrayList<ProductClass> reval = new ArrayList<ProductClass>();
         
         newF= new ProductClass();
         // id@name@lastName@quantity@parcode@price@category@EXP@
@@ -57,7 +58,7 @@ public class Files
                 newF.setPrice(Double.parseDouble(data[5].trim()));
                 newF.setCategory(data[6]);
                 newF.setEXP(data[7]);
-                reval.add(newF);
+                reval.add((ProductClass) newF);
             }
             in.close();
         }
@@ -65,6 +66,6 @@ public class Files
         {
         
         }
-        return reval;
+        return (ArrayList<Object>)(Object) reval;
     }
 }

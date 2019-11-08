@@ -20,6 +20,25 @@ public class FatherClass {
     private double price;
     private String Category;
     private String EXP;
+    static private String id;
+    static private String type;
+
+    public static String getId() {
+        return id;
+    }
+
+    public static void setId(String id) {
+        FatherClass.id = id;
+    }
+
+    public static String getType() {
+        return type;
+    }
+
+    public static void setType(String type) {
+        FatherClass.type = type;
+    }
+    
     
     Files file=new Files();
     
