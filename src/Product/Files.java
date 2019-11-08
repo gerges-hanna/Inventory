@@ -66,4 +66,88 @@ public class Files
         }
         return (ArrayList<Object>)(Object) reval;
     }
+    
+    /*
+        This function is for updating data in a file by passing the id of the
+        the data that you want to edit and the absolute file path and the type
+        of what is it that you want to edit and the new value of it
+        
+        this function uses write function to write on the file
+    */
+    // Andrew Emad
+    public boolean update(String id, String filePath, String categ, Object newValue)
+    {
+        ArrayList<FatherClass> pros = (ArrayList<FatherClass>)(Object)read(filePath);
+        FatherClass updatingProduct = null;
+        for(int i = 0; i < pros.size(); i++)
+        {
+            if(pros.get(i).getID().equals(id))
+            {
+                updatingProduct = pros.get(i);
+            }
+        }
+        if(updatingProduct != null)
+        {
+            switch(categ)
+            {
+                case "name":
+                    updatingProduct.setName(newValue.toString());
+                    break;
+                case "lastName":
+                    updatingProduct.setLName(newValue.toString());
+                    break;
+                case "quantity":
+                    updatingProduct.setQuantity(Double.parseDouble(
+                            newValue.toString().trim()));
+                    break;
+                case "parcode":
+                    updatingProduct.setParcode(newValue.toString());
+                    break;
+                case "price":
+                    updatingProduct.setPrice(Double.parseDouble(
+                            newValue.toString().trim()));
+                    break;
+                case "categ":
+                    updatingProduct.setCategory(newValue.toString());
+                    break;
+                case "exp":
+                    updatingProduct.setEXP(newValue.toString());
+                    break;
+                default: 
+                    pros.clear();
+                    return false;
+            }
+            for(int i = 0; i < pros.size(); i++)
+            {
+                // id@name@lastName@quantity@parcode@price@category@EXP@
+                boolean append = false;
+                String Query;
+                if(pros.get(i).getID().equals(updatingProduct.getID()))
+                {
+                    Query = updatingProduct.getID()+"@"+updatingProduct.getName()+"@"+
+                            updatingProduct.getLName()+"@"+Double.toString(
+                            updatingProduct.getQuantity())+"@"+updatingProduct.
+                            getParcode()+"@"+Double.toString(updatingProduct.
+                            getPrice())+"@"+updatingProduct.getCategory()+"@"+
+                            updatingProduct.getEXP()+"@";
+                            
+                }
+                else
+                {
+                    Query = pros.get(i).getID()+"@"+pros.get(i).getName()+"@"+
+                            pros.get(i).getLName()+"@"+Double.toString(
+                            pros.get(i).getQuantity())+"@"+pros.get(i).
+                            getParcode()+"@"+Double.toString(pros.get(i).
+                            getPrice())+"@"+pros.get(i).getCategory()+"@"+
+                            pros.get(i).getEXP()+"@";
+                }
+                if(i > 0)
+                    append = true;
+                write(Query, filePath, append);
+            }
+            return true;
+        }
+        else
+            return false;
+    }
 }
