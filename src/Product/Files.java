@@ -77,13 +77,16 @@ public class Files
     // Andrew Emad
     public boolean update(String id, String filePath, String categ, Object newValue)
     {
-        ArrayList<FatherClass> pros = (ArrayList<FatherClass>)(Object)read(filePath);
+        ArrayList<Object> pros = read(filePath);
         FatherClass updatingProduct = null;
+        String checkID;
         for(int i = 0; i < pros.size(); i++)
         {
-            if(pros.get(i).getID().equals(id))
+            FatherClass s = (FatherClass)pros.get(i);
+            checkID = s.getID();
+            if(checkID.equals(id))
             {
-                updatingProduct = pros.get(i);
+                updatingProduct = (FatherClass)pros.get(i);
             }
         }
         if(updatingProduct != null)
@@ -122,24 +125,29 @@ public class Files
                 // id@name@lastName@quantity@parcode@price@category@EXP@
                 boolean append = false;
                 String Query;
-                if(pros.get(i).getID().equals(updatingProduct.getID()))
+                FatherClass s = (FatherClass)pros.get(i);
+                checkID = s.getID();
+                if(checkID.equals(updatingProduct.getID()))
                 {
-                    Query = updatingProduct.getID()+"@"+updatingProduct.getName()+"@"+
-                            updatingProduct.getLName()+"@"+Double.toString(
-                            updatingProduct.getQuantity())+"@"+updatingProduct.
-                            getParcode()+"@"+Double.toString(updatingProduct.
-                            getPrice())+"@"+updatingProduct.getCategory()+"@"+
-                            updatingProduct.getEXP()+"@";
+                    Query = updatingProduct.getID()+"@"+updatingProduct.
+                            getName()+"@"+updatingProduct.getLName()+"@"
+                            +Double.toString(updatingProduct.getQuantity())+"@"+
+                            updatingProduct.getParcode()+"@"+Double.toString
+                            (updatingProduct.getPrice())+"@"+updatingProduct.
+                            getCategory()+"@"+updatingProduct.getEXP()+"@";
                             
                 }
                 else
                 {
-                    Query = pros.get(i).getID()+"@"+pros.get(i).getName()+"@"+
-                            pros.get(i).getLName()+"@"+Double.toString(
-                            pros.get(i).getQuantity())+"@"+pros.get(i).
-                            getParcode()+"@"+Double.toString(pros.get(i).
-                            getPrice())+"@"+pros.get(i).getCategory()+"@"+
-                            pros.get(i).getEXP()+"@";
+                    Query = ((FatherClass)pros.get(i)).getID()+"@"+
+                            ((FatherClass)pros.get(i)).getName()+"@"+
+                            ((FatherClass)pros.get(i)).getLName()+"@"+
+                            Double.toString(((FatherClass)pros.get(i)).
+                            getQuantity())+"@"+((FatherClass)pros.get(i)).
+                            getParcode()+"@"+Double.toString(((FatherClass)pros.get(i)).
+                            getPrice())+"@"+((FatherClass)pros.get(i))
+                            .getCategory()+"@"+((FatherClass)pros.get(i)).
+                            getEXP()+"@";
                 }
                 if(i > 0)
                     append = true;
