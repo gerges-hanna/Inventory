@@ -38,16 +38,15 @@ public class Files
     // Andrew Emad
     public ArrayList<Object> read(String filePath)
     {
-        FatherClass newF;
         ArrayList<ProductClass> reval = new ArrayList<ProductClass>();
-        
-        newF= new ProductClass();
         // id@name@lastName@quantity@parcode@price@category@EXP@
         try
         {
             Scanner in = new Scanner(new File(filePath));
             while(in.hasNext())
             {
+                FatherClass newF;
+                newF= new ProductClass();
                 String tmp = in.nextLine();
                 String []data = tmp.split("@");
                 newF.setID(data[0]);
@@ -64,7 +63,6 @@ public class Files
         }
         catch(FileNotFoundException e)
         {
-        
         }
         return (ArrayList<Object>)(Object) reval;
     }
