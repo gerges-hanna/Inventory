@@ -39,7 +39,7 @@ public class Files
     // Andrew Emad
     public ArrayList<Object> read(String filePath)
     {
-        ArrayList<FatherClass> reval = new ArrayList<>();
+        ArrayList<Object> reval = new ArrayList<>();
         try
         {
             Scanner in = new Scanner(new File(filePath));
