@@ -21,7 +21,7 @@ public class Files
             System.out.println("Writing Now In .."+filePath);
             writer=new PrintWriter(new FileWriter(new File(filePath),Append));
             writer.println(Query);
-            System.out.println("Write Done");
+            System.out.println("Writing Done");
             return true;
         } catch (IOException e) {
             System.out.println(e);

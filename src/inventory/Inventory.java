@@ -7,7 +7,7 @@ package inventory;
 
 import Product.Files;
 import Product.ProductClass;
-import Admin.Suppliers;
+import Admin.*;
 /**
  *
  * @author Gerges hanna FCI-H
@@ -20,7 +20,21 @@ public class Inventory {
     public static void main(String[] args) {
         // TODO code application logic here
       
+       /*Suppliers obj=new Suppliers();//set files for suppliers try1
+       obj.setID("20180002");
+       obj.setName("abanoub");
+       obj.setLName("rafaat");
+       obj.setSupplierAddress("4 St.dokki medan El 7orya");
+       obj.setContactNumber(01213124);
+       obj.setSupplierEmail("hope1pharmacy@gmail.com");
+       obj.setCategory("shampo");
+       obj.AddInFileSupplier();*/
+       Categories obj2=new Categories();//set files for categories try1
+       obj2.setCategory("BabiesCategory");
+       obj2.setCategoryDescription("include all the products used by babies");
+       obj2.AddInFileCategory();
        
+               
     }
     
 }

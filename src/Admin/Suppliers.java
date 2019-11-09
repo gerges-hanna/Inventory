@@ -12,17 +12,10 @@ public class Suppliers extends Product.FatherClass{
     private String SupplierAddress;
     private int ContactNumber;
     private String SupplierEmail;
-    private String category;
+
     private String Query;
     final private String filepath="Supplier.txt";//Final variable can't be modifed
 
-    public String getcategory() {
-        return category;
-    }
-
-    public void setcategory(String Category) {
-        this.category = Category;
-    }
     public String getSupplierAddress() {
         return SupplierAddress;
     }
@@ -47,10 +40,10 @@ public class Suppliers extends Product.FatherClass{
         this.SupplierEmail = SupplierEmail;
     }
 
-//Supplier Query:ID@Name@lastname@Address@contact_number@Email@category
+//Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
   public void AddInFileSupplier()
      {
-         if(super.getID().trim()!=null || super.getID().trim().equals(""))
+         if(super.getID().trim()!=null && !super.getID().trim().equals(""))
          {
              Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
                 +"@"+SupplierAddress+"@"+ContactNumber+"@"+
@@ -60,7 +53,7 @@ public class Suppliers extends Product.FatherClass{
                 file.write(Query, filepath, true);
          }else
          {
-              System.out.println("You must put ID");
+              System.out.println("You must put an ID");
          }
         
      }
