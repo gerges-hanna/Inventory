@@ -51,8 +51,18 @@ Files obj1=new Files();//obj1 from file class
 //Supplier Query:ID@Name@lastname@Address@contact_number@Email@category
   public void AddInFileSupplier()
      {
+         if(super.getID().trim()!=null || super.getID().trim().equals(""))
+         {
+             Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
+                +"@"+SupplierAddress+"@"+ContactNumber+"@"+
+                SupplierEmail+"@"+super.getCategory();
+             
+                super.setQueryFile(Query);
+                obj1.write(Query, filepath, true);
+         }else
+         {
+              System.out.println("You must put ID");
+         }
         
-                obj1.write("my first text", filepath, true);
-      
      }
 }
