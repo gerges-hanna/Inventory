@@ -11,7 +11,7 @@ package Product;
  */
 // this class Created By Gerges Hanna
 public class FatherClass {
-    private String ID;
+    private String ID="";
     private String Name;
     private String LName;
     private String QueryFile; 
@@ -23,6 +23,9 @@ public class FatherClass {
     static private String id;
     static private String type;
 
+    public Files file=new Files();
+    
+    
     public static String getId() {
         return id;
     }
@@ -40,7 +43,7 @@ public class FatherClass {
     }
     
     
-   public Files file=new Files();
+   
     
     public String getQueryFile() {
         return QueryFile;

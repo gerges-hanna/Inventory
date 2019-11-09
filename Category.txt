@@ -1,0 +1,4 @@
+BabiesCategory@include all the products used by babies
+PainKillers@used to reduce pains
+Detergents@used in cleaning
+DiabetesMedications@Used by diabetes

@@ -29,8 +29,7 @@ public class ProductClass extends FatherClass {
     private int EXPYear;
     private int RemainderDay;
     private long AllDay;
-    private String DateCompare;
-    private String Query;
+    private String DateCompare; 
      
     final private String filePath="Product.txt";
 
@@ -145,14 +144,21 @@ public class ProductClass extends FatherClass {
     }
      public void AddInFileProduct()
      {
-         if(super.getID().trim()!=null || super.getID().trim().equals(""))
+         if(super.getID()==null)
+             super.setID("");
+         
+         if(!super.getID().trim().equals(""))
          {
-             Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
-                +"@"+super.getQuantity() +"@"+super.getParcode() +"@"+
-                super.getPrice() +"@"+super.getCategory() +"@"+super.getEXP();
-             
-                super.setQueryFile(Query);
-                file.write(Query, filePath, true);
+                super.setQueryFile(super.getID()+"@"
+                        +super.getName()+"@"
+                        +super.getLName()+"@"
+                        +super.getQuantity() +"@"
+                        +super.getParcode() +"@"
+                        +super.getPrice() +"@"
+                        +super.getCategory()+"@"
+                        +super.getEXP());
+                
+                file.write(super.getQueryFile(), filePath, true);
          }else
          {
               System.out.println("You must put ID");

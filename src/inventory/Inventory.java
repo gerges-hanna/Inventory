@@ -29,7 +29,7 @@ public class Inventory {
        obj.setSupplierEmail("hope1pharmacy@gmail.com");
        obj.setCategory("shampo");
        obj.AddInFileSupplier();*/
-       Categories obj2=new Categories();//set files for categories try1
+       /*Categories obj2=new Categories();//set files for categories try1
        obj2.setCategory("BabiesCategory");
        obj2.setCategoryDescription("include all the products used by babies");
        obj2.AddInFileCategory();
@@ -41,7 +41,13 @@ public class Inventory {
        obj2.AddInFileCategory();
        obj2.setCategory("DiabetesMedications");
        obj2.setCategoryDescription("Used by diabetes");
-       obj2.AddInFileCategory();
+       obj2.AddInFileCategory();*/
+       ProductClass p1=new ProductClass();
+       p1.setPrice(223);
+       p1.setID(null);
+       p1.AddInFileProduct();
+              
+       
        
        
                
