@@ -12,6 +12,7 @@ package Product;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
+import Admin.*;
 public class Files 
 {
     public boolean write(String Query,String filePath ,boolean Append)
@@ -38,26 +39,47 @@ public class Files
     // Andrew Emad
     public ArrayList<Object> read(String filePath)
     {
-        ArrayList<ProductClass> reval = new ArrayList<ProductClass>();
-        // id@name@lastName@quantity@parcode@price@category@EXP@
+        ArrayList<FatherClass> reval = new ArrayList<>();
         try
         {
             Scanner in = new Scanner(new File(filePath));
-            while(in.hasNext())
+            if(filePath.equals("Supplier.txt"))
             {
-                FatherClass newF;
-                newF= new ProductClass();
-                String tmp = in.nextLine();
-                String []data = tmp.split("@");
-                newF.setID(data[0]);
-                newF.setName(data[1]);
-                newF.setLName(data[2]);
-                newF.setQuantity(Double.parseDouble(data[3].trim()));
-                newF.setParcode(data[4]);
-                newF.setPrice(Double.parseDouble(data[5].trim()));
-                newF.setCategory(data[6]);
-                newF.setEXP(data[7]);
-                reval.add((ProductClass) newF);
+                // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category@
+                while(in.hasNext())
+                {
+                    Suppliers newSup = new Suppliers();
+                    String tmp = in.nextLine();
+                    String []data = tmp.split("@");
+                    newSup.setID(data[0]);
+                    newSup.setName(data[1]);
+                    newSup.setLName(data[2]);
+                    newSup.setSupplierAddress(data[3]);
+                    newSup.setContactNumber(Integer.parseInt(data[4].trim()));
+                    newSup.setSupplierEmail(data[5]);
+                    newSup.setCategory(data[6]);
+                    reval.add((Suppliers) newSup);
+                }
+            }
+            else if(filePath.equals("Products.txt"))
+            {
+                // id@name@lastName@quantity@parcode@price@category@EXP@
+                while(in.hasNext())
+                {
+                    FatherClass newF;
+                    newF= new ProductClass();
+                    String tmp = in.nextLine();
+                    String []data = tmp.split("@");
+                    newF.setID(data[0]);
+                    newF.setName(data[1]);
+                    newF.setLName(data[2]);
+                    newF.setQuantity(Double.parseDouble(data[3].trim()));
+                    newF.setParcode(data[4]);
+                    newF.setPrice(Double.parseDouble(data[5].trim()));
+                    newF.setCategory(data[6]);
+                    newF.setEXP(data[7]);
+                    reval.add((ProductClass) newF);
+                }
             }
             in.close();
         }
@@ -78,41 +100,45 @@ public class Files
     public boolean update(String id, String filePath, String categ, Object newValue)
     {
         ArrayList<Object> pros = read(filePath);
-        FatherClass updatingProduct = null;
-        String checkID;
-        for(int i = 0; i < pros.size(); i++)
+        if(filePath.equals("Products.txt"))
         {
-            if(((FatherClass)pros.get(i)).getID().equals(id))
+            FatherClass updating = null;
+            String checkID;
+            for(int i = 0; i < pros.size(); i++)
             {
-                updatingProduct = (FatherClass)pros.get(i);
+                if(((FatherClass)pros.get(i)).getID().equals(id))
+                {
+                    updating = (ProductClass)pros.get(i);
+                    break;
+                }
             }
-        }
-        if(updatingProduct != null)
-        {
+            if(updating == null)
+                return false;
             switch(categ)
             {
+                // id@name@lastName@quantity@parcode@price@category@EXP@
                 case "name":
-                    updatingProduct.setName(newValue.toString());
+                    updating.setName(newValue.toString());
                     break;
                 case "lastName":
-                    updatingProduct.setLName(newValue.toString());
+                    updating.setLName(newValue.toString());
                     break;
                 case "quantity":
-                    updatingProduct.setQuantity(Double.parseDouble(
+                    updating.setQuantity(Double.parseDouble(
                             newValue.toString().trim()));
                     break;
                 case "parcode":
-                    updatingProduct.setParcode(newValue.toString());
+                    updating.setParcode(newValue.toString());
                     break;
                 case "price":
-                    updatingProduct.setPrice(Double.parseDouble(
+                    updating.setPrice(Double.parseDouble(
                             newValue.toString().trim()));
                     break;
                 case "categ":
-                    updatingProduct.setCategory(newValue.toString());
+                    updating.setCategory(newValue.toString());
                     break;
                 case "exp":
-                    updatingProduct.setEXP(newValue.toString());
+                    updating.setEXP(newValue.toString());
                     break;
                 default: 
                     pros.clear();
@@ -120,20 +146,20 @@ public class Files
             }
             for(int i = 0; i < pros.size(); i++)
             {
-                // id@name@lastName@quantity@parcode@price@category@EXP@
+
                 boolean append = false;
                 String Query;
                 FatherClass s = (FatherClass)pros.get(i);
                 checkID = s.getID();
-                if(checkID.equals(updatingProduct.getID()))
+                if(checkID.equals(updating.getID()))
                 {
-                    Query = updatingProduct.getID()+"@"+updatingProduct.
-                            getName()+"@"+updatingProduct.getLName()+"@"
-                            +Double.toString(updatingProduct.getQuantity())+"@"+
-                            updatingProduct.getParcode()+"@"+Double.toString
-                            (updatingProduct.getPrice())+"@"+updatingProduct.
-                            getCategory()+"@"+updatingProduct.getEXP()+"@";
-                            
+                    Query = updating.getID()+"@"+updating.
+                            getName()+"@"+updating.getLName()+"@"
+                            +Double.toString(updating.getQuantity())+"@"+
+                            updating.getParcode()+"@"+Double.toString
+                            (updating.getPrice())+"@"+updating.
+                            getCategory()+"@"+updating.getEXP()+"@";
+
                 }
                 else
                 {
@@ -151,9 +177,81 @@ public class Files
                     append = true;
                 write(Query, filePath, append);
             }
-            return true;
         }
-        else
-            return false;
+        else if(filePath.equals("Supplier.txt"))
+        {
+            Suppliers updating = null;
+            String checkID;
+            for(int i = 0; i < pros.size(); i++)
+            {
+                if(((FatherClass)pros.get(i)).getID().equals(id))
+                {
+                    updating = (Suppliers)pros.get(i);
+                    break;
+                }
+            }
+            if(updating == null)
+                return false;
+            switch(categ)
+            {
+                // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
+                case "name":
+                    updating.setName(newValue.toString());
+                    break;
+                case "lastName":
+                    updating.setLName(newValue.toString());
+                    break;
+                case "supplierAddress":
+                    updating.setSupplierAddress(newValue.toString());
+                    break;
+                case "contactNumber":
+                    updating.setContactNumber(Integer.parseInt(newValue.toString
+                    ().trim()));
+                    break;
+                case "supplierEmail":
+                    updating.setSupplierEmail(newValue.toString());
+                    break;
+                case "category":
+                    updating.setCategory(newValue.toString());
+                    break;
+                default: 
+                    pros.clear();
+                    return false;
+            }
+            for(int i = 0; i < pros.size(); i++)
+            {
+                // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
+                boolean append = false;
+                String Query;
+                FatherClass s = (FatherClass)pros.get(i);
+                checkID = s.getID();
+                if(checkID.equals(updating.getID()))
+                {
+                    Query = updating.getID()+"@"+updating.
+                            getName()+"@"+updating.getLName()+"@"
+                            +updating.getSupplierAddress()+"@"+
+                            Integer.toString(updating.getContactNumber())+"@"+
+                            updating.getSupplierEmail()+"@"+updating.getCategory
+                            ()+"@";
+
+                }
+                else
+                {
+                    Query = ((Suppliers)pros.get(i)).getID()+"@"+
+                            ((Suppliers)pros.get(i)).getName()+"@"+
+                            ((Suppliers)pros.get(i)).getLName()+"@"+
+                            ((Suppliers)pros.get(i)).getSupplierAddress()+"@"+
+                            Integer.toString(((Suppliers)pros.get(i)).
+                            getContactNumber())+"@"+((Suppliers)pros.get(i)).
+                            getSupplierEmail()+"@"+((Suppliers)pros.get(i)).
+                            getCategory()+"@";
+                            
+                }
+                if(i > 0)
+                    append = true;
+                write(Query, filePath, append);
+            }
+        }
+        return true;
     }
 }
