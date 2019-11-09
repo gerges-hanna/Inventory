@@ -66,8 +66,7 @@ public class Files
                 // id@name@lastName@quantity@parcode@price@category@EXP@
                 while(in.hasNext())
                 {
-                    FatherClass newF;
-                    newF= new ProductClass();
+                    ProductClass newF = new ProductClass();
                     String tmp = in.nextLine();
                     String []data = tmp.split("@");
                     newF.setID(data[0]);
@@ -102,7 +101,7 @@ public class Files
         ArrayList<Object> pros = read(filePath);
         if(filePath.equals("Products.txt"))
         {
-            FatherClass updating = null;
+            ProductClass updating = null;
             String checkID;
             for(int i = 0; i < pros.size(); i++)
             {
