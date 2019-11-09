@@ -164,5 +164,8 @@ public class ProductClass extends FatherClass {
          
          productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
      }
-    
+     public boolean UpdateFile(String id, String categ, Object newValue)
+     {
+         return file.update(id, filePath, categ, newValue);
+     }
 }
