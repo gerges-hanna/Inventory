@@ -7,7 +7,7 @@ package inventory;
 
 import Product.Files;
 import Product.ProductClass;
-
+import Admin.Suppliers;
 /**
  *
  * @author Gerges hanna FCI-H
@@ -20,11 +20,7 @@ public class Inventory {
     public static void main(String[] args) {
         // TODO code application logic here
       
-        
-      
-      
-      
-     
+       
     }
     
 }

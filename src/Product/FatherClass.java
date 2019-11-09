@@ -40,7 +40,7 @@ public class FatherClass {
     }
     
     
-    Files file=new Files();
+   public Files file=new Files();
     
     public String getQueryFile() {
         return QueryFile;
