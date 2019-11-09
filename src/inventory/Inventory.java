@@ -33,6 +33,16 @@ public class Inventory {
        obj2.setCategory("BabiesCategory");
        obj2.setCategoryDescription("include all the products used by babies");
        obj2.AddInFileCategory();
+       obj2.setCategory("PainKillers");
+       obj2.setCategoryDescription("used to reduce pains");
+       obj2.AddInFileCategory();
+       obj2.setCategory("Detergents");
+       obj2.setCategoryDescription("used in cleaning");
+       obj2.AddInFileCategory();
+       obj2.setCategory("DiabetesMedications");
+       obj2.setCategoryDescription("Used by diabetes");
+       obj2.AddInFileCategory();
+       
        
                
     }
