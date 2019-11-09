@@ -20,7 +20,7 @@ public class Inventory {
     public static void main(String[] args) {
         // TODO code application logic here
       
-       /*Suppliers obj=new Suppliers();//set files for suppliers try1
+       Suppliers obj=new Suppliers();//set files for suppliers try1
        obj.setID("20180002");
        obj.setName("abanoub");
        obj.setLName("rafaat");
@@ -28,7 +28,7 @@ public class Inventory {
        obj.setContactNumber(01213124);
        obj.setSupplierEmail("hope1pharmacy@gmail.com");
        obj.setCategory("shampo");
-       obj.AddInFileSupplier();*/
+       obj.AddInFileSupplier();
        /*Categories obj2=new Categories();//set files for categories try1
        obj2.setCategory("BabiesCategory");
        obj2.setCategoryDescription("include all the products used by babies");
@@ -42,10 +42,11 @@ public class Inventory {
        obj2.setCategory("DiabetesMedications");
        obj2.setCategoryDescription("Used by diabetes");
        obj2.AddInFileCategory();*/
-       ProductClass p1=new ProductClass();
+       /*ProductClass p1=new ProductClass();
        p1.setPrice(223);
        p1.setID(null);
        p1.AddInFileProduct();
+       */
               
        
        

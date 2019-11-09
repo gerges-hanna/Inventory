@@ -34,12 +34,15 @@ public class Categories extends Product.FatherClass {
     
     public void AddInFileCategory()
      {
-      
-             if( super.getCategory().trim() != null && !super.getCategory().trim().equals("")){
-                 Query= super.getCategory() + "@" +CategoryDescription;
+      if(super.getID()==null)
+             super.setID("");
+         
+         if(!super.getID().trim().equals(""))
+         {
+                 super.setQueryFile(super.getCategory() + "@" +CategoryDescription);
              
-                super.setQueryFile(Query);
-                file.write(Query, filepath, true);
+                
+                file.write(super.getQueryFile(), filepath, true);
            
              }
          else

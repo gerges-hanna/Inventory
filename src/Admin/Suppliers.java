@@ -43,14 +43,24 @@ public class Suppliers extends Product.FatherClass{
 //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
   public void AddInFileSupplier()
      {
-         if(super.getID().trim()!=null && !super.getID().trim().equals(""))
+         if(super.getID()==null)
+             super.setID("");
+         
+         if(!super.getID().trim().equals(""))
          {
-             Query= super.getID()+"@"+super.getName()+"@"+super.getLName()
-                +"@"+SupplierAddress+"@"+ContactNumber+"@"+
-                SupplierEmail+"@"+super.getCategory();
+            super.setQueryFile(
+                    super.getID()+"@"
+                    +super.getName()+"@"
+                    +super.getLName() +"@"
+                    +SupplierAddress+"@"
+                    +ContactNumber+"@"
+                    +SupplierEmail+"@"
+                   +super.getCategory()
+             );
              
-                super.setQueryFile(Query);
-                file.write(Query, filepath, true);
+             
+               
+                file.write(super.getQueryFile(), filepath, true);
          }else
          {
               System.out.println("You must put an ID");

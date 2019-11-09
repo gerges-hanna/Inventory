@@ -161,7 +161,7 @@ public class ProductClass extends FatherClass {
                 file.write(super.getQueryFile(), filePath, true);
          }else
          {
-              System.out.println("You must put ID");
+              System.out.println("You must put an ID");
          }
         
      }
