@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Admin;
-import Product.Files;//To use Files Class
 /**
  *
  * @author Bebo
@@ -15,7 +14,7 @@ public class Suppliers extends Product.FatherClass{
     private String SupplierEmail;
     private String category;
     private String Query;
-    final private String filepath="/Users/salib/file/Supplier.txt";//Final variable can't be modifed
+    final private String filepath="Supplier.txt";//Final variable can't be modifed
 
     public String getcategory() {
         return category;
@@ -47,7 +46,7 @@ public class Suppliers extends Product.FatherClass{
     public void setSupplierEmail(String SupplierEmail) {
         this.SupplierEmail = SupplierEmail;
     }
-Files obj1=new Files();//obj1 from file class
+
 //Supplier Query:ID@Name@lastname@Address@contact_number@Email@category
   public void AddInFileSupplier()
      {
@@ -58,7 +57,7 @@ Files obj1=new Files();//obj1 from file class
                 SupplierEmail+"@"+super.getCategory();
              
                 super.setQueryFile(Query);
-                obj1.write(Query, filepath, true);
+                file.write(Query, filepath, true);
          }else
          {
               System.out.println("You must put ID");
