@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 import Admin.*;
+import inventory.*;
 public class Files 
 {
     public boolean write(String Query,String filePath ,boolean Append)
@@ -43,42 +44,54 @@ public class Files
         try
         {
             Scanner in = new Scanner(new File(filePath));
-            if(filePath.equals("Supplier.txt"))
+            switch (filePath)
             {
-                // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category@
-                while(in.hasNext())
-                {
-                    Suppliers newSup = new Suppliers();
+                case "Supplier.txt":
+                    // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category@
+                    while(in.hasNext())
+                    {
+                        Suppliers newSup = new Suppliers();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split("@");
+                        newSup.setID(data[0]);
+                        newSup.setName(data[1]);
+                        newSup.setLName(data[2]);
+                        newSup.setSupplierAddress(data[3]);
+                        newSup.setContactNumber(Integer.parseInt(data[4].trim()));
+                        newSup.setSupplierEmail(data[5]);
+                        newSup.setCategory(data[6]);
+                        reval.add(newSup);
+                    }   
+                    break;
+                case "Products.txt":
+                    // id@name@lastName@quantity@parcode@price@category@EXP@
+                    while(in.hasNext())
+                    {
+                        ProductClass newF = new ProductClass();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split("@");
+                        newF.setID(data[0]);
+                        newF.setName(data[1]);
+                        newF.setLName(data[2]);
+                        newF.setQuantity(Double.parseDouble(data[3].trim()));
+                        newF.setParcode(data[4]);
+                        newF.setPrice(Double.parseDouble(data[5].trim()));
+                        newF.setCategory(data[6]);
+                        newF.setEXP(data[7]);
+                        reval.add(newF);
+                    }   break;
+                case "Login.txt":
+                    // userName@password@case@
+                    Login newLog = new Login();
                     String tmp = in.nextLine();
                     String []data = tmp.split("@");
-                    newSup.setID(data[0]);
-                    newSup.setName(data[1]);
-                    newSup.setLName(data[2]);
-                    newSup.setSupplierAddress(data[3]);
-                    newSup.setContactNumber(Integer.parseInt(data[4].trim()));
-                    newSup.setSupplierEmail(data[5]);
-                    newSup.setCategory(data[6]);
-                    reval.add((Suppliers) newSup);
-                }
-            }
-            else if(filePath.equals("Products.txt"))
-            {
-                // id@name@lastName@quantity@parcode@price@category@EXP@
-                while(in.hasNext())
-                {
-                    ProductClass newF = new ProductClass();
-                    String tmp = in.nextLine();
-                    String []data = tmp.split("@");
-                    newF.setID(data[0]);
-                    newF.setName(data[1]);
-                    newF.setLName(data[2]);
-                    newF.setQuantity(Double.parseDouble(data[3].trim()));
-                    newF.setParcode(data[4]);
-                    newF.setPrice(Double.parseDouble(data[5].trim()));
-                    newF.setCategory(data[6]);
-                    newF.setEXP(data[7]);
-                    reval.add((ProductClass) newF);
-                }
+                    newLog.setUserName(data[0]);
+                    newLog.setPassword(data[1]);
+                    newLog.setCase(data[2]);
+                    reval.add(newLog);
+                    break;
+                default:
+                    break;
             }
             in.close();
         }
