@@ -109,26 +109,13 @@ public class Login extends Product.FatherClass {
        
         
     }
-    /*private void IncreamentID()
+    private void IncreamentID()
     {
         LoginList=(ArrayList<Login>)(Object) file.read(filepath);
         int size=LoginList.size();
-        System.out.println(size);
-        /*if(size!=0)
-        {
-            Order=LoginList.get(size-1).getOrder()+1;
-            System.out.println(LoginList.get(size-1).getOrder());
-            System.out.println(Order);
-        }else
-        {
-            Order=0;
-        }
-        
-        
-             
-        
+        if(size!=0){Order=LoginList.get(size-1).getOrder()+1;}   
     }
-  */
+  
 public void AddInFileLogin()
 {
     if(getUserName()==null)
@@ -143,14 +130,14 @@ public void AddInFileLogin()
         setCase("");
     }
     
-    
+    IncreamentID();
     //****************************************
     
     if( !getUserName().equals("") && 
             !getPassword().trim().equals("") && 
             !getCase().equals(""))
     {
-        setQueryFile(Order+"@"+UserName+"@"+Password+"@"+Case);
+        setQueryFile(Order+";"+UserName+";"+Password+";"+Case);
         file.write(super.getQueryFile(), filepath, true);
         Order++;//error calling by value !!!
     }
