@@ -61,10 +61,12 @@ public class Inventory {
        
        
        Login obj3=new Login();
+       
+        System.out.println(obj3.LoginList.size());
        //obj3.ForgetPassword("HopeAdmin");
-      obj3.setUserName("~ueza");
-      obj3.setPassword("=ew");
-      obj3.setCase("admin");
+      obj3.setUserName("gsdf");
+      obj3.setPassword("56464");
+      obj3.setCase("user");
        obj3.AddInFileLogin();
        
        

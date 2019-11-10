@@ -95,7 +95,7 @@ public class Files
                         reval.add(newF);
                     }   break;
                 case "Login.txt":
-                    // userName@password@case@
+                    // Order@userName@password@case
                     Login newLog = new Login();
                     String tmp = in.nextLine();
                     String []data = tmp.split("@");
