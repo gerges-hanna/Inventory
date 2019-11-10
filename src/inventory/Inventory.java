@@ -20,8 +20,8 @@ public class Inventory {
     public static void main(String[] args) {
         // TODO code application logic here
       
-       Suppliers obj=new Suppliers();//set files for suppliers try1
-       obj.setID("20180002");
+      /* Suppliers obj=new Suppliers();//set files for suppliers try1
+       obj.setID("20180007");
        obj.setName("abanoub");
        obj.setLName("rafaat");
        obj.setSupplierAddress("4 St.dokki medan El 7orya");
@@ -29,6 +29,11 @@ public class Inventory {
        obj.setSupplierEmail("hope1pharmacy@gmail.com");
        obj.setCategory("shampo");
        obj.AddInFileSupplier();
+       obj.ReadData();
+       obj.UpdateFile("20180007","name","david");*/
+      
+      //***********************************************
+ 
        /*Categories obj2=new Categories();//set files for categories try1
        obj2.setCategory("BabiesCategory");
        obj2.setCategoryDescription("include all the products used by babies");
@@ -42,12 +47,25 @@ public class Inventory {
        obj2.setCategory("DiabetesMedications");
        obj2.setCategoryDescription("Used by diabetes");
        obj2.AddInFileCategory();*/
-       /*ProductClass p1=new ProductClass();
+       
+       //**************************************************
+    
+       /*ProductClass p1=new ProductClass();//set files for products try1
        p1.setPrice(223);
        p1.setID(null);
        p1.AddInFileProduct();
        */
-              
+       
+        //**************************************************
+       
+       
+       
+       Login obj3=new Login();
+       //obj3.ForgetPassword("HopeAdmin");
+      obj3.setUserName("~ueza");
+      obj3.setPassword("=ew");
+      obj3.setCase("admin");
+       obj3.AddInFileLogin();
        
        
        
