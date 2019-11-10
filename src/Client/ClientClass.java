@@ -9,9 +9,26 @@ package Client;
  *
  * @author Paula Samir
  */
-public class ClientClass extends Product.FatherClass{
+public class ClientClass extends Product.FatherClass {
     private String address;
-    private String phoneNum;
+    private Long phoneNum;
+    private String Email;
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public Long getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(Long phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 
     public String getAddress() {
         return address;
@@ -21,13 +38,7 @@ public class ClientClass extends Product.FatherClass{
         this.address = address;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
+    
     // first to read the full data of the customer ....ID,Name,LName,Address,PhoneNum!!
     
     
