@@ -96,13 +96,17 @@ public class Files
                     }   break;
                 case "Login.txt":
                     // Order@userName@password@case
-                    Login newLog = new Login();
-                    String tmp = in.nextLine();
-                    String []data = tmp.split("@");
-                    newLog.setUserName(data[0]);
-                    newLog.setPassword(data[1]);
-                    newLog.setCase(data[2]);
-                    reval.add(newLog);
+                    while(in.hasNext())
+                    {
+                        Login newLog = new Login();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split(";");
+                        newLog.setOrder(Integer.parseInt(data[0].trim()));
+                        newLog.setUserName(data[1]);
+                        newLog.setPassword(data[2]);
+                        newLog.setCase(data[3]);
+                        reval.add(newLog);
+                    }
                     break;
                 default:
                     break;
