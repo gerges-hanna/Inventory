@@ -74,16 +74,16 @@ public class Login extends Product.FatherClass {
     }
 
     public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
-        if(Password.equals("")||
-            (Password.length()>=4 && 
-             Password.length()<8  && 
-             Password.charAt(0)!='@' &&
-             Password.charAt(0)!='~' &&
-             Password.charAt(0)!='-' &&
-             Password.charAt(0)!='+' &&
-             Password.charAt(0)!='='))
+        if(!Password.equals("")
+        && Password.charAt(0) != '@'
+        && Password.charAt(0) != '-'
+        && Password.charAt(0) != '+'
+        && Password.charAt(0) != '='
+        && Password.length() >= 4
+        && Password.length() <= 8
+        )
         {
-        this.Password = Password;
+            this.Password = Password; 
         }
         else 
         {
