@@ -54,17 +54,18 @@ public class Login extends Product.FatherClass {
           UserName.length()>=4    && 
           UserName.length()<8     && 
           UserName.charAt(0)!='@' && 
-          UserName.charAt(0)!='~' && 
           UserName.charAt(0)!='-' && 
           UserName.charAt(0)!='+' && 
-          UserName.charAt(0)!='='))
+          UserName.charAt(0)!='=' &&
+          UserName.charAt(0)!='~' &&
+          UserName.charAt(0)!='$'  ))
         {
         this.UserName = UserName;
         }
         else 
         {
             System.out.println("Username must be between 4-8 characters and not "
-                    + "starting with (@,-,+,=,~) ");
+                    + "starting with (@,-,+,=,~,$) ");
       
         }
     }
@@ -73,22 +74,21 @@ public class Login extends Product.FatherClass {
         return Password;
     }
 
-    public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
-        if(!Password.equals("")
-        && Password.charAt(0) != '@'
-        && Password.charAt(0) != '-'
-        && Password.charAt(0) != '+'
-        && Password.charAt(0) != '='
-        && Password.length() >= 4
-        && Password.length() <= 8
-        )
+   public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
+        if(Password.equals("")||
+        (Password.length()>=4&&Password.length()<8 && 
+         Password.charAt(0)!='@' &&
+         Password.charAt(0)!='~' &&
+         Password.charAt(0)!='-' &&
+         Password.charAt(0)!='+' &&
+         Password.charAt(0)!='=' &&
+         Password.charAt(0)!='$'))
         {
-            this.Password = Password; 
+        this.Password = Password;
         }
         else 
         {
-            System.out.println("Password must be between 4-8 "
-                    + "characters and not starting with (@,-,+,=,~) ");
+            System.out.println("Password must be between 4-8 characters and not starting with (@,-,+,=,~,$) ");
         }
     
     }
@@ -137,7 +137,10 @@ public void AddInFileLogin()
             !getPassword().trim().equals("") && 
             !getCase().equals(""))
     {
+
         setQueryFile(Order+";"+UserName+";"+Password+";"+Case);
+
+
         file.write(super.getQueryFile(), filepath, true);
         Order++;//error calling by value !!!
     }
