@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package Admin;
+
+import Product.*;
+import static Product.ProductClass.productList;
+import java.util.ArrayList;
+
 /**
  *
  * @author Bebo
@@ -13,7 +18,6 @@ public class Suppliers extends Product.FatherClass{
     private int ContactNumber;
     private String SupplierEmail;
 
-    private String Query;
     final private String filepath="Supplier.txt";//Final variable can't be modifed
 
     public String getSupplierAddress() {
@@ -57,14 +61,21 @@ public class Suppliers extends Product.FatherClass{
                     +SupplierEmail+"@"
                    +super.getCategory()
              );
-             
-             
-               
+            
                 file.write(super.getQueryFile(), filepath, true);
          }else
          {
               System.out.println("You must put an ID");
          }
         
+     }
+   public void ReadData()
+     {
+         
+         productList=(ArrayList<ProductClass>)(Object) file.read(filepath);
+     }
+     public boolean UpdateFile(String id, String categ, Object newValue)
+     {
+         return file.update(id, filepath, categ, newValue);
      }
 }
