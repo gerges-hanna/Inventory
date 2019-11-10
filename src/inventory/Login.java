@@ -142,7 +142,7 @@ public void AddInFileLogin()
 
 
         file.write(super.getQueryFile(), filepath, true);
-        Order++;//error calling by value !!!
+        
     }
     else {
         System.out.print("you must enter a valid username,password and case");
