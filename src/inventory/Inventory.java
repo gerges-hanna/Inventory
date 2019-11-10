@@ -64,9 +64,9 @@ public class Inventory {
        
         
        //obj3.ForgetPassword("HopeAdmin");
-      obj3.setUserName("+gsdf");
-      obj3.setPassword("$weww");
-      obj3.setCase("usder");
+      obj3.setUserName("weza");
+      obj3.setPassword("momo1231");
+      obj3.setCase("client");
        obj3.AddInFileLogin();
        
        

@@ -52,7 +52,7 @@ public class Login extends Product.FatherClass {
     public void setUserName(String UserName) {//entered usernames  must be between 4 and 8 characters
   if(UserName.equals("")||(
           UserName.length()>=4    && 
-          UserName.length()<8     && 
+          UserName.length()<=8     && 
           UserName.charAt(0)!='@' && 
           UserName.charAt(0)!='-' && 
           UserName.charAt(0)!='+' && 
@@ -76,7 +76,7 @@ public class Login extends Product.FatherClass {
 
    public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
         if(Password.equals("")||
-        (Password.length()>=4&&Password.length()<8 && 
+        (Password.length()>=4&&Password.length()<=8 && 
          Password.charAt(0)!='@' &&
          Password.charAt(0)!='~' &&
          Password.charAt(0)!='-' &&

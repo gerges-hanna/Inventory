@@ -100,7 +100,7 @@ public class Files
                     {
                         Login newLog = new Login();
                         String tmp = in.nextLine();
-                        String []data = tmp.split("@_$");
+                        String []data = tmp.split(";");
                         newLog.setOrder(Integer.parseInt(data[0].trim()));
                         newLog.setUserName(data[1]);
                         newLog.setPassword(data[2]);
