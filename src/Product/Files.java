@@ -16,6 +16,14 @@ import Admin.*;
 import inventory.*;
 public class Files 
 {
+    
+    // This function is for writing on the file
+    // Query is the string that you want to add on the file
+    // filePath is the path to the file
+    // Append is a boolean variable, if it's true then this function will
+    // will append the file and leave the old text untouched
+    // if it's false then this function will delete everything in the file and
+    // write the query on a new flat white text
     public boolean write(String Query,String filePath ,boolean Append)
     {
         PrintWriter writer=null;
@@ -36,8 +44,14 @@ public class Files
     }
     
     // This function is for reading from a file by passing the absolute file path
-    // and it returns an ArrayList<> and that array contains every product
+    // and it returns an ArrayList<> of what file contains
     // Andrew Emad
+    
+    // PLEASE READ THIS
+    // If you used any of the editing function(update or addIn*)
+    // please use this function again, non of function above
+    // refreshes the array list so you have to refresh it manually by
+    // calling this function again
     public ArrayList<Object> read(String filePath)
     {
         ArrayList<Object> reval = new ArrayList<>();
