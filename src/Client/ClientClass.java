@@ -4,18 +4,27 @@
  * and open the template in the editor.
  */
 package Client;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
  * @author Paula Samir
  */
 public class ClientClass extends inventory.Login {
+    
+    public static ArrayList<ClientClass> productList = new ArrayList<ClientClass>();
+    
+    
     private String address;
     private Long phoneNum;
     private String Email;
     private String ID="";
     private String Name;
     private String LName;
+    
+    
+    private final String filePath= "Products.txt";
 
     public String getID() {
         return ID;
@@ -72,10 +81,22 @@ public class ClientClass extends inventory.Login {
         this.Email = Email;
         this.Name = Name;
         this.LName = LName;
+        
+    }
+    public void ReadProductFile(){
+        if (super.getID()==null)
+        {
+            super.setID("");
+        }
+            
     }
     
     
+     public void ReadProducts()
+     {
+         
+         productList=(ArrayList<ClientClass>)(Object) file.read(filePath);
+     }
+     
 
-    
-    
 }
