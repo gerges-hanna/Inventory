@@ -284,4 +284,37 @@ public class Files
         }
         return true;
     }
+    public boolean delete(String id, String filePath)
+    {
+        ArrayList<Object> pros = read(filePath);
+        boolean append = false;
+        String Query;
+        switch(filePath)
+        {
+            case "Products.txt":
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if(((ProductClass)pros.get(i)).getID().equals(id))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Query = ((FatherClass)pros.get(i)).getID()+"@"+
+                            ((FatherClass)pros.get(i)).getName()+"@"+
+                            ((FatherClass)pros.get(i)).getLName()+"@"+
+                            Double.toString(((FatherClass)pros.get(i)).
+                            getQuantity())+"@"+((FatherClass)pros.get(i)).
+                            getParcode()+"@"+Double.toString(((FatherClass)pros.
+                            get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
+                            .getCategory()+"@"+((FatherClass)pros.get(i)).
+                            getEXP()+"@";
+                        
+                    }
+                    write(Query, filePath, append);
+                    append = true;
+                }
+        }
+        return true;
+    }
 }
