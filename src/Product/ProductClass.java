@@ -142,9 +142,15 @@ public class ProductClass extends FatherClass {
         
         
     }
-     public void AddInFileProduct()
+     public void ReadData()
      {
-         if(super.getID()==null)
+         
+         productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
+     }
+
+    @Override
+    public boolean Add() {
+       if(super.getID()==null)
              super.setID("");
          
          if(!super.getID().trim().equals(""))
@@ -159,19 +165,24 @@ public class ProductClass extends FatherClass {
                         +super.getEXP());
                 
                 file.write(super.getQueryFile(), filePath, true);
+                return true;
          }else
          {
               System.out.println("You must put an ID");
          }
-        
-     }
-     public void ReadData()
-     {
-         
-         productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
-     }
-     public boolean UpdateFile(String id, String categ, Object newValue)
-     {
-         return file.update(id, filePath, categ, newValue);
-     }
+       return false;
+    
+    }
+
+    @Override
+    public boolean Delete(Object ID,Object b2) {
+       return false;
+    }
+
+    @Override
+    public boolean Update(Object id, Object categ, Object newValue) {
+        return file.update((String)id, filePath,(String)categ, newValue);
+    }
+
+   
 }

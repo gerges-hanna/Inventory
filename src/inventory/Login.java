@@ -5,14 +5,17 @@
  */
 package inventory;
 
+import Product.Files;
+import Product.ImportannFunctions;
 import Product.ProductClass;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
  *
  * @author bebo
  */
-public class Login extends Product.FatherClass {
+public class Login extends Product.FatherClass{
     //Note: our pharmacy name's Hope
     public ArrayList<Login> LoginList = new ArrayList<Login>();
     private final String Admin_UserName="HopeAdmin";
@@ -109,6 +112,7 @@ public class Login extends Product.FatherClass {
        
         
     }
+
     private void IncreamentID()
     {
         LoginList=(ArrayList<Login>)(Object) file.read(filepath);
@@ -116,37 +120,52 @@ public class Login extends Product.FatherClass {
         if(size!=0){Order=LoginList.get(size-1).getOrder()+1;}   
     }
   
-public void AddInFileLogin()
-{
-    if(getUserName()==null)
-    {
-        setUserName("");
-    }else if(getPassword()==null)
-    {
-        setPassword("");
-    }
-    else if(getCase()==null)
-    {
-        setCase("");
-    }
-    
-    IncreamentID();
-    //****************************************
-    
-    if( !getUserName().equals("") && 
-            !getPassword().trim().equals("") && 
-            !getCase().equals(""))
-    {
 
-        setQueryFile(Order+";"+UserName+";"+Password+";"+Case);
-
-
-        file.write(super.getQueryFile(), filepath, true);
-        
-    }
-    else {
-        System.out.print("you must enter a valid username,password and case");
-    }
-}
 //Waiting reading function***************************************
+
+    @Override
+    public boolean Add() {
+        if(getUserName()==null)
+        {
+            setUserName("");
+        }else if(getPassword()==null)
+        {
+            setPassword("");
+        }
+        else if(getCase()==null)
+        {
+            setCase("");
+        }
+
+        IncreamentID();
+        //****************************************
+
+        if( !getUserName().equals("") && 
+                !getPassword().trim().equals("") && 
+                !getCase().equals(""))
+        {
+
+            setQueryFile(Order+";"+UserName+";"+Password+";"+Case);
+
+
+            file.write(super.getQueryFile(), filepath, true);
+            return true;
+        }
+        else {
+            System.out.print("you must enter a valid username,password and case");
+        }
+        return false;
+    }
+
+    @Override
+    public boolean Delete(Object b1, Object b2) {
+        return false;
+       
+    }
+
+    @Override
+    public boolean Update(Object ID, Object b1, Object b2) {
+        return false;
+    
+    }
 }

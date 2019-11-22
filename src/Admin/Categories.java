@@ -34,31 +34,39 @@ public class Categories extends Product.FatherClass {
         this.CategoryPrice = CategoryPrice;
     }*/
     
-    
-    public void AddInFileCategory()
+     public void ReadData()
      {
-      if(super.getID()==null)
+         
+         productList=(ArrayList<ProductClass>)(Object) file.read(filepath);
+     }
+     
+
+    @Override
+    public boolean Add() {
+        if(super.getID()==null)
              super.setID("");
          
          if(!super.getID().trim().equals(""))
          {
                  super.setQueryFile(super.getCategory() + "@" +CategoryDescription);
                 file.write(super.getQueryFile(), filepath, true);
-           
-             }
+                return true;
+         }
          else
          {
                System.out.println("You must put valid Category name");    
          }
-     }
-     public void ReadData()
-     {
-         
-         productList=(ArrayList<ProductClass>)(Object) file.read(filepath);
-     }
-     public boolean UpdateFile(String id, String categ, Object newValue)
-     {
-         return file.update(id, filepath, categ, newValue);
-     }
+        return false;
+    }
+
+    @Override
+    public boolean Delete(Object b1, Object b2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean Update(Object id, Object categ, Object newValue) {
+        return file.update((String)id, filepath,(String) categ, newValue);
+    }
     
 }

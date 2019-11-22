@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Client;
+import Product.ImportannFunctions;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Paula Samir
  */
-public class ClientClass extends inventory.Login {
+public class ClientClass extends inventory.Login{
     
     public static ArrayList<ClientClass> productList = new ArrayList<ClientClass>();
     
@@ -98,5 +99,5 @@ public class ClientClass extends inventory.Login {
          productList=(ArrayList<ClientClass>)(Object) file.read(filePath);
      }
      
-
+     
 }

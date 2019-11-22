@@ -60,14 +60,7 @@ public class Inventory {
        
        
        
-       Login obj3=new Login();
        
-        
-       //obj3.ForgetPassword("HopeAdmin");
-      obj3.setUserName("weza");
-      obj3.setPassword("momo1231");
-      obj3.setCase("client");
-       obj3.AddInFileLogin();
        
        
        
