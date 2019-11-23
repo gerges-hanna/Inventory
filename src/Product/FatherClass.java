@@ -15,7 +15,7 @@ public abstract class FatherClass {
     private String Name;
     private String LName;
     private String QueryFile; 
-    private double Quantity;
+    private int Quantity;
     private String Parcode;
     private double price;
     private String Category;
@@ -52,7 +52,7 @@ public abstract class FatherClass {
 
     public Files file=new Files();
     
-    public FatherClass(String ID, String Name, String LName, double Quantity, String Parcode, double price, String Category, String EXP) {
+    public FatherClass(String ID, String Name, String LName, int Quantity, String Parcode, double price, String Category, String EXP) {
         this.ID = ID;
         this.Name = Name;
         this.LName = LName;
@@ -64,7 +64,7 @@ public abstract class FatherClass {
     }
 
     
-    public FatherClass(String ID, String Name, double Quantity, String Parcode, double price, String Category, String EXP) {
+    public FatherClass(String ID, String Name, int Quantity, String Parcode, double price, String Category, String EXP) {
         this.ID = ID;
         this.Name = Name;
         this.Quantity = Quantity;
@@ -149,11 +149,11 @@ public abstract class FatherClass {
         this.Name = Name;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return Quantity;
     }
 
-    public void setQuantity(double Quantity) {
+    public void setQuantity(int Quantity) {
         this.Quantity = Quantity;
     }
 

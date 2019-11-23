@@ -13,10 +13,10 @@ import javax.swing.table.*;
 public class GUI
 {
     static JTable prosTable = null;
-    static Files ff = new Files();
-    static ArrayList<Object> pros = ff.read("Products.txt");
+    static ArrayList<Object> pros;
     public static JTable readProducts()
     {
+        Files ff = new Files();
         ArrayList<Object> pros2 = ff.read("Products.txt");
         DefaultTableModel tab = new DefaultTableModel();
         tab.addColumn("Name");
@@ -46,6 +46,8 @@ public class GUI
     }
     public void run()
     {
+        Files ff = new Files();
+        pros = ff.read("Products.txt");
         int labelInc = 25;
         JFrame mainF = new JFrame();
         mainF.setLayout(null);
@@ -121,7 +123,7 @@ public class GUI
                 newP.setID(Tfs.get(7).getText());
                 newP.setName(Tfs.get(0).getText());
                 newP.setLName(Tfs.get(1).getText());
-                newP.setQuantity(Double.parseDouble(Tfs.get(2).getText().trim()));
+                newP.setQuantity(Integer.parseInt(Tfs.get(2).getText().trim()));
                 newP.setParcode(Tfs.get(3).getText());
                 newP.setPrice(Double.parseDouble(Tfs.get(4).getText().trim()));
                 newP.setCategory(Tfs.get(5).getText());
@@ -152,13 +154,12 @@ public class GUI
             newP.setID(Tfs.get(7).getText());
             newP.setName(Tfs.get(0).getText());
             newP.setLName(Tfs.get(1).getText());
-            newP.setQuantity(Double.parseDouble(Tfs.get(2).getText().trim()));
+            newP.setQuantity(Integer.parseInt(Tfs.get(2).getText().trim()));
             newP.setParcode(Tfs.get(3).getText());
             newP.setPrice(Double.parseDouble(Tfs.get(4).getText().trim()));
             newP.setCategory(Tfs.get(5).getText());
             newP.setEXP(Tfs.get(6).getText());
-            Files s = new Files();
-            s.delete(newP.getID(), "Products.txt");
+            ff.delete(newP.getID(), "Products.txt");
             newP.Add();
             JTable tmp = readProducts();
             DefaultTableModel g = (DefaultTableModel)tmp.getModel();

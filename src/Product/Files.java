@@ -87,7 +87,7 @@ public class Files
                         fatherClass.setID(data[0]);
                         fatherClass.setName(data[1]);
                         fatherClass.setLName(data[2]);
-                        fatherClass.setQuantity(Double.parseDouble(data[3].trim()));
+                        fatherClass.setQuantity(Integer.parseInt(data[3].trim()));
                         fatherClass.setParcode(data[4]);
                         fatherClass.setPrice(Double.parseDouble(data[5].trim()));
                         fatherClass.setCategory(data[6]);
@@ -154,7 +154,7 @@ public class Files
                     fatherClass.setLName(newValue.toString());
                     break;
                 case "quantity":
-                    fatherClass.setQuantity(Double.parseDouble(
+                    fatherClass.setQuantity(Integer.parseInt(
                             newValue.toString().trim()));
                     break;
                 case "parcode":
