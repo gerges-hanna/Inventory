@@ -303,7 +303,7 @@ public class Files
                         Query = ((FatherClass)pros.get(i)).getID()+"@"+
                             ((FatherClass)pros.get(i)).getName()+"@"+
                             ((FatherClass)pros.get(i)).getLName()+"@"+
-                            Double.toString(((FatherClass)pros.get(i)).
+                            Integer.toString(((FatherClass)pros.get(i)).
                             getQuantity())+"@"+((FatherClass)pros.get(i)).
                             getParcode()+"@"+Double.toString(((FatherClass)pros.
                             get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
