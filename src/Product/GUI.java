@@ -33,7 +33,7 @@ public class GUI
             ArrayList<ProductClass> s = (ArrayList<ProductClass>)(Object)pros2;
             data[i][0] = s.get(i).getName();
             data[i][1] = s.get(i).getLName();
-            data[i][2] = Double.toString(s.get(i).getQuantity());
+            data[i][2] = Integer.toString(s.get(i).getQuantity());
             data[i][3] = s.get(i).getParcode();
             data[i][4] = Double.toString(s.get(i).getPrice());
             data[i][5] = s.get(i).getCategory();
@@ -44,7 +44,7 @@ public class GUI
         JTable reval = new JTable(tab);
         return reval;
     }
-    public void run()
+    public static void main(String []args)
     {
         Files ff = new Files();
         pros = ff.read("Products.txt");
@@ -107,17 +107,44 @@ public class GUI
         addBtn.setBounds(20, 250, 70, 25);
         addBtn.addActionListener((ActionEvent e) -> 
         {
-            boolean doit = true;
+            int check = 0;
             for(int i = 0; i < pros.size(); i++)
             {
                 if(((ProductClass)pros.get(i)).getID().equals(Tfs.get(7).getText()))
                 {
-                    JOptionPane.showMessageDialog(null, "Conflict id");
-                    doit = false;
+                    JOptionPane.showMessageDialog(null, "Conflict ID");
+                    check = -1;
                     break;
                 }
             }
-            if(doit)
+            int len = Tfs.get(2).getText().trim().length(), r = 0;
+            for(int i = 0; i < len; i++)
+            {
+                if(Character.isDigit(Tfs.get(2).getText().trim().charAt(i)))
+                    r++;
+            }
+            if(r == len)
+                check++;
+            len = Tfs.get(4).getText().trim().length();
+            r = 0;
+            for(int i = 0; i < len; i++)
+            {
+                try
+                {
+                    if(Character.isDigit(Tfs.get(4).getText().trim().charAt(i)) ||
+                    (Character.isDigit(Tfs.get(4).getText().trim().charAt(Tfs.get(4).getText().trim().indexOf('.') - 1))
+                    && Character.isDigit(Tfs.get(4).getText().trim().charAt(Tfs.get(4).getText().trim().indexOf('.') + 1))
+                    ))
+                        r++;
+                }
+                catch(StringIndexOutOfBoundsException tt)
+                {
+                    check = -1;
+                }
+            }
+            if(r == len)
+                check++;
+            if(check == 2)
             {
                 ProductClass newP = new ProductClass();
                 newP.setID(Tfs.get(7).getText());
@@ -129,11 +156,16 @@ public class GUI
                 newP.setCategory(Tfs.get(5).getText());
                 newP.setEXP(Tfs.get(6).getText());
                 newP.Add();
+                pros.add(newP);
                 JTable tmp = readProducts();
                 DefaultTableModel s = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(s);
             }
-        }  
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid input");
+            }
+        }
         );
         prosTable.addMouseListener(new java.awt.event.MouseAdapter()
         {
