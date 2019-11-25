@@ -5,8 +5,7 @@
  */
 package inventory;
 
-import Product.Files;
-import Product.ProductClass;
+import Product.*;
 import Admin.*;
 /**
  *
@@ -20,17 +19,11 @@ public class Inventory {
     public static void main(String[] args) {
         // TODO code application logic here
       
-      /* Suppliers obj=new Suppliers();//set files for suppliers try1
-       obj.setID("20180007");
-       obj.setName("abanoub");
-       obj.setLName("rafaat");
-       obj.setSupplierAddress("4 St.dokki medan El 7orya");
-       obj.setContactNumber(01213124);
-       obj.setSupplierEmail("hope1pharmacy@gmail.com");
-       obj.setCategory("shampo");
-       obj.AddInFileSupplier();
-       obj.ReadData();
-       obj.UpdateFile("20180007","name","david");*/
+       Suppliers obj=new Suppliers();//set files for suppliers try1
+      
+        obj.ReadData();
+       obj.Update("20180007","supplierAddress","david");
+      
       
       //***********************************************
  
@@ -58,8 +51,15 @@ public class Inventory {
        
         //**************************************************
        
-       
-       
+    /*
+       Login try1=new Login();
+       try1.setUserName("user1");
+       try1.setPassword("1234");
+       try1.setCase("user");
+       try1.Add();
+       try1.ReadData();
+    */
+   
        
        
        

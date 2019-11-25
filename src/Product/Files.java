@@ -95,7 +95,7 @@ public class Files
                         reval.add(fatherClass);
                     }   break;
                 case "Login.txt":
-                    // Order@_$userName@_$password@_$case@_$
+                    // Order;userName;password;case;
                     while(in.hasNext())
                     {
                         Login newLog = new Login();

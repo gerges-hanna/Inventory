@@ -5,9 +5,8 @@
  */
 package inventory;
 
-import Product.Files;
-import Product.ImportannFunctions;
-import Product.ProductClass;
+import Product.*;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -53,10 +52,15 @@ public class Login extends Product.FatherClass{
     }
 
     public void setUserName(String UserName) {//entered usernames  must be between 4 and 8 characters
-  if(UserName.equals("")||(
+        if(UserName==null)
+        {
+            UserName="";
+        }
+        else if(UserName.equals("")||(
           UserName.length()>=4    && 
-          UserName.length()<=8     && 
+          UserName.length()<=8    && 
           UserName.charAt(0)!='@' && 
+          UserName.charAt(0)!=';' && 
           UserName.charAt(0)!='-' && 
           UserName.charAt(0)!='+' && 
           UserName.charAt(0)!='=' &&
@@ -68,7 +72,7 @@ public class Login extends Product.FatherClass{
         else 
         {
             System.out.println("Username must be between 4-8 characters and not "
-                    + "starting with (@,-,+,=,~,$) ");
+                    + "starting with (@,;,-,+,=,~,$) ");
       
         }
     }
@@ -78,9 +82,14 @@ public class Login extends Product.FatherClass{
     }
 
    public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
-        if(Password.equals("")||
+        if(Password==null)
+         {
+           Password=("");
+         }
+        else if(Password.equals("")||
         (Password.length()>=4&&Password.length()<=8 && 
          Password.charAt(0)!='@' &&
+         Password.charAt(0)!=';' &&
          Password.charAt(0)!='~' &&
          Password.charAt(0)!='-' &&
          Password.charAt(0)!='+' &&
@@ -91,7 +100,7 @@ public class Login extends Product.FatherClass{
         }
         else 
         {
-            System.out.println("Password must be between 4-8 characters and not starting with (@,-,+,=,~,$) ");
+            System.out.println("Password must be between 4-8 characters and not starting with (@,;,-,+,=,~,$) ");
         }
     
     }
@@ -101,7 +110,11 @@ public class Login extends Product.FatherClass{
     }
 
     public void setCase(String Case) {
-        if(Case.equals("")||(Case.equals("user")||Case.equals("client")))
+        if(Case==null)
+        {
+            Case="";
+        }
+        else if(Case.equals("")||(Case.equals("user")||Case.equals("client")))
         {
         this.Case = Case;
         }
@@ -121,22 +134,22 @@ public class Login extends Product.FatherClass{
     }
   
 
-//Waiting reading function***************************************
+
 
     @Override
     public boolean Add() {
-        if(getUserName()==null)
-        {
-            setUserName("");
-        }else if(getPassword()==null)
-        {
-            setPassword("");
-        }
-        else if(getCase()==null)
-        {
-            setCase("");
-        }
-
+     if(getUserName()==null)
+     {
+         setUserName("");
+     }
+     else if(getPassword()==null)
+     {
+         setPassword("");
+     }
+     else if(getCase()==null)
+     {
+         setCase("");
+     }
         IncreamentID();
         //****************************************
 
@@ -168,4 +181,9 @@ public class Login extends Product.FatherClass{
         return false;
     
     }
-}
+
+public void ReadData()
+     {
+        LoginList=(ArrayList<Login>)(Object) file.read(filepath);
+     }
+}   
