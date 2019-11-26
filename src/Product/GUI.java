@@ -15,6 +15,7 @@ public class GUI
     static JTable prosTable = null;
     static ArrayList<Object> pros;
     public JPanel mainPanel;
+    private int biggestID = 0;
     public static JTable readProducts()
     {
         Files ff = new Files();
@@ -49,8 +50,14 @@ public class GUI
     {
         mainPanel = new JPanel();
         mainPanel.setSize(mainFrame.getSize());
+        mainPanel.setLayout(null);
         Files ff = new Files();
         pros = ff.read("Products.txt");
+        for(int i = 0; i < pros.size(); i++)
+        {
+            if(Integer.parseInt(((ProductClass)pros.get(i)).getID().trim()) > biggestID)
+                biggestID = Integer.parseInt(((ProductClass)pros.get(i)).getID().trim());
+        }
         int labelInc = 25;
         //JFrame mainF = new JFrame();
         //mainF.setLayout(null);
@@ -70,6 +77,7 @@ public class GUI
             Tfs.add(tf);
             mainPanel.add(tf);
         }
+        Tfs.get(7).setEditable(false);
         // Label Section
         ((JLabel)Lbs.get(0)).setText("Name:");
         ((JLabel)Lbs.get(0)).setBounds(10, 25, 100, 20);
@@ -111,15 +119,14 @@ public class GUI
         addBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
-            for(int i = 0; i < pros.size(); i++)
+            int g = 0;
+            for(int i = 0; i < 7; i++)
             {
-                if(((ProductClass)pros.get(i)).getID().equals(Tfs.get(7).getText()))
-                {
-                    JOptionPane.showMessageDialog(null, "Conflict ID");
-                    check = -1;
-                    break;
-                }
+                if(!Tfs.get(i).getText().equals(""))
+                    g++;
             }
+            if(g == 7)
+                check++;
             int len = Tfs.get(2).getText().trim().length(), r = 0;
             for(int i = 0; i < len; i++)
             {
@@ -147,10 +154,10 @@ public class GUI
             }
             if(r == len)
                 check++;
-            if(check == 2)
+            if(check == 3)
             {
                 ProductClass newP = new ProductClass();
-                newP.setID(Tfs.get(7).getText());
+                newP.setID(Integer.toString(biggestID + 1));
                 newP.setName(Tfs.get(0).getText());
                 newP.setLName(Tfs.get(1).getText());
                 newP.setQuantity(Integer.parseInt(Tfs.get(2).getText().trim()));
@@ -163,6 +170,7 @@ public class GUI
                 JTable tmp = readProducts();
                 DefaultTableModel s = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(s);
+                biggestID++;
             }
             else
             {
@@ -204,25 +212,21 @@ public class GUI
         delBtn.setBounds(50, 300, 100, 25);
         delBtn.addActionListener((ActionEvent e)->
         {
-            int check = 0;
-            for(int i = 0; i < 8; i++)
+            if(!Tfs.get(7).getText().equals(""))
             {
-                if(Tfs.get(i).getText().equals(""))
-                {
-                    check++;
-                }
-            }
-            if(check > 0)
-            {
-                ProductClass newP = new ProductClass();
-                newP.setID(Tfs.get(7).getText());
-                ff.delete(newP.getID(), "Products.txt");
+                ff.delete(Tfs.get(7).getText(), "Products.txt");
                 JTable tmp = readProducts();
+                pros = ff.read("Products.txt");
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
                 for(int i = 0; i < 8; i++)
                 {
                     Tfs.get(i).setText("");
+                }
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if(Integer.parseInt(((ProductClass)pros.get(i)).getID().trim()) > biggestID)
+                        biggestID = Integer.parseInt(((ProductClass)pros.get(i)).getID().trim());
                 }
             }
         });
@@ -231,5 +235,6 @@ public class GUI
         mainPanel.add(updateBtn);
         mainPanel.add(delBtn);
         mainPanel.setVisible(true);
+        mainFrame.add(mainPanel);
     }
 }
