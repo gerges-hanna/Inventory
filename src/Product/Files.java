@@ -115,6 +115,7 @@ public class Files
         }
         catch(FileNotFoundException e)
         {
+            System.out.println(e);
         }
         return (ArrayList<Object>)(Object) reval;
     }
@@ -147,27 +148,27 @@ public class Files
             switch(categ)
             {
                 // id@name@lastName@quantity@parcode@price@category@EXP@
-                case "name":
+                case "Name":
                     fatherClass.setName(newValue.toString());
                     break;
-                case "lastName":
+                case "LName":
                     fatherClass.setLName(newValue.toString());
                     break;
-                case "quantity":
+                case "Quantity":
                     fatherClass.setQuantity(Integer.parseInt(
                             newValue.toString().trim()));
                     break;
-                case "parcode":
+                case "Parcode":
                     fatherClass.setParcode(newValue.toString());
                     break;
-                case "price":
+                case "Price":
                     fatherClass.setPrice(Double.parseDouble(
                             newValue.toString().trim()));
                     break;
-                case "categ":
+                case "Category":
                     fatherClass.setCategory(newValue.toString());
                     break;
-                case "exp":
+                case "EXP":
                     fatherClass.setEXP(newValue.toString());
                     break;
                 default: 
@@ -176,7 +177,6 @@ public class Files
             }
             for(int i = 0; i < pros.size(); i++)
             {
-
                 boolean append = false;
                 String Query;
                 FatherClass s = (FatherClass)pros.get(i);
@@ -225,23 +225,23 @@ public class Files
             switch(categ)
             {
                 // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
-                case "name":
+                case "Name":
                     fatherClass.setName(newValue.toString());
                     break;
-                case "lastName":
+                case "LName":
                     fatherClass.setLName(newValue.toString());
                     break;
-                case "supplierAddress":
+                case "SupplierAddress":
                     fatherClass.setSupplierAddress(newValue.toString());
                     break;
-                case "contactNumber":
+                case "ContactNumber":
                     fatherClass.setContactNumber(Integer.parseInt(newValue.toString
                     ().trim()));
                     break;
-                case "supplierEmail":
+                case "SupplierEmail":
                     fatherClass.setSupplierEmail(newValue.toString());
                     break;
-                case "category":
+                case "Category":
                     fatherClass.setCategory(newValue.toString());
                     break;
                 default: 
