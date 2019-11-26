@@ -86,11 +86,14 @@ public class ClientClass extends inventory.Login {
     public void ReadProductFile(){
         if (super.getID()==null)
         {
-            super.setID("");
+            super.setID(""); 
+        }
+        if(super.equals(ID))
+        {
+             
         }
             
     }
-    
     
      public void ReadProducts()
      {
