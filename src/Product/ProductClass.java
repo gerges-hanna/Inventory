@@ -175,9 +175,10 @@ public class ProductClass extends FatherClass {
     }
 
     @Override
-    public boolean Delete(Object ID,Object b2) {
-       return false;
+    public boolean Delete(Object ID, Object filePath) {
+       return file.delete(ID.toString(), filePath.toString());
     }
+    
 
     @Override
     public boolean Update(Object id, Object categ, Object newValue) {
