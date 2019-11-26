@@ -5,6 +5,10 @@
  */
 package Product;
 
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Gerges hanna FCI-H
@@ -176,5 +180,5 @@ public abstract class FatherClass {
     public abstract boolean Add();
     public abstract boolean Delete(Object b1,Object b2);
     public abstract boolean Update(Object ID,Object b1,Object b2);
-    
+       
 }

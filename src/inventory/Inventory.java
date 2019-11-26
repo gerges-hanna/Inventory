@@ -60,16 +60,20 @@ public class Inventory {
         //**************************************************
        
     
-       Login try1=new Login();
-       
-      
-     if(try1.Checker("bebo","1234"))
-     {
-         System.out.println("exist");
-     }
-     else {
-         System.out.println("dosent exist");
-     }
+        try {
+            AllGui.Login l=new AllGui.Login();
+            l.run();
+        } catch (Exception e) {
+        }
+        
+//      inventory.Login log=new Login();
+//     if(log.Checker("gesre8","128438","client"))
+//     {
+//         System.out.println("exist");
+//     }
+//     else {
+//         System.out.println("dosent exist");
+//     }
        
        
        

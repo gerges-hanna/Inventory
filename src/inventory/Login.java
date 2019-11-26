@@ -45,8 +45,16 @@ public class Login extends Product.FatherClass{
     public void setOrder(int Order) {
         this.Order = Order;
     }
-    
 
+    public String getAdmin_UserName() {
+        return Admin_UserName;
+    }
+
+    public String getAdmin_Password() {
+        return Admin_Password;
+    }
+    
+    
     public String getUserName() {
         return UserName;
     }
@@ -114,7 +122,7 @@ public class Login extends Product.FatherClass{
         {
             Case="";
         }
-        else if(Case.equals("")||(Case.equals("user")||Case.equals("client")))
+        else if(Case.equals("")||(Case.equalsIgnoreCase("user")||Case.equalsIgnoreCase("client")))
         {
         this.Case = Case;
         }
@@ -188,12 +196,14 @@ public void ReadData()//read data from filepath and return it as an array list
      }
 
 
-public boolean Checker(String username, String password)//this function takes username&password and return true if found 
+public boolean Checker(String username, String password,String Case)//this function takes username&password and return true if found 
 {
     ReadData();
     for(int i=0;i<LoginList.size();i++)
     {
-        if(LoginList.get(i).getUserName().equals(username)&&LoginList.get(i).getPassword().equals(password))
+        if(LoginList.get(i).getUserName().equals(username)&&
+                LoginList.get(i).getPassword().equals(password)&&
+                LoginList.get(i).getCase().equalsIgnoreCase(Case))
         {
             return true;
         }
