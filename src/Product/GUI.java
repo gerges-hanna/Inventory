@@ -14,6 +14,7 @@ public class GUI
 {
     static JTable prosTable = null;
     static ArrayList<Object> pros;
+    public JPanel mainPanel;
     public static JTable readProducts()
     {
         Files ff = new Files();
@@ -44,16 +45,18 @@ public class GUI
         JTable reval = new JTable(tab);
         return reval;
     }
-    public static void main(String []args)
+    public GUI(JFrame mainFrame)
     {
+        mainPanel = new JPanel();
+        mainPanel.setSize(mainFrame.getSize());
         Files ff = new Files();
         pros = ff.read("Products.txt");
         int labelInc = 25;
-        JFrame mainF = new JFrame();
-        mainF.setLayout(null);
-        mainF.setTitle("Products");
-        mainF.setBounds(0, 0, 800, 600);
-        mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //JFrame mainF = new JFrame();
+        //mainF.setLayout(null);
+        //mainF.setTitle("Products");
+        //mainF.setBounds(0, 0, 800, 600);
+        //mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // ArrayList for labels and text fields
         ArrayList<JTextField> Tfs = new ArrayList<>();
         ArrayList<JLabel> Lbs = new ArrayList<>();
@@ -65,42 +68,42 @@ public class GUI
             Lbs.add(lb);
             tf.setBounds(100, 30 + (i * 25), 100, 20);
             Tfs.add(tf);
-            mainF.add(tf);
+            mainPanel.add(tf);
         }
         // Label Section
         ((JLabel)Lbs.get(0)).setText("Name:");
         ((JLabel)Lbs.get(0)).setBounds(10, 25, 100, 20);
-        mainF.add(((JLabel)Lbs.get(0)));
+        mainPanel.add(((JLabel)Lbs.get(0)));
         ((JLabel)Lbs.get(1)).setText("Last Name:");
         ((JLabel)Lbs.get(1)).setBounds(10, labelInc * 2, 100, 20);
-        mainF.add(((JLabel)Lbs.get(1)));
+        mainPanel.add(((JLabel)Lbs.get(1)));
         ((JLabel)Lbs.get(2)).setText("Quantity:");
         ((JLabel)Lbs.get(2)).setBounds(10, labelInc * 3, 100, 20);
-        mainF.add(((JLabel)Lbs.get(2)));
+        mainPanel.add(((JLabel)Lbs.get(2)));
         ((JLabel)Lbs.get(3)).setText("Parcode:");
         ((JLabel)Lbs.get(3)).setBounds(10, labelInc * 4, 100, 20);
-        mainF.add(((JLabel)Lbs.get(3)));
+        mainPanel.add(((JLabel)Lbs.get(3)));
         ((JLabel)Lbs.get(4)).setText("Price:");
         ((JLabel)Lbs.get(4)).setBounds(10, labelInc * 5, 100, 20);
-        mainF.add(((JLabel)Lbs.get(4)));
+        mainPanel.add(((JLabel)Lbs.get(4)));
         ((JLabel)Lbs.get(5)).setText("Category");
         ((JLabel)Lbs.get(5)).setBounds(10, labelInc * 6, 100, 20);
-        mainF.add(((JLabel)Lbs.get(5)));
+        mainPanel.add(((JLabel)Lbs.get(5)));
         ((JLabel)Lbs.get(6)).setText("Expire Date:");
         ((JLabel)Lbs.get(6)).setBounds(10, labelInc * 7, 100, 20);
-        mainF.add(((JLabel)Lbs.get(6)));
+        mainPanel.add(((JLabel)Lbs.get(6)));
         ((JLabel)Lbs.get(7)).setText("ID:");
         ((JLabel)Lbs.get(7)).setBounds(10, labelInc * 8, 100, 20);
-        mainF.add(((JLabel)Lbs.get(7)));
+        mainPanel.add(((JLabel)Lbs.get(7)));
         
         // Table Section
         prosTable = readProducts();
         prosTable.setBounds(250, 30, 500, 500);
         prosTable.setEnabled(true);
-        mainF.add(prosTable);
+        mainPanel.add(prosTable);
         JScrollPane prosSP = new JScrollPane(prosTable);
         prosSP.setBounds(250, 30, 500, 500);
-        mainF.add(prosSP);
+        mainPanel.add(prosSP);
 
         //Buttons Section
         JButton addBtn = new JButton("Add");
@@ -196,10 +199,37 @@ public class GUI
             JTable tmp = readProducts();
             DefaultTableModel g = (DefaultTableModel)tmp.getModel();
             prosTable.setModel(g);
-        }  
-        );
-        mainF.add(addBtn);
-        mainF.add(updateBtn);
-        mainF.setVisible(true);
+        });
+        JButton delBtn = new JButton("Delete");
+        delBtn.setBounds(50, 300, 100, 25);
+        delBtn.addActionListener((ActionEvent e)->
+        {
+            int check = 0;
+            for(int i = 0; i < 8; i++)
+            {
+                if(Tfs.get(i).getText().equals(""))
+                {
+                    check++;
+                }
+            }
+            if(check > 0)
+            {
+                ProductClass newP = new ProductClass();
+                newP.setID(Tfs.get(7).getText());
+                ff.delete(newP.getID(), "Products.txt");
+                JTable tmp = readProducts();
+                DefaultTableModel g = (DefaultTableModel)tmp.getModel();
+                prosTable.setModel(g);
+                for(int i = 0; i < 8; i++)
+                {
+                    Tfs.get(i).setText("");
+                }
+            }
+        });
+        prosTable.setDefaultEditor(Object.class, null);
+        mainPanel.add(addBtn);
+        mainPanel.add(updateBtn);
+        mainPanel.add(delBtn);
+        mainPanel.setVisible(true);
     }
 }
