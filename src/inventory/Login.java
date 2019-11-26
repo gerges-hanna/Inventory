@@ -165,7 +165,7 @@ public class Login extends Product.FatherClass{
             return true;
         }
         else {
-            System.out.print("you must enter a valid username,password and case");
+            System.out.print("you must enter a valid username,password and case\n");
         }
         return false;
     }
@@ -182,8 +182,23 @@ public class Login extends Product.FatherClass{
     
     }
 
-public void ReadData()
+public void ReadData()//read data from filepath and return it as an array list
      {
         LoginList=(ArrayList<Login>)(Object) file.read(filepath);
      }
+
+
+public boolean Checker(String username, String password)//this function takes username&password and return true if found 
+{
+    ReadData();
+    for(int i=0;i<LoginList.size();i++)
+    {
+        if(LoginList.get(i).getUserName().equals(username)&&LoginList.get(i).getPassword().equals(password))
+        {
+            return true;
+        }
+      
+    }
+    return false;
+}
 }   

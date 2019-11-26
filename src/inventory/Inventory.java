@@ -18,11 +18,19 @@ public class Inventory {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-      
+      /*
        Suppliers obj=new Suppliers();//set files for suppliers try1
-      
+       obj.setID("kjoi");
+       obj.setName("bebo");
+       obj.setLName("pop");
+       obj.setSupplierAddress("share3 el fegla");
+       obj.setContactNumber(01213345124);
+       obj.setSupplierEmail("hope1pharmacy@gmail.com");
+       obj.setCategory("shampo");
+       obj.Add();
         obj.ReadData();
-       obj.Update("20180007","supplierAddress","david");
+       obj.Update("20180007","name","david");
+        */
       
       
       //***********************************************
@@ -51,16 +59,17 @@ public class Inventory {
        
         //**************************************************
        
-    /*
+    
        Login try1=new Login();
-       try1.setUserName("user1");
-       try1.setPassword("1234");
-       try1.setCase("user");
-       try1.Add();
-       try1.ReadData();
-    */
-   
        
+      
+     if(try1.Checker("bebo","1234"))
+     {
+         System.out.println("exist");
+     }
+     else {
+         System.out.println("dosent exist");
+     }
        
        
        
