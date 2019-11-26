@@ -7,17 +7,48 @@ package inventory;
 
 import Product.*;
 import Admin.*;
+import AllGui.FatherGUI;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  *
  * @author Gerges hanna FCI-H
  */
 public class Inventory {
 
+    public static JFrame frame= new JFrame("Inventory");
+    public static JPanel panelHome =new JPanel();
+    
     /**
      * @param args the command line arguments
      */
+    public static void HomePage()
+    {
+        AllGui.FatherGUI fatherGUI=new FatherGUI();
+        int btnHigw,btnWidth;
+        int x1,x2,x3,x4,x5,x6;
+        int y1,y2;
+        
+        JButton btn1=new JButton();
+        JButton btn2=new JButton();
+        JButton btn3=new JButton();
+        JButton btn4=new JButton();
+        JButton btn5=new JButton();
+        JButton btn6=new JButton();
+        panelHome.setBackground(Color.yellow);
+        
+        
+        
+        
+        fatherGUI.FrameConfigration(frame);
+        fatherGUI.panelMainConfigration(panelHome, frame);
+    }
     public static void main(String[] args) {
         // TODO code application logic here
+        HomePage();
+        
       /*
        Suppliers obj=new Suppliers();//set files for suppliers try1
        obj.setID("kjoi");
@@ -60,11 +91,11 @@ public class Inventory {
         //**************************************************
        
     
-        try {
-            AllGui.Login l=new AllGui.Login();
-            l.run();
-        } catch (Exception e) {
-        }
+//        try {
+//            AllGui.Login l=new AllGui.Login();
+//            l.run();
+//        } catch (Exception e) {
+//        }
         
 //      inventory.Login log=new Login();
 //     if(log.Checker("gesre8","128438","client"))

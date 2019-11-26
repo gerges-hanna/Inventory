@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  */
 public class FatherGUI {
     
-    public JFrame frame= new JFrame("Inventory");
+    
     
     /********************************************/
     //GUI Functions
