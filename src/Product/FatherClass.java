@@ -5,26 +5,78 @@
  */
 package Product;
 
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Gerges hanna FCI-H
  */
 // this class Created By Gerges Hanna
-public class FatherClass {
+public abstract class FatherClass {
     private String ID="";
     private String Name;
     private String LName;
     private String QueryFile; 
-    private double Quantity;
+    private int Quantity;
     private String Parcode;
     private double price;
     private String Category;
     private String EXP;
     static private String id;
     static private String type;
+    private String SupplierAddress;
+    private int ContactNumber;
+    private String SupplierEmail;
+
+    public String getSupplierAddress() {
+        return SupplierAddress;
+    }
+
+    public void setSupplierAddress(String SupplierAddress) {
+        this.SupplierAddress = SupplierAddress;
+    }
+
+    public int getContactNumber() {
+        return ContactNumber;
+    }
+
+    public void setContactNumber(int ContactNumber) {
+        this.ContactNumber = ContactNumber;
+    }
+
+    public String getSupplierEmail() {
+        return SupplierEmail;
+    }
+
+    public void setSupplierEmail(String SupplierEmail) {
+        this.SupplierEmail = SupplierEmail;
+    }
 
     public Files file=new Files();
     
+    public FatherClass(String ID, String Name, String LName, int Quantity, String Parcode, double price, String Category, String EXP) {
+        this.ID = ID;
+        this.Name = Name;
+        this.LName = LName;
+        this.Quantity = Quantity;
+        this.Parcode = Parcode;
+        this.price = price;
+        this.Category = Category;
+        this.EXP = EXP;
+    }
+
+    
+    public FatherClass(String ID, String Name, int Quantity, String Parcode, double price, String Category, String EXP) {
+        this.ID = ID;
+        this.Name = Name;
+        this.Quantity = Quantity;
+        this.Parcode = Parcode;
+        this.price = price;
+        this.Category = Category;
+        this.EXP = EXP;
+    }
     
     public static String getId() {
         return id;
@@ -61,29 +113,6 @@ public class FatherClass {
         this.LName = LName;
     }
     
-
-    public FatherClass(String ID, String Name, String LName, double Quantity, String Parcode, double price, String Category, String EXP) {
-        this.ID = ID;
-        this.Name = Name;
-        this.LName = LName;
-        this.Quantity = Quantity;
-        this.Parcode = Parcode;
-        this.price = price;
-        this.Category = Category;
-        this.EXP = EXP;
-    }
-
-    
-    public FatherClass(String ID, String Name, double Quantity, String Parcode, double price, String Category, String EXP) {
-        this.ID = ID;
-        this.Name = Name;
-        this.Quantity = Quantity;
-        this.Parcode = Parcode;
-        this.price = price;
-        this.Category = Category;
-        this.EXP = EXP;
-    }
-
     public String getCategory() {
         return Category;
     }
@@ -124,11 +153,11 @@ public class FatherClass {
         this.Name = Name;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return Quantity;
     }
 
-    public void setQuantity(double Quantity) {
+    public void setQuantity(int Quantity) {
         this.Quantity = Quantity;
     }
 
@@ -148,5 +177,8 @@ public class FatherClass {
         this.price = price;
     }
     
-    
+    public abstract boolean Add();
+    public abstract boolean Delete(Object b1,Object b2);
+    public abstract boolean Update(Object ID,Object b1,Object b2);
+       
 }

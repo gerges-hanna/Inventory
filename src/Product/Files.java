@@ -16,7 +16,7 @@ import Admin.*;
 import inventory.*;
 public class Files 
 {
-    
+   FatherClass fatherClass; 
     // This function is for writing on the file
     // Query is the string that you want to add on the file
     // filePath is the path to the file
@@ -64,38 +64,38 @@ public class Files
                     // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category@
                     while(in.hasNext())
                     {
-                        Suppliers newSup = new Suppliers();
+                        fatherClass= new Suppliers();
                         String tmp = in.nextLine();
                         String []data = tmp.split("@");
-                        newSup.setID(data[0]);
-                        newSup.setName(data[1]);
-                        newSup.setLName(data[2]);
-                        newSup.setSupplierAddress(data[3]);
-                        newSup.setContactNumber(Integer.parseInt(data[4].trim()));
-                        newSup.setSupplierEmail(data[5]);
-                        newSup.setCategory(data[6]);
-                        reval.add(newSup);
+                        fatherClass.setID(data[0]);
+                        fatherClass.setName(data[1]);
+                        fatherClass.setLName(data[2]);
+                        fatherClass.setSupplierAddress(data[3]);
+                        fatherClass.setContactNumber(Integer.parseInt(data[4].trim()));
+                        fatherClass.setSupplierEmail(data[5]);
+                        fatherClass.setCategory(data[6]);
+                        reval.add(fatherClass);
                     }   
                     break;
                 case "Products.txt":
                     // id@name@lastName@quantity@parcode@price@category@EXP@
                     while(in.hasNext())
                     {
-                        ProductClass newF = new ProductClass();
+                        fatherClass= new ProductClass();
                         String tmp = in.nextLine();
                         String []data = tmp.split("@");
-                        newF.setID(data[0]);
-                        newF.setName(data[1]);
-                        newF.setLName(data[2]);
-                        newF.setQuantity(Double.parseDouble(data[3].trim()));
-                        newF.setParcode(data[4]);
-                        newF.setPrice(Double.parseDouble(data[5].trim()));
-                        newF.setCategory(data[6]);
-                        newF.setEXP(data[7]);
-                        reval.add(newF);
+                        fatherClass.setID(data[0]);
+                        fatherClass.setName(data[1]);
+                        fatherClass.setLName(data[2]);
+                        fatherClass.setQuantity(Integer.parseInt(data[3].trim()));
+                        fatherClass.setParcode(data[4]);
+                        fatherClass.setPrice(Double.parseDouble(data[5].trim()));
+                        fatherClass.setCategory(data[6]);
+                        fatherClass.setEXP(data[7]);
+                        reval.add(fatherClass);
                     }   break;
                 case "Login.txt":
-                    // Order@_$userName@_$password@_$case@_$
+                    // Order;userName;password;case;
                     while(in.hasNext())
                     {
                         Login newLog = new Login();
@@ -115,6 +115,7 @@ public class Files
         }
         catch(FileNotFoundException e)
         {
+            System.out.println(e);
         }
         return (ArrayList<Object>)(Object) reval;
     }
@@ -132,43 +133,43 @@ public class Files
         ArrayList<Object> pros = read(filePath);
         if(filePath.equals("Products.txt"))
         {
-            ProductClass updating = null;
+            fatherClass=new ProductClass();
             String checkID;
             for(int i = 0; i < pros.size(); i++)
             {
                 if(((FatherClass)pros.get(i)).getID().equals(id))
                 {
-                    updating = (ProductClass)pros.get(i);
+                    fatherClass = (ProductClass)pros.get(i);
                     break;
                 }
             }
-            if(updating == null)
+            if(fatherClass == null)
                 return false;
             switch(categ)
             {
                 // id@name@lastName@quantity@parcode@price@category@EXP@
-                case "name":
-                    updating.setName(newValue.toString());
+                case "Name":
+                    fatherClass.setName(newValue.toString());
                     break;
-                case "lastName":
-                    updating.setLName(newValue.toString());
+                case "LName":
+                    fatherClass.setLName(newValue.toString());
                     break;
-                case "quantity":
-                    updating.setQuantity(Double.parseDouble(
+                case "Quantity":
+                    fatherClass.setQuantity(Integer.parseInt(
                             newValue.toString().trim()));
                     break;
-                case "parcode":
-                    updating.setParcode(newValue.toString());
+                case "Parcode":
+                    fatherClass.setParcode(newValue.toString());
                     break;
-                case "price":
-                    updating.setPrice(Double.parseDouble(
+                case "Price":
+                    fatherClass.setPrice(Double.parseDouble(
                             newValue.toString().trim()));
                     break;
-                case "categ":
-                    updating.setCategory(newValue.toString());
+                case "Category":
+                    fatherClass.setCategory(newValue.toString());
                     break;
-                case "exp":
-                    updating.setEXP(newValue.toString());
+                case "EXP":
+                    fatherClass.setEXP(newValue.toString());
                     break;
                 default: 
                     pros.clear();
@@ -176,19 +177,18 @@ public class Files
             }
             for(int i = 0; i < pros.size(); i++)
             {
-
                 boolean append = false;
                 String Query;
                 FatherClass s = (FatherClass)pros.get(i);
                 checkID = s.getID();
-                if(checkID.equals(updating.getID()))
+                if(checkID.equals(fatherClass.getID()))
                 {
-                    Query = updating.getID()+"@"+updating.
-                            getName()+"@"+updating.getLName()+"@"
-                            +Double.toString(updating.getQuantity())+"@"+
-                            updating.getParcode()+"@"+Double.toString
-                            (updating.getPrice())+"@"+updating.
-                            getCategory()+"@"+updating.getEXP()+"@";
+                    Query = fatherClass.getID()+"@"+fatherClass.
+                            getName()+"@"+fatherClass.getLName()+"@"
+                            +Double.toString(fatherClass.getQuantity())+"@"+
+                            fatherClass.getParcode()+"@"+Double.toString
+                            (fatherClass.getPrice())+"@"+fatherClass.
+                            getCategory()+"@"+fatherClass.getEXP()+"@";
 
                 }
                 else
@@ -210,39 +210,39 @@ public class Files
         }
         else if(filePath.equals("Supplier.txt"))
         {
-            Suppliers updating = null;
+            fatherClass=new Suppliers();
             String checkID;
             for(int i = 0; i < pros.size(); i++)
             {
                 if(((FatherClass)pros.get(i)).getID().equals(id))
                 {
-                    updating = (Suppliers)pros.get(i);
+                    fatherClass = (Suppliers)pros.get(i);
                     break;
                 }
             }
-            if(updating == null)
+            if(fatherClass == null)
                 return false;
             switch(categ)
             {
                 // ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
-                case "name":
-                    updating.setName(newValue.toString());
+                case "Name":
+                    fatherClass.setName(newValue.toString());
                     break;
-                case "lastName":
-                    updating.setLName(newValue.toString());
+                case "LName":
+                    fatherClass.setLName(newValue.toString());
                     break;
-                case "supplierAddress":
-                    updating.setSupplierAddress(newValue.toString());
+                case "SupplierAddress":
+                    fatherClass.setSupplierAddress(newValue.toString());
                     break;
-                case "contactNumber":
-                    updating.setContactNumber(Integer.parseInt(newValue.toString
+                case "ContactNumber":
+                    fatherClass.setContactNumber(Integer.parseInt(newValue.toString
                     ().trim()));
                     break;
-                case "supplierEmail":
-                    updating.setSupplierEmail(newValue.toString());
+                case "SupplierEmail":
+                    fatherClass.setSupplierEmail(newValue.toString());
                     break;
-                case "category":
-                    updating.setCategory(newValue.toString());
+                case "Category":
+                    fatherClass.setCategory(newValue.toString());
                     break;
                 default: 
                     pros.clear();
@@ -255,13 +255,13 @@ public class Files
                 String Query;
                 FatherClass s = (FatherClass)pros.get(i);
                 checkID = s.getID();
-                if(checkID.equals(updating.getID()))
+                if(checkID.equals(fatherClass.getID()))
                 {
-                    Query = updating.getID()+"@"+updating.
-                            getName()+"@"+updating.getLName()+"@"
-                            +updating.getSupplierAddress()+"@"+
-                            Integer.toString(updating.getContactNumber())+"@"+
-                            updating.getSupplierEmail()+"@"+updating.getCategory
+                    Query = fatherClass.getID()+"@"+fatherClass.
+                            getName()+"@"+fatherClass.getLName()+"@"
+                            +fatherClass.getSupplierAddress()+"@"+
+                            Integer.toString(fatherClass.getContactNumber())+"@"+
+                            fatherClass.getSupplierEmail()+"@"+fatherClass.getCategory
                             ()+"@";
 
                 }
@@ -281,6 +281,39 @@ public class Files
                     append = true;
                 write(Query, filePath, append);
             }
+        }
+        return true;
+    }
+    public boolean delete(String id, String filePath)
+    {
+        ArrayList<Object> pros = read(filePath);
+        boolean append = false;
+        String Query;
+        switch(filePath)
+        {
+            case "Products.txt":
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if(((ProductClass)pros.get(i)).getID().equals(id))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Query = ((FatherClass)pros.get(i)).getID()+"@"+
+                            ((FatherClass)pros.get(i)).getName()+"@"+
+                            ((FatherClass)pros.get(i)).getLName()+"@"+
+                            Integer.toString(((FatherClass)pros.get(i)).
+                            getQuantity())+"@"+((FatherClass)pros.get(i)).
+                            getParcode()+"@"+Double.toString(((FatherClass)pros.
+                            get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
+                            .getCategory()+"@"+((FatherClass)pros.get(i)).
+                            getEXP()+"@";
+                        
+                    }
+                    write(Query, filePath, append);
+                    append = true;
+                }
         }
         return true;
     }

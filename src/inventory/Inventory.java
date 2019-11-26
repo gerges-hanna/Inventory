@@ -5,32 +5,64 @@
  */
 package inventory;
 
-import Product.Files;
-import Product.ProductClass;
+import Product.*;
 import Admin.*;
+import AllGui.FatherGUI;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  *
  * @author Gerges hanna FCI-H
  */
 public class Inventory {
 
+    public static JFrame frame= new JFrame("Inventory");
+    public static JPanel panelHome =new JPanel();
+    
     /**
      * @param args the command line arguments
      */
+    public static void HomePage()
+    {
+        AllGui.FatherGUI fatherGUI=new FatherGUI();
+        int btnHigw,btnWidth;
+        int x1,x2,x3,x4,x5,x6;
+        int y1,y2;
+        
+        JButton btn1=new JButton();
+        JButton btn2=new JButton();
+        JButton btn3=new JButton();
+        JButton btn4=new JButton();
+        JButton btn5=new JButton();
+        JButton btn6=new JButton();
+        panelHome.setBackground(Color.yellow);
+        
+        
+        
+        
+        fatherGUI.FrameConfigration(frame);
+        fatherGUI.panelMainConfigration(panelHome, frame);
+    }
     public static void main(String[] args) {
         // TODO code application logic here
-      
-      /* Suppliers obj=new Suppliers();//set files for suppliers try1
-       obj.setID("20180007");
-       obj.setName("abanoub");
-       obj.setLName("rafaat");
-       obj.setSupplierAddress("4 St.dokki medan El 7orya");
-       obj.setContactNumber(01213124);
+        HomePage();
+        
+      /*
+       Suppliers obj=new Suppliers();//set files for suppliers try1
+       obj.setID("kjoi");
+       obj.setName("bebo");
+       obj.setLName("pop");
+       obj.setSupplierAddress("share3 el fegla");
+       obj.setContactNumber(01213345124);
        obj.setSupplierEmail("hope1pharmacy@gmail.com");
        obj.setCategory("shampo");
-       obj.AddInFileSupplier();
-       obj.ReadData();
-       obj.UpdateFile("20180007","name","david");*/
+       obj.Add();
+        obj.ReadData();
+       obj.Update("20180007","name","david");
+        */
+      
       
       //***********************************************
  
@@ -58,16 +90,21 @@ public class Inventory {
        
         //**************************************************
        
-       
-       
-       Login obj3=new Login();
-       
+    
+//        try {
+//            AllGui.Login l=new AllGui.Login();
+//            l.run();
+//        } catch (Exception e) {
+//        }
         
-       //obj3.ForgetPassword("HopeAdmin");
-      obj3.setUserName("weza");
-      obj3.setPassword("momo1231");
-      obj3.setCase("client");
-       obj3.AddInFileLogin();
+//      inventory.Login log=new Login();
+//     if(log.Checker("gesre8","128438","client"))
+//     {
+//         System.out.println("exist");
+//     }
+//     else {
+//         System.out.println("dosent exist");
+//     }
        
        
        
