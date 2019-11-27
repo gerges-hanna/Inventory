@@ -14,16 +14,10 @@ import java.util.ArrayList;
  * @author bebo
  */
 public class Categories extends Product.FatherClass {
-    private String CategoryDescription;
+    
     
     final private String filepath="Category.txt";//Final variable can't be modifed
-    public String getCategoryDescription() {
-        return CategoryDescription;
-    }
 
-    public void setCategoryDescription(String CategoryDescription) {
-        this.CategoryDescription = CategoryDescription;
-    }
     /*
     private double CategoryPrice;//this variable contain the whole Category price
     public double getCategoryPrice() {
@@ -42,13 +36,13 @@ public class Categories extends Product.FatherClass {
      
 
     @Override
-    public boolean Add() {
+    public boolean Add() {//Query: Category@CategoryDescription
         if(super.getID()==null)
              super.setID("");
          
          if(!super.getID().trim().equals(""))
          {
-                 super.setQueryFile(super.getCategory() + "@" +CategoryDescription);
+                 super.setQueryFile(super.getCategory() + "@" +super.getCategoryDescription());
                 file.write(super.getQueryFile(), filepath, true);
                 return true;
          }

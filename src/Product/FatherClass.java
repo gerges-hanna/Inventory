@@ -23,6 +23,7 @@ public abstract class FatherClass {
     private String Parcode;
     private double price;
     private String Category;
+    private String CategoryDescription;
     private String EXP;
     static private String id;
     static private String type;
@@ -177,6 +178,12 @@ public abstract class FatherClass {
         this.price = price;
     }
     
+    public void setCategoryDescription(String CategoryDescription) {
+        this.CategoryDescription = CategoryDescription;
+    }
+     public String getCategoryDescription() {
+        return CategoryDescription;
+    }
     public abstract boolean Add();
     public abstract boolean Delete(Object b1,Object b2);
     public abstract boolean Update(Object ID,Object b1,Object b2);

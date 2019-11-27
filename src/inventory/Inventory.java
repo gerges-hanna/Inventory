@@ -8,6 +8,7 @@ package inventory;
 import Product.*;
 import Admin.*;
 import AllGui.FatherGUI;
+import AllGui.SaleReview;
 import AllGui.SellPanel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -55,6 +56,17 @@ public class Inventory {
                 frame.remove(panelHome);
                 AllGui.SellPanel s=new SellPanel();
                 panel=s.Run();
+                fatherGUI.panelMainConfigration(panel, frame);
+                frame.add(panel);
+            }
+        });
+        btn2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.remove(panelHome);
+                AllGui.SaleReview s=new SaleReview();
+                panel=s.run();
                 fatherGUI.panelMainConfigration(panel, frame);
                 frame.add(panel);
             }
