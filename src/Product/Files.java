@@ -30,7 +30,10 @@ public class Files
         try {
             System.out.println("Writing Now In .."+filePath);
             writer=new PrintWriter(new FileWriter(new File(filePath),Append));
-            writer.println(Query);
+            if(Query.equals(""))
+                writer.print(Query);
+            else
+                writer.println(Query);
             System.out.println("Writing Done");
             return true;
         } catch (IOException e) {
@@ -131,7 +134,7 @@ public class Files
     public boolean update(String id, String filePath, String categ, Object newValue)
     {
         ArrayList<Object> pros = read(filePath);
-        if(filePath.equals("Products.txt"))
+        if(filePath.equals("Product.txt"))
         {
             fatherClass=new ProductClass();
             String checkID;
@@ -292,27 +295,34 @@ public class Files
         switch(filePath)
         {
             case "Product.txt":
-                for(int i = 0; i < pros.size(); i++)
+                if(pros.size() == 1)
                 {
-                    if(((ProductClass)pros.get(i)).getID().equals(id))
+                    write("", filePath, false);
+                }
+                else
+                {
+                    for(int i = 0; i < pros.size(); i++)
                     {
-                        continue;
+                        if(((ProductClass)pros.get(i)).getID().equals(id))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            Query = ((FatherClass)pros.get(i)).getID()+"@"+
+                                ((FatherClass)pros.get(i)).getName()+"@"+
+                                ((FatherClass)pros.get(i)).getLName()+"@"+
+                                Integer.toString(((FatherClass)pros.get(i)).
+                                getQuantity())+"@"+((FatherClass)pros.get(i)).
+                                getParcode()+"@"+Double.toString(((FatherClass)pros.
+                                get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
+                                .getCategory()+"@"+((FatherClass)pros.get(i)).
+                                getEXP()+"@";
+
+                        }
+                        write(Query, filePath, append);
+                        append = true;
                     }
-                    else
-                    {
-                        Query = ((FatherClass)pros.get(i)).getID()+"@"+
-                            ((FatherClass)pros.get(i)).getName()+"@"+
-                            ((FatherClass)pros.get(i)).getLName()+"@"+
-                            Integer.toString(((FatherClass)pros.get(i)).
-                            getQuantity())+"@"+((FatherClass)pros.get(i)).
-                            getParcode()+"@"+Double.toString(((FatherClass)pros.
-                            get(i)).getPrice())+"@"+((FatherClass)pros.get(i))
-                            .getCategory()+"@"+((FatherClass)pros.get(i)).
-                            getEXP()+"@";
-                        
-                    }
-                    write(Query, filePath, append);
-                    append = true;
                 }
                 break;
             case "Category.txt":
