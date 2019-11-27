@@ -23,6 +23,9 @@ public class ClientClass extends inventory.Login{
     private String ID="";
     private String Name;
     private String LName;
+
+    public ClientClass() {
+    }
     
     
     private final String filePath= "Products.txt";
