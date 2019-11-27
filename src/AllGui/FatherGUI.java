@@ -49,35 +49,35 @@ public class FatherGUI {
     }
     
     //panel Configration 
-    public void panelMainConfigration(JPanel jPanel1,JFrame frame1)
-    {
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        GroupLayout layout = new GroupLayout(frame1.getContentPane());
-        frame1.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, GroupLayout.Alignment.TRAILING
-                    ,GroupLayout.DEFAULT_SIZE
-                    ,GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE,
-                    GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        
-    }
+//    public void panelMainConfigration(JPanel jPanel1,JFrame frame1)
+//    {
+//        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+//        jPanel1.setLayout(jPanel1Layout);
+//        jPanel1Layout.setHorizontalGroup(
+//            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addGap(0, 400, Short.MAX_VALUE)
+//        );
+//        jPanel1Layout.setVerticalGroup(
+//            jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addGap(0, 300, Short.MAX_VALUE)
+//        );
+//
+//        GroupLayout layout = new GroupLayout(frame1.getContentPane());
+//        frame1.getContentPane().setLayout(layout);
+//        layout.setHorizontalGroup(
+//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addComponent(jPanel1, GroupLayout.Alignment.TRAILING
+//                    ,GroupLayout.DEFAULT_SIZE
+//                    ,GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//        );
+//        layout.setVerticalGroup(
+//            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//            .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE,
+//                    GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//        );
+//
+//        
+//    }
     
     public void AllTextFieldFontSize(JTextField txt)
     {

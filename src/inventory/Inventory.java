@@ -38,6 +38,7 @@ public class Inventory {
     /**
      * @param args the command line arguments
      */
+    /*
      public static void setProductTable(String [][] items)
     {
         for (int i = 0; i < productList.size(); i++) {
@@ -69,10 +70,12 @@ public class Inventory {
             
         }
     }
+    */
     public static void HomePage() {
         
         int btnH=120,btnW=120;
         int y1=5;
+        int y2=150;
         JButton btn1=new JButton("Sell");
         JButton btn2=new JButton("SellReview");
         JButton btn3=new JButton("ADD&Update&Delete Product");
@@ -81,6 +84,7 @@ public class Inventory {
         JButton btn6=new JButton("My purchases");
         JButton btn7=new JButton("Register");
         JButton btn8=new JButton("Supplier");
+        JButton btn9=new JButton("Category");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);
@@ -88,12 +92,15 @@ public class Inventory {
         btn5.setBounds(690, y1, btnH,btnW);
         btn6.setBounds(860, y1, btnH,btnW);
         btn7.setBounds(1030, y1, btnH,btnW);
-        btn8.setBounds(1200, y1, btnH,btnW);
+        //Second Line
+        btn8.setBounds(10, y2, btnH,btnW);
+        btn9.setBounds(180, y2, btnH,btnW);
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.SellPanel s=new SellPanel();
                 panel=s.Run();
@@ -101,6 +108,18 @@ public class Inventory {
                 fatherGUI.FrameConfigration(frame);
                 
                 
+            }
+        });
+        btn2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelHome.setVisible(false);
+                frame.remove(panelHome);
+                AllGui.SaleReview s=new SaleReview();
+                panel=s.run();
+                frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
             }
         });
         btn3.addActionListener(new ActionListener() {
@@ -117,13 +136,14 @@ public class Inventory {
                 frame.validate();
             }
         });
-        btn2.addActionListener(new ActionListener() {
+        btn5.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
-                AllGui.SaleReview s=new SaleReview();
-                panel=s.run();
+                AllGui.Report s=new Report();
+                panel=s.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
             }
@@ -132,6 +152,7 @@ public class Inventory {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.Register r=new AllGui.Register();
                 panel=r.Run();
@@ -144,6 +165,7 @@ public class Inventory {
             @Override
             public void actionPerformed(ActionEvent ae)
             {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.Supplier s=new AllGui.Supplier();
                 panel=s.run();
@@ -152,6 +174,21 @@ public class Inventory {
               
             }
         });
+        btn9.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                panelHome.setVisible(false);
+                frame.remove(panelHome);
+                AllGui.CategoreyGUI s=new AllGui.CategoreyGUI();
+                panel=s.Run();
+                frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
+              
+            }
+        });
+        panelHome.setLayout(null);
         panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
         panelHome.add(btn2);
@@ -161,6 +198,7 @@ public class Inventory {
         panelHome.add(btn6);
         panelHome.add(btn7);
         panelHome.add(btn8);
+        panelHome.add(btn9);
         panelHome.setSize(1200, 700);
         panelHome.setVisible(true);
         frame.add(panelHome);

@@ -19,7 +19,8 @@ public class Report {
         JPanel p = new JPanel();
         p.setBackground(Color.BLUE);
         
-    
+        p.setVisible(true);
+        p.setSize(1200,700);
         return p;
     }
     

@@ -26,15 +26,15 @@ import javax.swing.text.StyleConstants;
  *
  * @author Gerges hanna FCI-H
  */
-public class Login extends FatherGUI{
+public class Login {
     //initialize Gui 
-         
+      private FatherGUI ft=new FatherGUI();
       private JFrame fLogin=new JFrame("Login");
      private  JPanel panelLogin=new JPanel();
     //here the type of class is responsible for this gui
          inventory.Login log=new inventory.Login();
 
-    @Override
+
     public void FrameConfigration(JFrame f) {
         f.setSize(450,300);  
         f.setLocationRelativeTo(null); 
@@ -43,7 +43,6 @@ public class Login extends FatherGUI{
         f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void panelMainConfigration(JPanel jPanel1, JFrame frame1) {
         jPanel1.setSize(450, 300); //To change body of generated methods, choose Tools | Templates.
         jPanel1.setBackground(Color.RED);
@@ -88,10 +87,10 @@ public class Login extends FatherGUI{
         panelLogin.add(typeComboBox);
         panelLogin.add(btn1);
         //Font
-        super.AllTextFieldFontSize(usertxt);
-        super.AllTextFieldFontSize(passtxt);
-        super.AllLblFontSize(passlbl);
-        super.AllLblFontSize(userlbl);
+        ft.AllTextFieldFontSize(usertxt);
+        ft.AllTextFieldFontSize(passtxt);
+        ft.AllLblFontSize(passlbl);
+        ft.AllLblFontSize(userlbl);
         //work
         btn1.addActionListener(new ActionListener() {
 
