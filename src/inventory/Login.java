@@ -185,9 +185,8 @@ public class Login extends Product.FatherClass{
     }
 
     @Override
-    public boolean Update(Object ID, Object b1, Object b2) {
-        return false;
-    
+    public boolean Update(Object ID,Object b1){
+        return file.update((String)ID, filepath,(String)b1);
     }
 
 public void ReadData()//read data from filepath and return it as an array list
