@@ -77,7 +77,7 @@ public class Files
                         reval.add(fatherClass);
                     }   
                     break;
-                case "Products.txt":
+                case "Product.txt":
                     // id@name@lastName@quantity@parcode@price@category@EXP@
                     while(in.hasNext())
                     {
