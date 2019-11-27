@@ -19,7 +19,7 @@ public class GUI
     public static JTable readProducts()
     {
         Files ff = new Files();
-        ArrayList<Object> pros2 = ff.read("Products.txt");
+        ArrayList<Object> pros2 = ff.read("Product.txt");
         DefaultTableModel tab = new DefaultTableModel();
         tab.addColumn("Name");
         tab.addColumn("Last Name");
@@ -52,7 +52,7 @@ public class GUI
         mainPanel.setSize(mainFrame.getSize());
         mainPanel.setLayout(null);
         Files ff = new Files();
-        pros = ff.read("Products.txt");
+        pros = ff.read("Product.txt");
         for(int i = 0; i < pros.size(); i++)
         {
             if(Integer.parseInt(((ProductClass)pros.get(i)).getID().trim()) > biggestID)
@@ -202,7 +202,7 @@ public class GUI
             newP.setPrice(Double.parseDouble(Tfs.get(4).getText().trim()));
             newP.setCategory(Tfs.get(5).getText());
             newP.setEXP(Tfs.get(6).getText());
-            ff.delete(newP.getID(), "Products.txt");
+            ff.delete(newP.getID(), "Product.txt");
             newP.Add();
             JTable tmp = readProducts();
             DefaultTableModel g = (DefaultTableModel)tmp.getModel();
@@ -214,9 +214,9 @@ public class GUI
         {
             if(!Tfs.get(7).getText().equals(""))
             {
-                ff.delete(Tfs.get(7).getText(), "Products.txt");
+                ff.delete(Tfs.get(7).getText(), "Product.txt");
                 JTable tmp = readProducts();
-                pros = ff.read("Products.txt");
+                pros = ff.read("Product.txt");
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
                 for(int i = 0; i < 8; i++)
