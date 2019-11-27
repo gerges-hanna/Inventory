@@ -78,13 +78,12 @@ public class Inventory {
         int y2=150;
         JButton btn1=new JButton("Sell");
         JButton btn2=new JButton("SellReview");
-        JButton btn3=new JButton("ADD&Update&Delete Product");
-        JButton btn4=new JButton("ADD&Update&Delete Supplier");
+        JButton btn3=new JButton("Product");
+        JButton btn4=new JButton("Supplier");
         JButton btn5=new JButton("Graph");
         JButton btn6=new JButton("My purchases");
         JButton btn7=new JButton("Register");
-        JButton btn8=new JButton("Supplier");
-        JButton btn9=new JButton("Category");
+        JButton btn8=new JButton("Category");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);
@@ -94,7 +93,7 @@ public class Inventory {
         btn7.setBounds(1030, y1, btnH,btnW);
         //Second Line
         btn8.setBounds(10, y2, btnH,btnW);
-        btn9.setBounds(180, y2, btnH,btnW);
+
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
@@ -136,6 +135,20 @@ public class Inventory {
                 frame.validate();
             }
         });
+        btn4.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                panelHome.setVisible(false);
+                frame.remove(panelHome);
+                AllGui.Supplier s=new AllGui.Supplier();
+                panel=s.run();
+                frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
+              
+            }
+        });
         btn5.addActionListener(new ActionListener() {
 
             @Override
@@ -160,21 +173,8 @@ public class Inventory {
                 fatherGUI.FrameConfigration(frame);
             }
         });
+        
         btn8.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                panelHome.setVisible(false);
-                frame.remove(panelHome);
-                AllGui.Supplier s=new AllGui.Supplier();
-                panel=s.run();
-                frame.add(panel);
-                fatherGUI.FrameConfigration(frame);
-              
-            }
-        });
-        btn9.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -198,7 +198,6 @@ public class Inventory {
         panelHome.add(btn6);
         panelHome.add(btn7);
         panelHome.add(btn8);
-        panelHome.add(btn9);
         panelHome.setSize(1200, 700);
         panelHome.setVisible(true);
         frame.add(panelHome);
