@@ -49,6 +49,7 @@ public class ProductGUI
     }
     public JPanel run()
     {
+        FatherGUI gg = new FatherGUI();
         mainPanel = new JPanel();
         //mainPanel.setSize(mainFrame.getSize());
         mainPanel.setLayout(null);
@@ -59,7 +60,7 @@ public class ProductGUI
             if(Integer.parseInt(((ProductClass)pros.get(i)).getID().trim()) > biggestID)
                 biggestID = Integer.parseInt(((ProductClass)pros.get(i)).getID().trim());
         }
-        int labelInc = 25;
+        int labelInc = 30;
         //JFrame mainF = new JFrame();
         //mainF.setLayout(null);
         //mainF.setTitle("Products");
@@ -74,49 +75,58 @@ public class ProductGUI
             JTextField tf = new JTextField();
             JLabel lb = new JLabel();
             Lbs.add(lb);
-            tf.setBounds(100, 30 + (i * 25), 100, 20);
+            tf.setBounds(125, 30 + (i * 30), 125, 30);
+            gg.AllTextFieldFontSize(tf);
             Tfs.add(tf);
             mainPanel.add(tf);
         }
         Tfs.get(7).setEditable(false);
         // Label Section
-        ((JLabel)Lbs.get(0)).setText("Name:");
-        ((JLabel)Lbs.get(0)).setBounds(10, 25, 100, 20);
+        Lbs.get(0).setText("Name:");
+        Lbs.get(0).setBounds(10, 25, 125, 25);
+        gg.AllLblFontSize(Lbs.get(0));
         mainPanel.add(((JLabel)Lbs.get(0)));
-        ((JLabel)Lbs.get(1)).setText("Last Name:");
-        ((JLabel)Lbs.get(1)).setBounds(10, labelInc * 2, 100, 20);
+        Lbs.get(1).setText("Last Name:");
+        Lbs.get(1).setBounds(10, labelInc * 2, 125, 25);
+        gg.AllLblFontSize(Lbs.get(1));
         mainPanel.add(((JLabel)Lbs.get(1)));
-        ((JLabel)Lbs.get(2)).setText("Quantity:");
-        ((JLabel)Lbs.get(2)).setBounds(10, labelInc * 3, 100, 20);
+        Lbs.get(2).setText("Quantity:");
+        Lbs.get(2).setBounds(10, labelInc * 3, 125, 25);
+        gg.AllLblFontSize(Lbs.get(2));
         mainPanel.add(((JLabel)Lbs.get(2)));
-        ((JLabel)Lbs.get(3)).setText("Parcode:");
-        ((JLabel)Lbs.get(3)).setBounds(10, labelInc * 4, 100, 20);
+        Lbs.get(3).setText("Parcode:");
+        Lbs.get(3).setBounds(10, labelInc * 4, 125, 25);
+        gg.AllLblFontSize(Lbs.get(3));
         mainPanel.add(((JLabel)Lbs.get(3)));
-        ((JLabel)Lbs.get(4)).setText("Price:");
-        ((JLabel)Lbs.get(4)).setBounds(10, labelInc * 5, 100, 20);
+        Lbs.get(4).setText("Price:");
+        Lbs.get(4).setBounds(10, labelInc * 5, 125, 25);
+        gg.AllLblFontSize(Lbs.get(4));
         mainPanel.add(((JLabel)Lbs.get(4)));
-        ((JLabel)Lbs.get(5)).setText("Category");
-        ((JLabel)Lbs.get(5)).setBounds(10, labelInc * 6, 100, 20);
+        Lbs.get(5).setText("Category:");
+        Lbs.get(5).setBounds(10, labelInc * 6, 125, 25);
+        gg.AllLblFontSize(Lbs.get(5));
         mainPanel.add(((JLabel)Lbs.get(5)));
-        ((JLabel)Lbs.get(6)).setText("Expire Date:");
-        ((JLabel)Lbs.get(6)).setBounds(10, labelInc * 7, 100, 20);
+        Lbs.get(6).setText("Expire Date:");
+        Lbs.get(6).setBounds(10, labelInc * 7, 125, 25);
+        gg.AllLblFontSize(Lbs.get(6));
         mainPanel.add(((JLabel)Lbs.get(6)));
-        ((JLabel)Lbs.get(7)).setText("ID:");
-        ((JLabel)Lbs.get(7)).setBounds(10, labelInc * 8, 100, 20);
+        Lbs.get(7).setText("ID:");
+        Lbs.get(7).setBounds(10, labelInc * 8, 125, 20);
+        gg.AllLblFontSize(Lbs.get(7));
         mainPanel.add(((JLabel)Lbs.get(7)));
         
         // Table Section
         prosTable = readProducts();
-        prosTable.setBounds(250, 30, 500, 500);
+        prosTable.setBounds(300, 20, 500, 500);
         prosTable.setEnabled(true);
         mainPanel.add(prosTable);
         JScrollPane prosSP = new JScrollPane(prosTable);
-        prosSP.setBounds(250, 30, 500, 500);
+        prosSP.setBounds(300, 20, 500, 500);
         mainPanel.add(prosSP);
 
         //Buttons Section
         JButton addBtn = new JButton("Add");
-        addBtn.setBounds(20, 250, 70, 25);
+        addBtn.setBounds(20, 300, 100, 25);
         addBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
@@ -191,7 +201,7 @@ public class ProductGUI
             }
         });
         JButton updateBtn = new JButton("Update");
-        updateBtn.setBounds(100, 250, 100, 25);
+        updateBtn.setBounds(125, 300, 100, 25);
         updateBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
@@ -247,7 +257,7 @@ public class ProductGUI
             }
         });
         JButton delBtn = new JButton("Delete");
-        delBtn.setBounds(50, 300, 100, 25);
+        delBtn.setBounds(70, 340, 100, 25);
         delBtn.addActionListener((ActionEvent e)->
         {
             if(!Tfs.get(7).getText().equals(""))
