@@ -5,8 +5,12 @@
  */
 package AllGui;
 
+import inventory.Inventory;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -87,7 +91,18 @@ public class FatherGUI {
     {
         lbl.setFont(new Font("Tahoma", 0, 20));
     }
-    
+    public void ButtonBackHome(JButton btn)
+    {
+         btn.setBounds(7, 7, 90, 30);
+        btn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+            inventory.Inventory in=new Inventory();
+             in.runPanel();
+            }
+        });
+    }
     
     /********************************************/
 }

@@ -7,6 +7,7 @@ package AllGui;
 
 import Product.Files;
 import Product.ProductClass;
+import inventory.Inventory;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -80,12 +81,13 @@ public class SellPanel extends Product.ProductClass{
         f.x1=40;
         f.x2=140;
         f.x3=420;
-        f.y1=40;
-        f.y2=85;
-        f.y3=130;
-        f.y4=175;
-        f.y5=220;
-        f.y6=280;
+        f.y1=60;
+        f.y2=105;
+        f.y3=150;
+        f.y4=195;
+        f.y5=240;
+        f.y6=320;
+        f.y7=360;
         
         //Label Create 
         JLabel lblParcode=new JLabel("Parcode");
@@ -117,13 +119,16 @@ public class SellPanel extends Product.ProductClass{
         JButton btnBuy=new JButton("Buy");
         JButton btnRemove=new JButton("Remove");
         JButton btnDeleteBoard=new JButton("Delet Board");
+        JButton btnBack=new JButton("Back");
+       f.ButtonBackHome(btnBack);
+        
         
         //btn SrtBoaunds
         btnAdd.setBounds(f.x2, f.y6, 120, 40);
         btnClear.setBounds(f.x2+130, f.y6, 120, 40);
-        btnBuy.setBounds(f.x3, f.y1+310, 120, 40);
-        btnRemove.setBounds(f.x3+130, f.y1+310, 120, 40);
-        btnDeleteBoard.setBounds(f.x3+260, f.y1+310, 120, 40);
+        btnBuy.setBounds(f.x3, f.y7, 120, 40);
+        btnRemove.setBounds(f.x3+130, f.y7, 120, 40);
+        btnDeleteBoard.setBounds(f.x3+260, f.y7, 120, 40);
                
         
         //Jtextfield create
@@ -155,10 +160,10 @@ public class SellPanel extends Product.ProductClass{
             setProductTable(items);
             String [] ColumnsProduct={"ID","Name","LName","Quantity","Parcode","Price","Categorey","EXP"};
             JTable Tableproduct=new JTable(items,ColumnsProduct);
-            Tableproduct.setBounds(10, f.y1+360, 800, 250);
+            Tableproduct.setBounds(10, f.y1+360, 800, 240);
             
             JScrollPane sp=new JScrollPane(Tableproduct);
-            sp.setBounds(10, f.y1+360, 800, 250);
+            sp.setBounds(10, f.y1+360, 800, 240);
        
             
             
@@ -173,8 +178,8 @@ public class SellPanel extends Product.ProductClass{
             JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
             tableEXP.setEnabled(true);
             JScrollPane sp2 = new JScrollPane(tableEXP);
-            tableEXP.setBounds(820, f.y1+360, 350, 250);
-            sp2.setBounds(820, f.y1+360, 350, 250);
+            tableEXP.setBounds(820, f.y1+360, 350, 240);
+            sp2.setBounds(820, f.y1+360, 350, 240);
             
             
             /** sell Table**/
@@ -182,8 +187,8 @@ public class SellPanel extends Product.ProductClass{
             String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
             JTable tableSell=new JTable(SellItems,ColoumnSell);
             JScrollPane sp3 = new JScrollPane(tableSell);
-            tableSell.setBounds(f.x3, f.y1, 750, 300);
-            sp3.setBounds(f.x3, f.y1, 750, 300);
+            tableSell.setBounds(f.x3, f.y1, 750, 280);
+            sp3.setBounds(f.x3, f.y1, 750, 280);
         
         
         //Panel ADD 
@@ -206,6 +211,7 @@ public class SellPanel extends Product.ProductClass{
         panel.add(btnClear);
         panel.add(btnDeleteBoard);
         panel.add(btnRemove);
+        panel.add(btnBack);
         panel.setSize(1200, 700);
         
         
