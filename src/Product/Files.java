@@ -291,7 +291,7 @@ public class Files
         String Query;
         switch(filePath)
         {
-            case "Products.txt":
+            case "Product.txt":
                 for(int i = 0; i < pros.size(); i++)
                 {
                     if(((ProductClass)pros.get(i)).getID().equals(id))
@@ -314,10 +314,11 @@ public class Files
                     write(Query, filePath, append);
                     append = true;
                 }
+                break;
             case "Category.txt":
                 for(int i = 0; i < pros.size(); i++)
                 {
-                    if( ((Admin.Categories)pros.get(i)).getCategory().equals(id))
+                    if(((Admin.Categories)pros.get(i)).getCategory().equals(id))
                         continue;
                     else
                     {
@@ -327,6 +328,7 @@ public class Files
                     write(Query, filePath, append);
                     append = true;
                 }
+                break;
             case "Supplier.txt":
             //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
                 for(int i = 0; i < pros.size(); i++)
