@@ -96,7 +96,8 @@ public class Inventory {
             public void actionPerformed(ActionEvent ae) {
                 frame.remove(panelHome);
                 AllGui.SellPanel s=new SellPanel();
-                frame.add(s.r2());
+                panel=s.Run();
+                frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
                 
                 
@@ -106,11 +107,14 @@ public class Inventory {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
-                AllGui.SellPanel s=new SellPanel();
-                panel=s.Run();
+                AllGui.Supplier s=new Supplier();
+                panel=s.run();
                 frame.add(panel);
-                fatherGUI.FrameConfigration(frame);
+                //fatherGUI.FrameConfigration(frame);
+                frame.invalidate();
+                frame.validate();
             }
         });
         btn2.addActionListener(new ActionListener() {
@@ -140,14 +144,12 @@ public class Inventory {
             @Override
             public void actionPerformed(ActionEvent ae)
             {
-                panelHome.setVisible(false);
                 frame.remove(panelHome);
-                AllGui.Supplier r=new Supplier();
-                panel=r.run();
-                
+                AllGui.Supplier s=new AllGui.Supplier();
+                panel=s.run();
                 frame.add(panel);
-                frame.invalidate();
-                frame.validate();
+                fatherGUI.FrameConfigration(frame);
+              
             }
         });
         panelHome.setBackground(Color.yellow);
