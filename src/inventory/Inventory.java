@@ -7,7 +7,7 @@ package inventory;
 
 import Product.*;
 import Admin.*;
-import AllGui.FatherGUI;
+import AllGui.*;
 import AllGui.SaleReview;
 import AllGui.SellPanel;
 import AllGui.Supplier;
@@ -138,12 +138,16 @@ public class Inventory {
         btn8.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(ActionEvent ae)
+            {
+                panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.Supplier r=new Supplier();
                 panel=r.run();
                 
                 frame.add(panel);
+                frame.invalidate();
+                frame.validate();
             }
         });
         panelHome.setBackground(Color.yellow);
