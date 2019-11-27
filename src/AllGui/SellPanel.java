@@ -139,16 +139,24 @@ public class SellPanel extends Product.ProductClass{
             String [] ColumnsProduct={"ID","Name","LName","Quantity","Parcode","Price","Categorey","EXP"};
             JTable Tableproduct=new JTable(items,ColumnsProduct);
             JScrollPane sp=new JScrollPane(Tableproduct);
-            Tableproduct.setBounds(10, 500, 1000, 490);
+            
+            Tableproduct.setBounds(10, 500, 1200, 490);
+            sp.setBounds(10, 500, 1200, 490);
             
 //            Tableproduct.setFont(new Font("thoma", 0, 20));
 //            Tableproduct.setRowHeight(25);
             
             /** Expire Table **/
             
-//            String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
-//            JTable tableEXP=new JTable();
-//            
+            String[][] ExpItems=new String[3][6];
+            String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
+            JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
+            tableEXP.setEnabled(true);
+            JScrollPane sp2 = new JScrollPane(tableEXP);
+            
+            tableEXP.setBounds(1220, 500, 300, 490);
+            sp2.setBounds(1220, 500, 300, 490);
+            
         
         
         //Panel ADD 
@@ -162,8 +170,13 @@ public class SellPanel extends Product.ProductClass{
         panel.add(txtName);
         panel.add(txtQuantity);
         panel.add(categoreBox);
-        panel.add(Tableproduct);
         panel.add(sp);
+        panel.add(sp2);
+        Tableproduct.setDefaultEditor(Object.class, null);
+        tableEXP.setDefaultEditor(Object.class, null);
+        panel.add(Tableproduct);
+        panel.add(tableEXP);
+        
         
         return panel;
     }

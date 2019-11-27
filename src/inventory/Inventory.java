@@ -42,12 +42,14 @@ public class Inventory {
         JButton btn4=new JButton("ADD&Update&Delete Supplier");
         JButton btn5=new JButton("Graph");
         JButton btn6=new JButton("My purchases");
+        JButton btn7=new JButton("Register");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);
         btn4.setBounds(520, y1, btnH,btnW);
         btn5.setBounds(690, y1, btnH,btnW);
         btn6.setBounds(860, y1, btnH,btnW);
+        btn7.setBounds(1030, y1, btnH,btnW);
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
@@ -71,6 +73,18 @@ public class Inventory {
                 frame.add(panel);
             }
         });
+        btn7.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.remove(panelHome);
+                AllGui.Register r=new AllGui.Register();
+                panel=r.Run();
+                fatherGUI.panelMainConfigration(panel, frame);
+                frame.add(panel);
+            }
+        });
+      
         panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
         panelHome.add(btn2);
@@ -78,6 +92,7 @@ public class Inventory {
         panelHome.add(btn4);
         panelHome.add(btn5);
         panelHome.add(btn6);
+        panelHome.add(btn7);
         fatherGUI.FrameConfigration(frame);
         fatherGUI.panelMainConfigration(panelHome, frame);
     }
