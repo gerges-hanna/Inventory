@@ -8,10 +8,13 @@ package AllGui;
 import javax.swing.*;
 
 public class Test {
-    JPanel p=new JPanel();
-    public JPanel run()
-    {
-        String [][]data = {
+    
+
+    public static void main(String[] args) {
+            JPanel p=new JPanel();
+            JFrame f=new JFrame();
+            
+            String [][]data = {
             
             {"Gerges", "Gerges", "Bebo"},
             {"John", "Poula", "Abanoun"},
@@ -44,7 +47,14 @@ public class Test {
         p.add(s);
         p.add(t);
         
-                
-        return p;
+        f.setSize(1200,700);  
+        f.setLocationRelativeTo(null); 
+        f.setLayout(null);    
+        f.add(p);
+//        f.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+//        f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE
+        f.setVisible(true);
+        
+            
     }
 }

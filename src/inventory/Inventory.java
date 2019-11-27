@@ -10,14 +10,20 @@ import Admin.*;
 import AllGui.FatherGUI;
 import AllGui.SaleReview;
 import AllGui.SellPanel;
+import AllGui.Supplier;
+import static Product.ProductClass.productList;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.*;
 /**
  *
  * @author Gerges hanna FCI-H
@@ -27,13 +33,44 @@ public class Inventory {
     public static JFrame frame= new JFrame("Inventory");
     public static JPanel panelHome =new JPanel();
     public static JPanel panel;
+    public static AllGui.FatherGUI fatherGUI=new FatherGUI();
     
     /**
      * @param args the command line arguments
      */
-
+     public static void setProductTable(String [][] items)
+    {
+        for (int i = 0; i < productList.size(); i++) {
+            
+       }
+            
+            for (int i = 0; i < productList.size(); i++) {
+                
+                    items[i][0]=productList.get(i).getID();
+                    items[i][1]=productList.get(i).getName();
+                    items[i][2]=productList.get(i).getLName();
+                    items[i][3]=String.valueOf(productList.get(i).getQuantity());
+                    items[i][4]=productList.get(i).getParcode();
+                    items[i][5]=String.valueOf(productList.get(i).getPrice());
+                    items[i][6]=productList.get(i).getCategory();
+                    items[i][7]=productList.get(i).getEXP();
+//                    if(ExpireRemainder(productList.get(i).getEXP()))
+//                    {
+//                        ExpObject.setID(productList.get(i).getID());
+//                        ExpObject.setName(productList.get(i).getName());
+//                        ExpObject.setQuantity(productList.get(i).getQuantity());
+//                        ExpObject.setParcode(productList.get(i).getParcode());
+//                        ExpObject.setRemainderDay(getRemainderDay());
+//                        ExpObject.setCategory(productList.get(i).getCategory());
+//                        ExpObject.setPrice(productList.get(i).getPrice());
+//                        ListExp.add(ExpObject);
+//                    }
+                
+            
+        }
+    }
     public static void HomePage() {
-        AllGui.FatherGUI fatherGUI=new FatherGUI();
+        
         int btnH=120,btnW=120;
         int y1=5;
         JButton btn1=new JButton("Sell");
@@ -43,6 +80,7 @@ public class Inventory {
         JButton btn5=new JButton("Graph");
         JButton btn6=new JButton("My purchases");
         JButton btn7=new JButton("Register");
+        JButton btn8=new JButton("Supplier");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);
@@ -50,6 +88,7 @@ public class Inventory {
         btn5.setBounds(690, y1, btnH,btnW);
         btn6.setBounds(860, y1, btnH,btnW);
         btn7.setBounds(1030, y1, btnH,btnW);
+        btn8.setBounds(1200, y1, btnH,btnW);
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
@@ -57,9 +96,21 @@ public class Inventory {
             public void actionPerformed(ActionEvent ae) {
                 frame.remove(panelHome);
                 AllGui.SellPanel s=new SellPanel();
+                frame.add(s.r2());
+                fatherGUI.FrameConfigration(frame);
+                
+                
+            }
+        });
+        btn3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.remove(panelHome);
+                AllGui.SellPanel s=new SellPanel();
                 panel=s.Run();
-                fatherGUI.panelMainConfigration(panel, frame);
                 frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
             }
         });
         btn2.addActionListener(new ActionListener() {
@@ -69,8 +120,8 @@ public class Inventory {
                 frame.remove(panelHome);
                 AllGui.SaleReview s=new SaleReview();
                 panel=s.run();
-                fatherGUI.panelMainConfigration(panel, frame);
                 frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
             }
         });
         btn7.addActionListener(new ActionListener() {
@@ -80,11 +131,21 @@ public class Inventory {
                 frame.remove(panelHome);
                 AllGui.Register r=new AllGui.Register();
                 panel=r.Run();
-                fatherGUI.panelMainConfigration(panel, frame);
+                frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
+            }
+        });
+        btn8.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.remove(panelHome);
+                AllGui.Supplier r=new Supplier();
+                panel=r.run();
+                
                 frame.add(panel);
             }
         });
-      
         panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
         panelHome.add(btn2);
@@ -93,8 +154,12 @@ public class Inventory {
         panelHome.add(btn5);
         panelHome.add(btn6);
         panelHome.add(btn7);
+        panelHome.add(btn8);
+        panelHome.setSize(1200, 700);
+        panelHome.setVisible(true);
+        frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);
-        fatherGUI.panelMainConfigration(panelHome, frame);
+        
     }
     public static void runPanel()
     {
@@ -104,7 +169,9 @@ public class Inventory {
     }
     public static void main(String[] args) {
         // TODO code application logic here
-        HomePage();
+        HomePage(); 
+        
+
         
       /*
        Suppliers obj=new Suppliers();//set files for suppliers try1

@@ -33,11 +33,17 @@ public class FatherGUI {
          */
     public void FrameConfigration(JFrame f)
     {
+//        f.setSize(1200,700);  
+//        f.setLocationRelativeTo(null); 
+//        f.setLayout(null);    
+//        f.setVisible(true);
+//        f.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+//        f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         f.setSize(1200,700);  
         f.setLocationRelativeTo(null); 
-        f.setLayout(null);    
+        f.setLayout(null);
         f.setVisible(true);
-        f.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        f.setResizable(false);
         f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     }
