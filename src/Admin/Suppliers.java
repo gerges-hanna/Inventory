@@ -62,8 +62,7 @@ public class Suppliers extends Product.FatherClass{
     }
 
     @Override
-    public boolean Update(Object id,Object categ,Object newValue) {
-        
-        return file.update((String)id, filepath,(String) categ, newValue);
+    public boolean Update(Object ID,Object b1){
+        return file.update((String)ID, filepath,(String)b1);
     }
 }

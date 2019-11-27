@@ -232,17 +232,11 @@ public class ProductGUI
                 check++;
             if(check == 3)
             {
-                ProductClass newP = new ProductClass();
-                newP.setID(Tfs.get(7).getText());
-                newP.setName(Tfs.get(0).getText());
-                newP.setLName(Tfs.get(1).getText());
-                newP.setQuantity(Integer.parseInt(Tfs.get(2).getText().trim()));
-                newP.setParcode(Tfs.get(3).getText());
-                newP.setPrice(Double.parseDouble(Tfs.get(4).getText().trim()));
-                newP.setCategory(Tfs.get(5).getText());
-                newP.setEXP(Tfs.get(6).getText());
-                ff.delete(newP.getID(), "Product.txt");
-                newP.Add();
+                String Query = Tfs.get(7).getText() + "@" +Tfs.get(0).getText()
+                        + "@" +Tfs.get(1).getText()+ "@" +Tfs.get(2).getText() +"@"
+                        +Tfs.get(3).getText() +"@" +Tfs.get(4).getText().trim() +"@"
+                        +Tfs.get(5).getText() +"@" +Tfs.get(6).getText() +"@";
+                ff.update(Tfs.get(7).getText(), "Product.txt", Query);
                 JTable tmp = readProducts();
                 DefaultTableModel gf = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(gf);
@@ -279,7 +273,7 @@ public class ProductGUI
         mainPanel.add(updateBtn);
         mainPanel.add(delBtn);
         mainPanel.setVisible(true);
-        mainPanel.setSize(1000,1000);
+        mainPanel.setSize(1200,700);
         //mainFrame.add(mainPanel);
         return mainPanel;
     }

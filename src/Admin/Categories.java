@@ -58,9 +58,9 @@ public class Categories extends Product.FatherClass {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean Update(Object id, Object categ, Object newValue) {
-        return file.update((String)id, filepath,(String) categ, newValue);
+    
+    public boolean Update(Object id, Object newValue) {
+        return file.update((String)id, filepath,(String)newValue);
     }
     
 }

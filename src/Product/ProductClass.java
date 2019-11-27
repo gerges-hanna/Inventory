@@ -181,8 +181,8 @@ public class ProductClass extends FatherClass {
     
 
     @Override
-    public boolean Update(Object id, Object categ, Object newValue) {
-        return file.update((String)id, filePath,(String)categ, newValue);
+    public boolean Update(Object ID,Object b1){
+        return file.update((String)ID, filePath,(String)b1);
     }
 
    
