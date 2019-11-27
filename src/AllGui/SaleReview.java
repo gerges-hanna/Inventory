@@ -3,7 +3,9 @@ import javax.swing.*;
 import java.awt.event.*;
 public class SaleReview extends Client.ClientClass{
     
-    JTextField 
+    JTextField searchBar = new JTextField();
+    JPanel panel = new JPanel();
+  
     
     
     
