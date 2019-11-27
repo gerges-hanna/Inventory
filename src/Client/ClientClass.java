@@ -5,6 +5,7 @@
  */
 package Client;
 import Product.ImportannFunctions;
+import inventory.Login;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class ClientClass extends inventory.Login{
     
     public static ArrayList<ClientClass> productList = new ArrayList<ClientClass>();
     
+    Login log = new Login();
     
     private String address;
     private Long phoneNum;
@@ -92,11 +94,14 @@ public class ClientClass extends inventory.Login{
         {
             super.setID(""); 
         }
-        if(super.equals(ID))
+        else if(super.equals(ID))
         {
              
         }
             
+        else {
+            System.out.println("Enter Valid ID!!");
+        }
     }
     
      public void ReadProducts()
