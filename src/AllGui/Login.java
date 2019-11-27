@@ -64,9 +64,9 @@ public class Login extends FatherGUI{
         
         int x1=60,x2=160;
         JButton btn1=new JButton("Login");
-        JLabel userlbl=new JLabel("UserName");
+        JLabel userlbl=new JLabel("Username");
         userlbl.setBounds(x1, 5, 180, 100);
-        JLabel passlbl=new JLabel("PassWord");
+        JLabel passlbl=new JLabel("Password");
         passlbl.setBounds(x1, 40, 180, 100);
         JTextField usertxt=new JTextField();
         usertxt.setBounds(x2, 40, 180, 30);
@@ -105,7 +105,7 @@ public class Login extends FatherGUI{
                         System.out.println("Done");
                     }else
                     {
-                        JOptionPane.showMessageDialog(fLogin, "Password Uncorrect");
+                        JOptionPane.showMessageDialog(fLogin, "Incorrect Password");
                     }
                  }
                  else
@@ -115,7 +115,7 @@ public class Login extends FatherGUI{
                          
                      }else
                      {
-                         JOptionPane.showMessageDialog(fLogin, "Password Uncorrect");
+                         JOptionPane.showMessageDialog(fLogin, "Incorrect Password");
                      }
                      
                  }

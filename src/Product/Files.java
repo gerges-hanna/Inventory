@@ -314,6 +314,38 @@ public class Files
                     write(Query, filePath, append);
                     append = true;
                 }
+            case "Category.txt":
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if( ((Admin.Categories)pros.get(i)).getCategory().equals(id))
+                        continue;
+                    else
+                    {
+                        Query = ((Admin.Categories)pros.get(i)).getCategory() + "@"
+                                + ((Admin.Categories)pros.get(i)).getCategoryDescription() + "@";
+                    }
+                    write(Query, filePath, append);
+                    append = true;
+                }
+            case "Supplier.txt":
+            //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if( ((Admin.Suppliers)pros.get(i)).getID().equals(id))
+                        continue;
+                    else
+                    {
+                        Query = ((Admin.Suppliers)pros.get(i)).getID() + "@" +
+                                ((Admin.Suppliers)pros.get(i)).getName() + "@"+
+                                ((Admin.Suppliers)pros.get(i)).getLName() + "@" +
+                                ((Admin.Suppliers)pros.get(i)).getSupplierAddress()
+                                + "@" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
+                                + "@" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
+                                + "@" + ((Admin.Suppliers)pros.get(i)).getCategory() + "@";
+                    }
+                    write(Query, filePath, append);
+                    append = true;
+                }
         }
         return true;
     }
