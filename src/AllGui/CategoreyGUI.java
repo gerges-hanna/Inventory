@@ -6,7 +6,6 @@
 package AllGui;
 
 import Product.Files;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -45,7 +44,7 @@ public class CategoreyGUI {
     public JPanel Run()
     {
         FatherGUI M=new FatherGUI();
-       JButton bckBtn=new JButton("Back");
+        JButton bckBtn=new JButton("Back");
         M.ButtonBackHome(bckBtn);
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
@@ -102,20 +101,31 @@ public class CategoreyGUI {
             if(r == 2)
                 check++;
             
-          
             if(check == 1)
-            {//Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
-                Product.FatherClass newP = new Admin.Categories();
-     
-            
-                newP.setCategory(Tfs.get(0).getText());
-                newP.setCategoryDescription(Tfs.get(1).getText());
-                newP.Add();
-                pros.add(newP);
-                JTable tmp = readProducts();
-                DefaultTableModel s = (DefaultTableModel)tmp.getModel();
-                prosTable.setModel(s);
- 
+            {
+                boolean append = true;
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if(Tfs.get(0).getText().equals( ((Admin.Categories)pros.get(i)).getCategory()))
+                    {
+                        append = false;
+                        break;
+                    }
+                }
+                if(append)
+                {
+                    //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
+                    Product.FatherClass newP = new Admin.Categories();
+                    newP.setCategory(Tfs.get(0).getText());
+                    newP.setCategoryDescription(Tfs.get(1).getText());
+                    newP.Add();
+                    pros.add(newP);
+                    JTable tmp = readProducts();
+                    DefaultTableModel s = (DefaultTableModel)tmp.getModel();
+                    prosTable.setModel(s);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Category already exists");
             }
             else
             {
@@ -138,18 +148,14 @@ public class CategoreyGUI {
         updateBtn.setBounds(135, labelInc*3, 120, 30);
         updateBtn.addActionListener((ActionEvent e) -> 
         {
-          
-                Product.FatherClass newP = new Admin.Categories();
-  
-                newP.setCategory(Tfs.get(0).getText());
-                 newP.setCategoryDescription(Tfs.get(1).getText());
-                ff.delete(newP.getCategory(), "Category.txt");
-                newP.Add();
-                JTable tmp = readProducts();
-                DefaultTableModel g = (DefaultTableModel)tmp.getModel();
-                prosTable.setModel(g);
-      
-            
+            Product.FatherClass newP = new Admin.Categories();
+            newP.setCategory(Tfs.get(0).getText());
+            newP.setCategoryDescription(Tfs.get(1).getText());
+            ff.delete(newP.getCategory(), "Category.txt");
+            newP.Add();
+            JTable tmp = readProducts();
+            DefaultTableModel g = (DefaultTableModel)tmp.getModel();
+            prosTable.setModel(g);
         });
         JButton delBtn = new JButton("Delete");
         delBtn.setBounds(260, labelInc*3, 120, 30);
