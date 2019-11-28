@@ -11,6 +11,9 @@ public class SaleReview extends Client.ClientClass{
     
    public JPanel run(){
        
+       
+       FatherGUI f=new FatherGUI();
+       
        //Create
     JTextField searchBar = new JTextField();
     
@@ -19,6 +22,8 @@ public class SaleReview extends Client.ClientClass{
 
     JButton buttonSaleReview = new JButton("Search");
     JButton backButton = new JButton("Back");
+        f.ButtonBackHome(backButton);
+
     
     String salereviewcb[]={};
     JComboBox cbsr = new JComboBox(salereviewcb);
@@ -44,8 +49,8 @@ public class SaleReview extends Client.ClientClass{
     
     
     //BOUNDS
-    backButton.setBounds(25,25,70,30);
-    lbSearchBar.setBounds(170, 39, 150, 50);
+    
+    lbSearchBar.setBounds(170, 37, 150, 50);
     searchBar.setBounds(270,45,350,30);
     cbsr.setBounds(635, 45, 200, 30);
     buttonSaleReview.setBounds(850,45,100,30);

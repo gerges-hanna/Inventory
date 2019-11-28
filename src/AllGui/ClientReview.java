@@ -9,6 +9,8 @@ import javax.swing.border.Border;
 public class ClientReview extends Client.ClientClass{
     
     public JPanel run(){
+        
+        FatherGUI f=new FatherGUI();
        
        //Create
     JTextField searchBarCR = new JTextField();
@@ -18,6 +20,7 @@ public class ClientReview extends Client.ClientClass{
 
     JButton buttonClientReview = new JButton("Search");
     JButton backButtonCR = new JButton("Back");
+    f.ButtonBackHome(backButtonCR);
     
     String clientreviewcb[]={};
     JComboBox cbCR = new JComboBox(clientreviewcb);
@@ -33,7 +36,7 @@ public class ClientReview extends Client.ClientClass{
     JScrollPane spCR=new JScrollPane(tableClientReview);
     
     //BOUNDS
-    backButtonCR.setBounds(25,25,70,30);
+    
     lbSearchBarCR.setBounds(170, 39, 150, 50);
     searchBarCR.setBounds(270,45,350,30);
     cbCR.setBounds(635, 45, 200, 30);
