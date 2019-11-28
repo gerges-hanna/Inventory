@@ -72,8 +72,7 @@ public class Inventory {
     }
     */
     public static void HomePage() {
-        JFrame frame= new JFrame("Inventory");
-       JPanel panelHome =new JPanel();
+        
         int btnH=120,btnW=120;
         int y1=5;
         int y2=150;
@@ -211,19 +210,19 @@ public class Inventory {
             }
         });
         
-        if(FatherClass.getType().equalsIgnoreCase("User"))
-        {
-            btn2.setEnabled(false);
-            btn5.setEnabled(false);
-            btn8.setEnabled(false);
-        }else if(FatherClass.getType().equalsIgnoreCase("Client"))
-        {
-            btn2.setEnabled(false);
-            btn3.setEnabled(false);
-            btn4.setEnabled(false);
-            btn5.setEnabled(false);
-            btn8.setEnabled(false);
-        }
+//        if(FatherClass.getType().equalsIgnoreCase("User"))
+//        {
+//            btn2.setEnabled(false);
+//            btn5.setEnabled(false);
+//            btn8.setEnabled(false);
+//        }else if(FatherClass.getType().equalsIgnoreCase("Client"))
+//        {
+//            btn2.setEnabled(false);
+//            btn3.setEnabled(false);
+//            btn4.setEnabled(false);
+//            btn5.setEnabled(false);
+//            btn8.setEnabled(false);
+//        }
         panelHome.setLayout(null);
         panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
@@ -243,6 +242,7 @@ public class Inventory {
     }
     public static void runPanel()
     {
+        
         panelHome.setSize(1200, 700);
          panelHome.setVisible(true);
          panel.setVisible(false);
@@ -253,67 +253,11 @@ public class Inventory {
     }
     public static void main(String[] args) {
         // TODO code application logic here
-        //HomePage(); 
-        AllGui.Login l=new AllGui.Login();
-        l.run();
-        
-      /*
-       Suppliers obj=new Suppliers();//set files for suppliers try1
-       obj.setID("kjoi");
-       obj.setName("bebo");
-       obj.setLName("pop");
-       obj.setSupplierAddress("share3 el fegla");
-       obj.setContactNumber(01213345124);
-       obj.setSupplierEmail("hope1pharmacy@gmail.com");
-       obj.setCategory("shampo");
-       obj.Add();
-        obj.ReadData();
-       obj.Update("20180007","name","david");
-        */
-      
-      
-      //***********************************************
- 
-       /*Categories obj2=new Categories();//set files for categories try1
-       obj2.setCategory("BabiesCategory");
-       obj2.setCategoryDescription("include all the products used by babies");
-       obj2.AddInFileCategory();
-       obj2.setCategory("PainKillers");
-       obj2.setCategoryDescription("used to reduce pains");
-       obj2.AddInFileCategory();
-       obj2.setCategory("Detergents");
-       obj2.setCategoryDescription("used in cleaning");
-       obj2.AddInFileCategory();
-       obj2.setCategory("DiabetesMedications");
-       obj2.setCategoryDescription("Used by diabetes");
-       obj2.AddInFileCategory();*/
-       
-       //**************************************************
-    
-       /*ProductClass p1=new ProductClass();//set files for products try1
-       p1.setPrice(223);
-       p1.setID(null);
-       p1.AddInFileProduct();
-       */
-       
-        //**************************************************
-       
-    
-//        try {
-//            AllGui.Login l=new AllGui.Login();
-//            l.run();
-//        } catch (Exception e) {
-//        }
-        
-//      inventory.Login log=new Login();
-//     if(log.Checker("gesre8","128438","client"))
-//     {
-//         System.out.println("exist");
-//     }
-//     else {
-//         System.out.println("dosent exist");
-//     }
-       
+        HomePage(); 
+//        AllGui.Login l=new AllGui.Login();
+//        l.run();
+//        
+
        
        
                
