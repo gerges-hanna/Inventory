@@ -178,7 +178,6 @@ public class ProductClass extends FatherClass {
           {
               
               int re=ExpireRemainder(productList.get(i).getEXP());
-              System.out.println(re+" "+productList.get(i).getEXP()+" "+productList.size()+" "+i);
               if(re<=30)
               {
                   ProductClass x=new ProductClass();

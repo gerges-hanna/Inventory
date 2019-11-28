@@ -12,7 +12,6 @@ import static Product.ProductClass.ReviewList;
 import static Product.ProductClass.TablePro;
 import static Product.ProductClass.productList;
 import inventory.Inventory;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -60,11 +59,13 @@ public class SellPanel extends Product.ProductClass{
         EXPList.clear();
     }
     
-    public void ClearTextField(JTextField t1,JTextField t2,JTextField t3,JLabel lbl)
+    public void ClearTextField(JTextField t1,JTextField t2,JTextField t3,JTextField t4,JTextField t5,JLabel lbl)
     {
         t1.setText("");
         t2.setText("");
         t3.setText("1");
+        t4.setText("");
+        t5.setText("");
         lbl.setText("0.0");
     }
     public JPanel Run()
@@ -81,8 +82,8 @@ public class SellPanel extends Product.ProductClass{
         f.y2=105;
         f.y3=150;
         f.y4=195;
-        f.y5=240;
-        f.y6=320;
+        f.y5=290;
+        f.y6=330;
         f.y7=360;
         
          /***   ALLproduct   ***/
@@ -114,12 +115,14 @@ public class SellPanel extends Product.ProductClass{
         JLabel lblQuantity=new JLabel("Quantity");
         JLabel lblPrice=new JLabel("Price");
         JLabel lblShowPrice=new JLabel("0.0");
+        JLabel lblDate=new JLabel("Date");
         
         //label setBound
         lblParcode.setBounds(f.x1, f.y1, 90, 30);
         lblName.setBounds(f.x1, f.y2, 90, 30);
         lblCategorey.setBounds(f.x1, f.y3, 100, 30);
         lblQuantity.setBounds(f.x1, f.y4, 90, 30);
+        lblDate.setBounds(f.x1, f.y4+45, 90, 30);
         lblPrice.setBounds(f.x1, f.y5, 90, 30);
         lblShowPrice.setBounds(f.x2, f.y5,100 , 40);
         
@@ -130,6 +133,7 @@ public class SellPanel extends Product.ProductClass{
         f.AllLblFontSize(lblCategorey);
         f.AllLblFontSize(lblQuantity);
         f.AllLblFontSize(lblShowPrice);
+        f.AllLblFontSize(lblDate);
         
         //btn create
         JButton btnAdd=new JButton("ADD");
@@ -138,22 +142,28 @@ public class SellPanel extends Product.ProductClass{
         JButton btnRemove=new JButton("Remove");
         JButton btnDeleteBoard=new JButton("Delet Board");
         JButton btnBack=new JButton("Back");
+        JButton btnSearch=new JButton("Search");
+        JButton btnReset=new JButton("Reset");
        f.ButtonBackHome(btnBack);
         
         //Jtextfield create
         JTextField txtParcode=new JTextField();
         JTextField txtName=new JTextField();
         JTextField txtQuantity=new JTextField();
+        JTextField txtCategorey=new JTextField();
+        JTextField txtDate=new JTextField();
         
         //
         txtQuantity.setText("1");
         
         //btn SrtBoaunds
-        btnAdd.setBounds(f.x2, f.y6, 120, 40);
-        btnClear.setBounds(f.x2+130, f.y6, 120, 40);
+        btnAdd.setBounds(30, f.y6, 120, 40);
+        btnClear.setBounds(30+130, f.y6, 120, 40);
         btnBuy.setBounds(f.x3, f.y7, 120, 40);
         btnRemove.setBounds(f.x3+130, f.y7, 120, 40);
         btnDeleteBoard.setBounds(f.x3+260, f.y7, 120, 40);
+        btnSearch.setBounds(290,f.y6, 120, 40);
+        btnReset.setBounds(160,f.y6+50,120, 40);
         
         //btn Functions
         btnAdd.addActionListener(new ActionListener() {
@@ -188,14 +198,14 @@ public class SellPanel extends Product.ProductClass{
                         break;
                     }
                 }
-                ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+                ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
             }
         });
         btnClear.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-               ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+               ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
                
             }
         });
@@ -218,7 +228,7 @@ public class SellPanel extends Product.ProductClass{
                     }
                     
                 }
-                ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+                ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
             }
         });
         btnDeleteBoard.addActionListener(new ActionListener() {
@@ -232,7 +242,7 @@ public class SellPanel extends Product.ProductClass{
              TablePro.getDataVector().removeAllElements();
              TablePro.fireTableDataChanged();
              Tableproduct.setModel(setProductTable(items));
-             ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+             ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
             }
         });
         btnBuy.addActionListener(new ActionListener() {
@@ -282,6 +292,70 @@ public class SellPanel extends Product.ProductClass{
                 }
                 ReadData();
                 Tableproduct.setModel(setProductTable(items));
+                ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
+            }
+        });
+        btnSearch.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(!txtParcode.getText().trim().equalsIgnoreCase(""))
+                {
+                    TablePro.getDataVector().removeAllElements();
+                    TablePro.fireTableDataChanged();
+                    for (int i =productList.size()-1 ; i >=0; i--) {
+                        if(!productList.get(i).getParcode().equalsIgnoreCase(txtParcode.getText()))
+                        {
+                            productList.remove(i);
+                        }
+                    }
+                    Tableproduct.setModel(setProductTable(items));
+                }else if(!txtName.getText().trim().equalsIgnoreCase(""))
+                {
+                    TablePro.getDataVector().removeAllElements();
+                    TablePro.fireTableDataChanged();
+                    for (int i =productList.size()-1 ; i >=0; i--) {
+                        if(!productList.get(i).getName().equalsIgnoreCase(txtName.getText()))
+                        {
+                            productList.remove(i);
+                        }
+                    }
+                    Tableproduct.setModel(setProductTable(items));
+                    
+                }else if(!txtCategorey.getText().trim().equalsIgnoreCase(""))
+                {
+                    TablePro.getDataVector().removeAllElements();
+                    TablePro.fireTableDataChanged();
+                    for (int i =productList.size()-1 ; i >=0; i--) {
+                        if(!productList.get(i).getCategory().equalsIgnoreCase(txtCategorey.getText()))
+                        {
+                            productList.remove(i);
+                        }
+                    }
+                    Tableproduct.setModel(setProductTable(items));
+                }else if(!txtDate.getText().trim().equalsIgnoreCase(""))
+                {
+                    TablePro.getDataVector().removeAllElements();
+                    TablePro.fireTableDataChanged();
+                    for (int i =productList.size()-1 ; i >=0; i--) {
+                        if(!productList.get(i).getEXP().equalsIgnoreCase(txtDate.getText()))
+                        {
+                            productList.remove(i);
+                        }
+                    }
+                    Tableproduct.setModel(setProductTable(items));
+                }
+            }
+        });
+        btnReset.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ClearTextField(txtName,txtParcode,txtQuantity,txtCategorey,txtDate,lblShowPrice);
+                TablePro.getDataVector().removeAllElements();
+                 TablePro.fireTableDataChanged();
+                ReadData();
+                Tableproduct.setModel(setProductTable(items));
             }
         });
         
@@ -291,22 +365,31 @@ public class SellPanel extends Product.ProductClass{
         txtParcode.setBounds(f.x2, f.y1, 250, 40);
         txtName.setBounds(f.x2, f.y2, 250, 40);
         txtQuantity.setBounds(f.x2, f.y4, 250, 40);
+        txtCategorey.setBounds(f.x2, f.y3, 250, 40);
+        txtDate.setBounds(f.x2, f.y4+45,250, 40);
+        
 
         //Font Txt
         f.AllTextFieldFontSize(txtName);
         f.AllTextFieldFontSize(txtParcode);
         f.AllTextFieldFontSize(txtQuantity);
+        f.AllTextFieldFontSize(txtCategorey);
+        f.AllTextFieldFontSize(txtDate);
         
         //combo box
-        Admin.Categories ca=new Admin.Categories();
-        ca.ReadData();
-
-        
-        listCateg=(ArrayList<String>)(Object) file.read("Category.txt");
-        String category[]=new String[listCateg.size()+1];
-        JComboBox categoreBox=new JComboBox(listCateg.toArray(category));
-        categoreBox.setBounds(f.x2, f.y3, 250, 40);
-        
+//        Admin.Categories ca=new Admin.Categories();
+//        ca.ReadData();
+//        
+//        listCateg.add("All");
+//        for (int i = 0; i < ca.categorylist.size(); i++) {
+//                listCateg.add(ca.categorylist.get(i).getCategory());
+//        }
+//        
+////        listCateg=(ArrayList<String>)(Object) file.read("Category.txt");
+//        String category[]=new String[listCateg.size()+1];
+//        JComboBox categoreBox=new JComboBox(listCateg.toArray(category));
+//        categoreBox.setBounds(f.x2, f.y3, 250, 40);
+//        
         
         //JTable create
           
@@ -320,6 +403,8 @@ public class SellPanel extends Product.ProductClass{
                  txtParcode.setText((String) Model.getValueAt(SelectedRow,4));
                  txtName.setText((String) Model.getValueAt(SelectedRow,1));
                  lblShowPrice.setText((String) Model.getValueAt(SelectedRow,1));
+                 txtCategorey.setText((String) Model.getValueAt(SelectedRow,6));
+                 txtDate.setText((String) Model.getValueAt(SelectedRow,7));
                  tosell.setName((String) Model.getValueAt(SelectedRow,1));
                  tosell.setQuantity(Integer.parseInt(Model.getValueAt(SelectedRow,3).toString()));
                  tosell.setID((String) Model.getValueAt(SelectedRow,0));
@@ -363,7 +448,7 @@ public class SellPanel extends Product.ProductClass{
         panel.add(txtParcode);
         panel.add(txtName);
         panel.add(txtQuantity);
-        panel.add(categoreBox);
+        panel.add(txtCategorey);
         panel.add(sp);
         panel.add(sp2);
         panel.add(sp3);
@@ -373,6 +458,10 @@ public class SellPanel extends Product.ProductClass{
         panel.add(btnDeleteBoard);
         panel.add(btnRemove);
         panel.add(btnBack);
+        panel.add(btnSearch);
+        panel.add(btnReset);
+        panel.add(lblDate);
+        panel.add(txtDate);
         panel.setSize(1200, 700);
         
         
