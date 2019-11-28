@@ -204,7 +204,9 @@ public boolean Checker(String username, String password,String Case)//this funct
                 LoginList.get(i).getPassword().equals(password)&&
                 LoginList.get(i).getCase().equalsIgnoreCase(Case))
         {
+            setOrder(LoginList.get(i).getOrder());
             return true;
+            
         }
       
     }

@@ -72,7 +72,8 @@ public class Inventory {
     }
     */
     public static void HomePage() {
-        
+        JFrame frame= new JFrame("Inventory");
+       JPanel panelHome =new JPanel();
         int btnH=120,btnW=120;
         int y1=5;
         int y2=150;
@@ -84,6 +85,7 @@ public class Inventory {
         JButton btn6=new JButton("My purchases");
         JButton btn7=new JButton("Register");
         JButton btn8=new JButton("Category");
+        JButton btn9=new JButton("Log Out");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);
@@ -93,7 +95,7 @@ public class Inventory {
         btn7.setBounds(1030, y1, btnH,btnW);
         //Second Line
         btn8.setBounds(10, y2, btnH,btnW);
-
+        btn9.setBounds(180, y2, btnH,btnW);
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
@@ -159,6 +161,18 @@ public class Inventory {
                 fatherGUI.FrameConfigration(frame);
             }
         });
+        btn6.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                panelHome.setVisible(false);
+                frame.remove(panelHome);
+                AllGui.ClientReview r=new AllGui.ClientReview();
+                panel=r.run();
+                frame.add(panel);
+                fatherGUI.FrameConfigration(frame);
+            }
+        });
         btn7.addActionListener(new ActionListener() {
 
             @Override
@@ -171,7 +185,6 @@ public class Inventory {
                 fatherGUI.FrameConfigration(frame);
             }
         });
-        
         btn8.addActionListener(new ActionListener() {
 
             @Override
@@ -186,6 +199,31 @@ public class Inventory {
               
             }
         });
+        btn9.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                AllGui.Login l=new AllGui.Login();
+                FatherClass.setType(null);
+                l.run();
+                frame.remove(panelHome);
+                frame.dispose();
+            }
+        });
+        
+        if(FatherClass.getType().equalsIgnoreCase("User"))
+        {
+            btn2.setEnabled(false);
+            btn5.setEnabled(false);
+            btn8.setEnabled(false);
+        }else if(FatherClass.getType().equalsIgnoreCase("Client"))
+        {
+            btn2.setEnabled(false);
+            btn3.setEnabled(false);
+            btn4.setEnabled(false);
+            btn5.setEnabled(false);
+            btn8.setEnabled(false);
+        }
         panelHome.setLayout(null);
         panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
@@ -196,6 +234,7 @@ public class Inventory {
         panelHome.add(btn6);
         panelHome.add(btn7);
         panelHome.add(btn8);
+        panelHome.add(btn9);
         panelHome.setSize(1200, 700);
         panelHome.setVisible(true);
         frame.add(panelHome);
@@ -214,9 +253,9 @@ public class Inventory {
     }
     public static void main(String[] args) {
         // TODO code application logic here
-        HomePage(); 
-        
-
+        //HomePage(); 
+        AllGui.Login l=new AllGui.Login();
+        l.run();
         
       /*
        Suppliers obj=new Suppliers();//set files for suppliers try1

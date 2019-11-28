@@ -7,6 +7,8 @@ package AllGui;
 
 import Client.ClientClass;
 import Product.FatherClass;
+import Product.ProductClass;
+import inventory.Inventory;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +35,7 @@ public class Login {
      private  JPanel panelLogin=new JPanel();
     //here the type of class is responsible for this gui
          inventory.Login log=new inventory.Login();
-
+         
 
     public void FrameConfigration(JFrame f) {
         f.setSize(450,300);  
@@ -101,7 +103,12 @@ public class Login {
                  {
                      if(log.Checker(usertxt.getText(),passtxt.getText(), (String) typeComboBox.getSelectedItem()))
                     {
-                        System.out.println("Done");
+                        FatherClass.setType(typeComboBox.getSelectedItem()+"");
+                        inventory.Inventory s=new Inventory();
+                        FatherClass.setIDlog(log.getOrder());
+                        s.HomePage();
+                        fLogin.remove(panelLogin);
+                        fLogin.dispose();
                     }else
                     {
                         JOptionPane.showMessageDialog(fLogin, "Incorrect Password");
@@ -110,8 +117,11 @@ public class Login {
                  else
                  {
                      if (log.getAdmin_UserName().equals(usertxt.getText()) && log.getAdmin_Password().equals(passtxt.getText())) {
-                         System.out.println("Admin Suc");
                          
+                         FatherClass.setType("Admin");
+                         inventory.Inventory s=new Inventory();
+                         s.HomePage();
+                        fLogin.dispose();
                      }else
                      {
                          JOptionPane.showMessageDialog(fLogin, "Incorrect Password");
