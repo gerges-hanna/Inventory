@@ -5,8 +5,10 @@
  */
 package Product;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -20,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 //this class created by Gerges hanna
 public class ProductClass extends FatherClass {
    public static ArrayList<ProductClass> productList = new ArrayList<ProductClass>();
+   public static ArrayList<ProductClass> ReviewList = new ArrayList<ProductClass>();
    public static ArrayList<ProductClass> EXPList = new ArrayList<ProductClass>();
    public static DefaultTableModel TablePro = new DefaultTableModel();
 
@@ -108,7 +111,23 @@ public class ProductClass extends FatherClass {
         this.AllDay = AllDay;
     }
 
-  
+    public String getDatesSell()
+    {
+        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            Date d=new Date();
+            String Date1=s.format(d);
+       return Date1;
+            
+    }
+    public String getTimeSell()
+    {
+        Calendar cal = Calendar.getInstance();
+        Date date=cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String formattedDate=dateFormat.format(date);
+        return formattedDate;
+        
+    }
        /*Function return 1 if Days Remainder to Expire is
          less than 60 Days otherwise return 0 and it save Days Remainder to exp
          in RemainderDay Attributs
@@ -126,12 +145,12 @@ public class ProductClass extends FatherClass {
             this.DateMonth=Integer.parseInt(currentDate[1]);
             this.DateYear=Integer.parseInt(currentDate[2]);
             AllDay=DateDay+DateMonth*30+DateYear*365;
-
             String[] DateCompareSplit=EXP1.split("-");
             ExpDay=Integer.parseInt(DateCompareSplit[0]);
             ExpMonth=Integer.parseInt(DateCompareSplit[1]);
             EXPYear=Integer.parseInt(DateCompareSplit[2]);
             RemainderDay=(int) ((ExpDay+ExpMonth*30+EXPYear*365)-AllDay);
+            //System.out.println(DateDay+" "+DateMonth+" "+DateYear+" "+AllDay+" "+ExpDay+" "+ExpMonth+" "+EXPYear+" "+RemainderDay+" ");
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
@@ -148,23 +167,30 @@ public class ProductClass extends FatherClass {
          
          productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
      }
-      public int CalculateAllEXP(ArrayList<ProductClass> list)
+     public void ReadSellReview()
+     {
+         
+         ReviewList=(ArrayList<ProductClass>)(Object) file.read("sellReview.txt");
+     }
+      public int CalculateAllEXP()
       {
-          
-          for(int i=0;i<list.size();i++)
+          for(int i=0;i<productList.size();i++)
           {
-              int re=ExpireRemainder(list.get(i).getEXP());
+              
+              int re=ExpireRemainder(productList.get(i).getEXP());
+              System.out.println(re+" "+productList.get(i).getEXP()+" "+productList.size()+" "+i);
               if(re<=30)
               {
+                  ProductClass x=new ProductClass();
                   //"ID","Name","Parcode","Quantity","Categorey","EXP After"
-                  setName(list.get(i).getName());
-                  setID(list.get(i).getID());
-                  setParcode(list.get(i).getParcode());
-                  setQuantity(list.get(i).getQuantity());
-                  setCategory(list.get(i).getCategory());
-                  setEXP(re+"");
-                  
-                  EXPList.add(this);
+                  x.setName(productList.get(i).getName());
+                  x.setID(productList.get(i).getID());
+                  x.setParcode(productList.get(i).getParcode());
+                  x.setQuantity(productList.get(i).getQuantity());
+                  x.setCategory(productList.get(i).getCategory());
+                  x.setEXP(re+"");
+                  EXPList.add(x);
+                 
               }
           }
           
@@ -180,7 +206,6 @@ public class ProductClass extends FatherClass {
                 items[i][3]=String.valueOf(EXPList.get(i).getQuantity());
                 items[i][4]=EXPList.get(i).getCategory();
                 items[i][5]=EXPList.get(i).getEXP();
-                
           }
       }
       public DefaultTableModel setProductTable(String [][] items)

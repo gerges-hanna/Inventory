@@ -8,6 +8,7 @@ package AllGui;
 import static AllGui.ProductGUI.prosTable;
 import Product.Files;
 import Product.ProductClass;
+import static Product.ProductClass.ReviewList;
 import static Product.ProductClass.TablePro;
 import static Product.ProductClass.productList;
 import inventory.Inventory;
@@ -54,6 +55,9 @@ public class SellPanel extends Product.ProductClass{
     public SellPanel() {
         TablePro.getDataVector().removeAllElements();
         TablePro.fireTableDataChanged();
+        productList.clear();
+        ReviewList.clear();
+        EXPList.clear();
     }
     
     public void ClearTextField(JTextField t1,JTextField t2,JTextField t3,JLabel lbl)
@@ -235,10 +239,34 @@ public class SellPanel extends Product.ProductClass{
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-//                while(sellModel.getRowCount()>0)
-//                {
-//                    
-//                }
+                setTime(getTimeSell());
+                setDate(getDatesSell());
+                ReadSellReview();
+                if(ReviewList.size()!=0)
+                {
+                    int p=Integer.parseInt(ReviewList.get(ReviewList.size()-1).getOper_ID());
+                    setOper_ID(String.valueOf(p+1));
+                }else if(ReviewList.size()==0)
+                {
+                    setOper_ID("0");
+                }
+                System.out.println(ReviewList.size());
+//                
+               while(sellModel.getRowCount()>0)
+               {
+                   setQueryFile(getOper_ID()+"@"+sellModel.getValueAt(0, 0)+"@"+
+                           sellModel.getValueAt(0, 1)+"@"+
+                           sellModel.getValueAt(0, 2)+"@"+
+                           sellModel.getValueAt(0, 3)+"@"+
+                           sellModel.getValueAt(0, 4)+"@"+
+                           sellModel.getValueAt(0, 5)+"@"+
+                           getTime()+"@"+getDate()
+                   +"@"+Product.FatherClass.getIDlog());
+                   //operation ID@product_ID@Name@parcode@Quantity@Category@Sell@Time@Date@Login_ID
+                   file.write(getQueryFile(),"sellReview.txt", true);
+                   sellModel.removeRow(0);
+                    
+               }
                 while(TablePro.getRowCount()>0)
                 {
                     setQueryFile(TablePro.getValueAt(0, 0)+"@"+
@@ -249,9 +277,11 @@ public class SellPanel extends Product.ProductClass{
                             TablePro.getValueAt(0, 5)+"@"+
                             TablePro.getValueAt(0, 6)+"@"+
                             TablePro.getValueAt(0, 7));
+                    file.update(TablePro.getValueAt(0, 0).toString(),"Product.txt", getQueryFile());
                     TablePro.removeRow(0);
-                    System.out.println(getQueryFile());
                 }
+                ReadData();
+                Tableproduct.setModel(setProductTable(items));
             }
         });
         
@@ -268,10 +298,15 @@ public class SellPanel extends Product.ProductClass{
         f.AllTextFieldFontSize(txtQuantity);
         
         //combo box
+        Admin.Categories ca=new Admin.Categories();
+        ca.ReadData();
+
         
-        String category[]=new String[listCateg.size()];
+        listCateg=(ArrayList<String>)(Object) file.read("Category.txt");
+        String category[]=new String[listCateg.size()+1];
         JComboBox categoreBox=new JComboBox(listCateg.toArray(category));
         categoreBox.setBounds(f.x2, f.y3, 250, 40);
+        
         
         //JTable create
           
@@ -302,11 +337,10 @@ public class SellPanel extends Product.ProductClass{
 //            Tableproduct.setRowHeight(25);
             
             /** Expire Table **/
-            int sizeList=CalculateAllEXP(productList);
+            int sizeList=CalculateAllEXP();
             String[][] ExpItems=new String[sizeList][6];
             listConvertToArray(ExpItems);
             String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
-            
             JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
             
             tableEXP.setEnabled(true);

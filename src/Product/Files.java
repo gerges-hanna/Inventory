@@ -97,6 +97,26 @@ public class Files
                         fatherClass.setEXP(data[7]);
                         reval.add(fatherClass);
                     }   break;
+                     case "sellReview.txt":
+                    // id@name@lastName@quantity@parcode@price@category@EXP@
+                    while(in.hasNext())
+                    {
+                        //operation ID@product_ID@Name@parcode@Quantity@Category@Sell@Time@Date@Login_ID
+                        fatherClass= new ProductClass();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split("@");
+                        fatherClass.setOper_ID(data[0]); 
+                        fatherClass.setPro_ID(data[1]);
+                        fatherClass.setName(data[2]);
+                        fatherClass.setParcode(data[4]);
+                        fatherClass.setQuantity(Integer.parseInt(data[4].trim()));
+                        fatherClass.setCategory(data[5]);
+                        fatherClass.setPrice(Double.parseDouble(data[6].trim()));
+                        fatherClass.setTime(data[7]);
+                        fatherClass.setDate(data[8]);
+                        fatherClass.setID(data[9]);
+                        reval.add(fatherClass);
+                    }   break;
                     case "Category.txt":
                     // Category@CategoryDescription
                     while(in.hasNext())

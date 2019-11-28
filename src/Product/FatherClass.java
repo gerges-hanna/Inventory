@@ -9,6 +9,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Admin.*;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -17,6 +18,8 @@ import Admin.*;
 // this class Created By Gerges Hanna
 public abstract class FatherClass {
     private String ID="";
+    private String Pro_ID;
+    private String Oper_ID;
     private String Name;
     private String LName;
     private String QueryFile; 
@@ -26,11 +29,55 @@ public abstract class FatherClass {
     private String Category;
     private String CategoryDescription;
     private String EXP;
-    static private String id;
     static private String type;
     private String SupplierAddress;
     private int ContactNumber;
     private String SupplierEmail;
+    private static int IDlog=0;
+    private String date;
+    private String time;
+
+    public String getPro_ID() {
+        return Pro_ID;
+    }
+
+    public void setPro_ID(String Pro_ID) {
+        this.Pro_ID = Pro_ID;
+    }
+
+    public String getOper_ID() {
+        return Oper_ID;
+    }
+
+    public void setOper_ID(String Oper_ID) {
+        this.Oper_ID = Oper_ID;
+    }
+    
+    
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public static int getIDlog() {
+        return IDlog;
+    }
+
+    public static void setIDlog(int IDlog) {
+        FatherClass.IDlog = IDlog;
+    }
+    
 
     public String getSupplierAddress() {
         return SupplierAddress;
@@ -55,6 +102,7 @@ public abstract class FatherClass {
     public void setSupplierEmail(String SupplierEmail) {
         this.SupplierEmail = SupplierEmail;
     }
+    
 
     public Files file=new Files();
     
@@ -80,13 +128,6 @@ public abstract class FatherClass {
         this.EXP = EXP;
     }
     
-    public static String getId() {
-        return id;
-    }
-
-    public static void setId(String id) {
-        FatherClass.id = id;
-    }
 
     public static String getType() {
         return type;
@@ -153,6 +194,7 @@ public abstract class FatherClass {
 
     public FatherClass() {
     }
+    
     
 
     public String getID() {
