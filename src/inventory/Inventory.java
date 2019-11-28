@@ -127,12 +127,10 @@ public class Inventory {
             public void actionPerformed(ActionEvent ae) {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
-                AllGui.Supplier s=new Supplier();
+                AllGui.ProductGUI s=new AllGui.ProductGUI();
                 panel=s.run();
                 frame.add(panel);
-                //fatherGUI.FrameConfigration(frame);
-                frame.invalidate();
-                frame.validate();
+                fatherGUI.FrameConfigration(frame);
             }
         });
         btn4.addActionListener(new ActionListener() {
@@ -208,6 +206,7 @@ public class Inventory {
     {
         panelHome.setSize(1200, 700);
          panelHome.setVisible(true);
+         panel.setVisible(false);
         frame.remove(panel);
         frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);

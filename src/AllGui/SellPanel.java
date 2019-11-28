@@ -52,7 +52,8 @@ public class SellPanel extends Product.ProductClass{
      
     
     public SellPanel() {
-        
+        TablePro.getDataVector().removeAllElements();
+        TablePro.fireTableDataChanged();
     }
     
     public void ClearTextField(JTextField t1,JTextField t2,JTextField t3,JLabel lbl)
