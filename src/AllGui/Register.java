@@ -18,12 +18,14 @@ import java.awt.event.*;
  */
 public class Register extends Client.ClientClass{
   public  inventory.Login log1=new inventory.Login();
+  FatherGUI f = new FatherGUI();
     
     public JPanel Run(){
         
         JPanel p = new JPanel();
         
         JButton btn = new JButton("Back");
+        f.ButtonBackHome(btn);
         
         JLabel user = new JLabel("UserName : ");
         JTextField us = new  JTextField();
@@ -52,7 +54,6 @@ public class Register extends Client.ClientClass{
         
         //BOUNDS 
         
-        btn.setBounds(0,0, 80, 25);
         
         name.setBounds(418, 45, 200, 75);
         na.setBounds(500, 70, 280, 30);
