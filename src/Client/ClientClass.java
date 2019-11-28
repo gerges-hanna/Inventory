@@ -25,6 +25,16 @@ public class ClientClass extends inventory.Login{
     private String ID="";
     private String Name;
     private String LName;
+    private String pass;
+    private String confpass;
+
+    public String getConfpass() {
+        return confpass;
+    }
+
+    public void setConfpass(String confpass) {
+        this.confpass = confpass;
+    }
 
     public ClientClass() {
     }
@@ -81,14 +91,30 @@ public class ClientClass extends inventory.Login{
         this.address = address;
     }
 
-    public ClientClass(String address, Long phoneNum, String Email, String Name, String LName) {
+    public ClientClass(String address, Long phoneNum, String Email, String Name, String pass,String confpass) {
         this.address = address;
         this.phoneNum = phoneNum;
         this.Email = Email;
         this.Name = Name;
-        this.LName = LName;
+        this.pass = pass;
+        this.confpass=confpass;
         
     }
+    
+    
+    public String Checkpass(){
+        if(pass==confpass)
+        {
+        return pass;
+        }
+        else  {
+            System.out.println("Password Doesn't Match...");
+        }
+        return Checkpass();
+    }
+        
+    
+    
     public void ReadProductFile(){
         if (super.getID()==null)
         {
