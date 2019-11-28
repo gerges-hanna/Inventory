@@ -229,9 +229,9 @@ public class Inventory {
             }
         });
         
-        JLabel label=new JLabel();
-        label.setSize(1200, 700);
-        label.setIcon(new javax.swing.ImageIcon("C:\\Users\\20106\\Desktop\\Background.jpeg"));
+//        JLabel label=new JLabel();
+//        label.setSize(1200, 700);
+//        label.setIcon(new javax.swing.ImageIcon("Background.jpeg"));
 //        if(FatherClass.getType().equalsIgnoreCase("User"))
 //        {
 //            btn2.setEnabled(false);
