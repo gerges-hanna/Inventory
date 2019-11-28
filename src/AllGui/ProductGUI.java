@@ -79,9 +79,9 @@ public class ProductGUI
 
 
             if(i >= 5)
-                tf.setBounds(125, 60 + (i * 30), 125, 30);
+                tf.setBounds(150, (labelInc*2) + (i * labelInc), 225, 30);
             else
-                tf.setBounds(125, 30 + (i * 30), 125, 30);
+                tf.setBounds(150, labelInc + (i * labelInc), 225, 30);
 
             gg.AllTextFieldFontSize(tf);
             Tfs.add(tf);
@@ -96,42 +96,42 @@ public class ProductGUI
             fg[i] = ((Admin.Categories)cats.get(i)).getCategory();
         }
         JComboBox catC = new JComboBox(fg);
-        catC.setBounds(125, 30 + 5*30, 125, 30);
+        catC.setBounds(150, labelInc + 5*labelInc, 225, 30);
         JLabel lb = new JLabel();
         Lbs.add(lb);
         Tfs.get(6).setEditable(false);
         // Label Section
         Lbs.get(0).setText("Name:");
         Lbs.get(0).setBounds(10, labelInc, 150, 30);
-        gg.AllLblFontSize(Lbs.get(0));
+    
         mainPanel.add(((JLabel)Lbs.get(0)));
         Lbs.get(1).setText("Last Name:");
         Lbs.get(1).setBounds(10, labelInc * 2, 150, 30);
-        gg.AllLblFontSize(Lbs.get(1));
+        
         mainPanel.add(((JLabel)Lbs.get(1)));
         Lbs.get(2).setText("Quantity:");
         Lbs.get(2).setBounds(10, labelInc * 3, 150, 30);
-        gg.AllLblFontSize(Lbs.get(2));
+        
         mainPanel.add(((JLabel)Lbs.get(2)));
         Lbs.get(3).setText("Parcode:");
         Lbs.get(3).setBounds(10, labelInc * 4, 150, 30);
-        gg.AllLblFontSize(Lbs.get(3));
+        
         mainPanel.add(((JLabel)Lbs.get(3)));
         Lbs.get(4).setText("Price:");
         Lbs.get(4).setBounds(10, labelInc * 5, 150, 30);
-        gg.AllLblFontSize(Lbs.get(4));
+       
         mainPanel.add(((JLabel)Lbs.get(4)));
         Lbs.get(5).setText("Category:");
         Lbs.get(5).setBounds(10, labelInc * 6, 150, 30);
-        gg.AllLblFontSize(Lbs.get(5));
+        
         mainPanel.add(((JLabel)Lbs.get(5)));
         Lbs.get(6).setText("Expire Date:");
         Lbs.get(6).setBounds(10, labelInc * 7, 150, 30);
-        gg.AllLblFontSize(Lbs.get(6));
+        
         mainPanel.add(((JLabel)Lbs.get(6)));
         Lbs.get(7).setText("ID:");
         Lbs.get(7).setBounds(10, labelInc * 8, 150, 30);
-        gg.AllLblFontSize(Lbs.get(7));
+       
         mainPanel.add(((JLabel)Lbs.get(7)));
         
         // Table Section
@@ -313,7 +313,6 @@ public class ProductGUI
         });
         JButton backBtn = new JButton("Back");
         gg.ButtonBackHome(backBtn);
-        backBtn.setBounds(50, 600, 100, 25);
         prosTable.setDefaultEditor(Object.class, null);
         mainPanel.add(addBtn);
         mainPanel.add(updateBtn);
