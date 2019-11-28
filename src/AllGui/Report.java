@@ -28,7 +28,7 @@ public class Report extends Admin.GraphClass{
         JButton bBack=new JButton("Back");
        f.ButtonBackHome(bBack);
        
-
+       /*
        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
        
         JFreeChart chart = ChartFactory.createBarChart3D("Graph Category",
@@ -49,7 +49,7 @@ public class Report extends Admin.GraphClass{
         frame.setSize(1200,700);
         frame.setResizable(false);
         
-        
+        */
         
         
         p.add(bBack);
