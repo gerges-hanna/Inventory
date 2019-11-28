@@ -24,10 +24,14 @@ public class EditData {
         
         //Labels
         
-        JLabel lbOldName = new JLabel("Old Username:");
-        JLabel lbNewName = new JLabel("New Username:");
+        JLabel lbOldName = new JLabel("Old Name:");
+        JLabel lbNewName = new JLabel("New Name:");
         JLabel lbOldPw = new JLabel("Old Password:");
         JLabel lbNewPw = new JLabel("New Password:");
+        Jlabel lbOldPhone = new JLabel("Old Phone Number:");
+        JLabel lbNewPhone = new JLabel("New Phone Number:");
+        
+        
         
         
         panelEditData.setSize(1200, 700);
