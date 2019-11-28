@@ -5,8 +5,11 @@
  */
 package AllGui;
 
+import static AllGui.ProductGUI.prosTable;
 import Product.Files;
 import Product.ProductClass;
+import static Product.ProductClass.TablePro;
+import static Product.ProductClass.productList;
 import inventory.Inventory;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -23,6 +26,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.ArrayList;
+import javax.swing.table.*;
+import javax.swing.text.StyleConstants;
 
 /**
  *
@@ -32,51 +41,33 @@ public class SellPanel extends Product.ProductClass{
 
     FatherGUI f=new FatherGUI();
     Product.Files file=new Files();
-    ProductClass ExpObject=new ProductClass();
+    ProductClass tosell=new ProductClass();
     //Array Lists
         ArrayList<String> listCateg=new ArrayList<String>();
-        ArrayList<ProductClass> ListExp=new ArrayList<ProductClass>();
+        ArrayList<ProductClass> inSell=new ArrayList<ProductClass>();
+    JTable Tableproduct=null;
+    
+    private String [] sellRow=new String[6];
+    private DefaultTableModel sellModel=new DefaultTableModel();
+     
     
     public SellPanel() {
         
     }
     
-    public void setProductTable(String [][] items)
+    public void ClearTextField(JTextField t1,JTextField t2,JTextField t3,JLabel lbl)
     {
-        for (int i = 0; i < productList.size(); i++) {
-            
-       }
-            
-            for (int i = 0; i < productList.size(); i++) {
-                
-                    items[i][0]=productList.get(i).getID();
-                    items[i][1]=productList.get(i).getName();
-                    items[i][2]=productList.get(i).getLName();
-                    items[i][3]=String.valueOf(productList.get(i).getQuantity());
-                    items[i][4]=productList.get(i).getParcode();
-                    items[i][5]=String.valueOf(productList.get(i).getPrice());
-                    items[i][6]=productList.get(i).getCategory();
-                    items[i][7]=productList.get(i).getEXP();
-//                    if(ExpireRemainder(productList.get(i).getEXP()))
-//                    {
-//                        ExpObject.setID(productList.get(i).getID());
-//                        ExpObject.setName(productList.get(i).getName());
-//                        ExpObject.setQuantity(productList.get(i).getQuantity());
-//                        ExpObject.setParcode(productList.get(i).getParcode());
-//                        ExpObject.setRemainderDay(getRemainderDay());
-//                        ExpObject.setCategory(productList.get(i).getCategory());
-//                        ExpObject.setPrice(productList.get(i).getPrice());
-//                        ListExp.add(ExpObject);
-//                    }
-                
-            
-        }
+        t1.setText("");
+        t2.setText("");
+        t3.setText("1");
+        lbl.setText("0.0");
     }
-    
     public JPanel Run()
     {
         
         JPanel panel=new JPanel();
+        
+       
         //x distance any y distance
         f.x1=40;
         f.x2=140;
@@ -89,13 +80,35 @@ public class SellPanel extends Product.ProductClass{
         f.y6=320;
         f.y7=360;
         
+         /***   ALLproduct   ***/
+            // id@name@lastName@quantity@parcode@price@category@EXP@
+            
+            ReadData();
+            String[][] items=new String[productList.size()][8];
+            Tableproduct=new JTable();
+            Tableproduct.setBounds(10, f.y1+360, 800, 240);
+            JScrollPane sp=new JScrollPane(Tableproduct);
+            sp.setBounds(10, f.y1+360, 800, 240);
+            Tableproduct.setModel(setProductTable(items));
+            DefaultTableModel Model =(DefaultTableModel)Tableproduct.getModel();
+        /** sell Table**/
+            String[][] SellItems=new String[3][6];
+            
+            
+            String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
+            sellModel.setColumnIdentifiers(ColoumnSell);
+            JTable tableSell=new JTable();
+            tableSell.setModel(sellModel);
+            JScrollPane sp3 = new JScrollPane(tableSell);
+            tableSell.setBounds(f.x3, f.y1, 750, 280);
+            sp3.setBounds(f.x3, f.y1, 750, 280);
         //Label Create 
         JLabel lblParcode=new JLabel("Parcode");
         JLabel lblName=new JLabel("Name");
         JLabel lblCategorey=new JLabel("Categorey");
         JLabel lblQuantity=new JLabel("Quantity");
         JLabel lblPrice=new JLabel("Price");
-        JLabel lblShowPrice=new JLabel("Show Price");
+        JLabel lblShowPrice=new JLabel("0.0");
         
         //label setBound
         lblParcode.setBounds(f.x1, f.y1, 90, 30);
@@ -122,6 +135,13 @@ public class SellPanel extends Product.ProductClass{
         JButton btnBack=new JButton("Back");
        f.ButtonBackHome(btnBack);
         
+        //Jtextfield create
+        JTextField txtParcode=new JTextField();
+        JTextField txtName=new JTextField();
+        JTextField txtQuantity=new JTextField();
+        
+        //
+        txtQuantity.setText("1");
         
         //btn SrtBoaunds
         btnAdd.setBounds(f.x2, f.y6, 120, 40);
@@ -129,12 +149,112 @@ public class SellPanel extends Product.ProductClass{
         btnBuy.setBounds(f.x3, f.y7, 120, 40);
         btnRemove.setBounds(f.x3+130, f.y7, 120, 40);
         btnDeleteBoard.setBounds(f.x3+260, f.y7, 120, 40);
-               
         
-        //Jtextfield create
-        JTextField txtParcode=new JTextField();
-        JTextField txtName=new JTextField();
-        JTextField txtQuantity=new JTextField();
+        //btn Functions
+        btnAdd.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                for (int i = 0; i < productList.size(); i++) {
+                    if(productList.get(i).getID().equalsIgnoreCase(tosell.getID()))
+                    {
+                        if(tosell.getQuantity()>=Integer.parseInt(txtQuantity.getText()))
+                        {
+                            productList.get(i).setQuantity(tosell.getQuantity()-Integer.parseInt(txtQuantity.getText()));
+                            TablePro.getDataVector().removeAllElements();
+                            TablePro.fireTableDataChanged();
+                            Tableproduct.setModel(setProductTable(items));
+                            tosell.setQuantity(Integer.parseInt(txtQuantity.getText()));
+                            inSell.add(tosell);
+                            //{"ID","Name","Parcode","Quantity","Categorey","sell"}
+                            sellRow[0]=productList.get(i).getID();
+                            sellRow[1]=productList.get(i).getName();
+                            sellRow[2]=productList.get(i).getParcode();
+                            sellRow[3]=txtQuantity.getText();
+                            sellRow[4]=productList.get(i).getCategory();
+                            sellRow[5]=CalculatePrice(txtQuantity.getText(), productList.get(i).getPrice());
+                            sellModel.addRow(sellRow);
+                            
+                        }else
+                        {
+                            JOptionPane.showMessageDialog(null, "Quantity Over");
+                            
+                        }
+                        break;
+                    }
+                }
+                ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+            }
+        });
+        btnClear.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+               
+            }
+        });
+        btnRemove.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int select=tableSell.getSelectedRow();
+                int Quantity=Integer.parseInt(sellModel.getValueAt(select, 3).toString());
+                System.out.println(Quantity);
+                for (int i = 0; i < productList.size(); i++) {
+                    if(productList.get(i).getID().equalsIgnoreCase(sellModel.getValueAt(select, 0).toString()))
+                    {
+                        productList.get(i).setQuantity(Quantity+productList.get(i).getQuantity());
+                        TablePro.getDataVector().removeAllElements();
+                        TablePro.fireTableDataChanged();
+                        Tableproduct.setModel(setProductTable(items));
+                        sellModel.removeRow(select);
+                        break;
+                    }
+                    
+                }
+                ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+            }
+        });
+        btnDeleteBoard.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+             sellModel.getDataVector().removeAllElements();
+             sellModel.fireTableDataChanged();     
+             ReadData();
+             TablePro.getDataVector().removeAllElements();
+             TablePro.fireTableDataChanged();
+             Tableproduct.setModel(setProductTable(items));
+             ClearTextField(txtName,txtParcode,txtQuantity,lblShowPrice);
+            }
+        });
+        btnBuy.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+//                while(sellModel.getRowCount()>0)
+//                {
+//                    
+//                }
+                while(TablePro.getRowCount()>0)
+                {
+                    setQueryFile(TablePro.getValueAt(0, 0)+"@"+
+                            TablePro.getValueAt(0, 1)+"@"+
+                            TablePro.getValueAt(0, 2)+"@"+
+                            TablePro.getValueAt(0, 3)+"@"+
+                            TablePro.getValueAt(0, 4)+"@"+
+                            TablePro.getValueAt(0, 5)+"@"+
+                            TablePro.getValueAt(0, 6)+"@"+
+                            TablePro.getValueAt(0, 7));
+                    TablePro.removeRow(0);
+                    System.out.println(getQueryFile());
+                }
+            }
+        });
+        
+        
 
         //text setBounds
         txtParcode.setBounds(f.x2, f.y1, 250, 40);
@@ -153,18 +273,27 @@ public class SellPanel extends Product.ProductClass{
         categoreBox.setBounds(f.x2, f.y3, 250, 40);
         
         //JTable create
-          /***   ALLproduct   ***/
-            // id@name@lastName@quantity@parcode@price@category@EXP@
-            ReadData();
-            String[][] items=new String[productList.size()][8];
-            setProductTable(items);
-            String [] ColumnsProduct={"ID","Name","LName","Quantity","Parcode","Price","Categorey","EXP"};
-            JTable Tableproduct=new JTable(items,ColumnsProduct);
-            Tableproduct.setBounds(10, f.y1+360, 800, 240);
+          
             
-            JScrollPane sp=new JScrollPane(Tableproduct);
-            sp.setBounds(10, f.y1+360, 800, 240);
-       
+            
+            //Table Function
+            Tableproduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                
+                 int SelectedRow =Tableproduct.getSelectedRow();                 
+                 txtParcode.setText((String) Model.getValueAt(SelectedRow,4));
+                 txtName.setText((String) Model.getValueAt(SelectedRow,1));
+                 lblShowPrice.setText((String) Model.getValueAt(SelectedRow,1));
+                 tosell.setName((String) Model.getValueAt(SelectedRow,1));
+                 tosell.setQuantity(Integer.parseInt(Model.getValueAt(SelectedRow,3).toString()));
+                 tosell.setID((String) Model.getValueAt(SelectedRow,0));
+                 tosell.setParcode((String) Model.getValueAt(SelectedRow,4));
+                 tosell.setCategory((String) Model.getValueAt(SelectedRow,6));
+                 tosell.setPrice(Double.parseDouble( Model.getValueAt(SelectedRow,5).toString()));
+                 //Integer.parseInt(txtQuantity.getText())
+                 //String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
+            }
+        });
             
             
             
@@ -172,27 +301,24 @@ public class SellPanel extends Product.ProductClass{
 //            Tableproduct.setRowHeight(25);
             
             /** Expire Table **/
-            
-            String[][] ExpItems=new String[3][6];
+            int sizeList=CalculateAllEXP(productList);
+            String[][] ExpItems=new String[sizeList][6];
+            listConvertToArray(ExpItems);
             String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
+            
             JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
+            
             tableEXP.setEnabled(true);
             JScrollPane sp2 = new JScrollPane(tableEXP);
             tableEXP.setBounds(820, f.y1+360, 350, 240);
             sp2.setBounds(820, f.y1+360, 350, 240);
             
             
-            /** sell Table**/
-            String[][] SellItems=new String[3][6];
-            String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
-            JTable tableSell=new JTable(SellItems,ColoumnSell);
-            JScrollPane sp3 = new JScrollPane(tableSell);
-            tableSell.setBounds(f.x3, f.y1, 750, 280);
-            sp3.setBounds(f.x3, f.y1, 750, 280);
+            
         
         
         //Panel ADD 
-            panel.setLayout(null);
+        panel.setLayout(null);
         panel.add(lblParcode);
         panel.add(lblCategorey);
         panel.add(lblName);

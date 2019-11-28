@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +20,8 @@ import javax.swing.JOptionPane;
 //this class created by Gerges hanna
 public class ProductClass extends FatherClass {
    public static ArrayList<ProductClass> productList = new ArrayList<ProductClass>();
+   public static ArrayList<ProductClass> EXPList = new ArrayList<ProductClass>();
+   public static DefaultTableModel TablePro = new DefaultTableModel();
 
     
     
@@ -110,7 +114,7 @@ public class ProductClass extends FatherClass {
          in RemainderDay Attributs
          it's requre to enter Date Expire(Gerges)
        */
-     public boolean ExpireRemainder()
+     public int ExpireRemainder(String EXP1)
     {
         try
         {
@@ -123,7 +127,7 @@ public class ProductClass extends FatherClass {
             this.DateYear=Integer.parseInt(currentDate[2]);
             AllDay=DateDay+DateMonth*30+DateYear*365;
 
-            String[] DateCompareSplit=super.getEXP().split("-");
+            String[] DateCompareSplit=EXP1.split("-");
             ExpDay=Integer.parseInt(DateCompareSplit[0]);
             ExpMonth=Integer.parseInt(DateCompareSplit[1]);
             EXPYear=Integer.parseInt(DateCompareSplit[2]);
@@ -133,10 +137,7 @@ public class ProductClass extends FatherClass {
             JOptionPane.showMessageDialog(null, e);
         }
         
-        if(RemainderDay<=60)
-        {
-            return true;
-        }else return false;
+        return RemainderDay;
         
         
         
@@ -147,7 +148,79 @@ public class ProductClass extends FatherClass {
          
          productList=(ArrayList<ProductClass>)(Object) file.read(filePath);
      }
+      public int CalculateAllEXP(ArrayList<ProductClass> list)
+      {
+          
+          for(int i=0;i<list.size();i++)
+          {
+              int re=ExpireRemainder(list.get(i).getEXP());
+              if(re<=30)
+              {
+                  //"ID","Name","Parcode","Quantity","Categorey","EXP After"
+                  setName(list.get(i).getName());
+                  setID(list.get(i).getID());
+                  setParcode(list.get(i).getParcode());
+                  setQuantity(list.get(i).getQuantity());
+                  setCategory(list.get(i).getCategory());
+                  setEXP(re+"");
+                  
+                  EXPList.add(this);
+              }
+          }
+          
+          return EXPList.size();
+          
+      }
+      public void listConvertToArray(String [][] items)
+      {
+          for (int i = 0; i < EXPList.size(); i++) {
+                items[i][0]=EXPList.get(i).getID();
+                items[i][1]=EXPList.get(i).getName();
+                items[i][2]=EXPList.get(i).getParcode();
+                items[i][3]=String.valueOf(EXPList.get(i).getQuantity());
+                items[i][4]=EXPList.get(i).getCategory();
+                items[i][5]=EXPList.get(i).getEXP();
+                
+          }
+      }
+      public DefaultTableModel setProductTable(String [][] items)
+    {
+        
+        String [] ColumnsProduct={"ID","Name","LName","Quantity","Parcode","Price","Categorey","EXP"};
+        TablePro.setColumnIdentifiers(ColumnsProduct);
+            for (int i = 0; i < productList.size(); i++) {
+                
+                    items[i][0]=productList.get(i).getID();
+                    items[i][1]=productList.get(i).getName();
+                    items[i][2]=productList.get(i).getLName();
+                    items[i][3]=String.valueOf(productList.get(i).getQuantity());
+                    items[i][4]=productList.get(i).getParcode();
+                    items[i][5]=String.valueOf(productList.get(i).getPrice());
+                    items[i][6]=productList.get(i).getCategory();
+                    items[i][7]=productList.get(i).getEXP();
+//                    if(ExpireRemainder(productList.get(i).getEXP()))
+//                    {
+//                        ExpObject.setID(productList.get(i).getID());
+//                        ExpObject.setName(productList.get(i).getName());
+//                        ExpObject.setQuantity(productList.get(i).getQuantity());
+//                        ExpObject.setParcode(productList.get(i).getParcode());
+//                        ExpObject.setRemainderDay(getRemainderDay());
+//                        ExpObject.setCategory(productList.get(i).getCategory());
+//                        ExpObject.setPrice(productList.get(i).getPrice());
+//                        ListExp.add(ExpObject);
+//                    }
+                    TablePro.addRow(items[i]);
+                
+            
+        }
+          
+          return TablePro;
+    }
 
+      public String CalculatePrice(String Quantity,double price)
+      {
+         return (Double.parseDouble(Quantity)*price)+"";
+      }
     @Override
     public boolean Add() {
        if(super.getID()==null)
