@@ -123,6 +123,17 @@ public class Files
                         reval.add(newLog);
                     }
                     break;
+                case "Category.txt":
+                    while(in.hasNext())
+                    {
+                        Categories newCat = new Categories();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split("@");
+                        newCat.setCategory(data[0]);
+                        newCat.setCategoryDescription(data[1]);
+                        reval.add(newCat);
+                    }
+                    break;
                 default:
                     break;
             }

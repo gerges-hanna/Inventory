@@ -5,6 +5,7 @@
  */
 package AllGui;
 import Product.*;
+import java.awt.PopupMenu;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
@@ -70,17 +71,35 @@ public class ProductGUI
         ArrayList<JTextField> Tfs = new ArrayList<>();
         ArrayList<JLabel> Lbs = new ArrayList<>();
         // initialize the the Tfs and Lbs
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 7; i++)
         {
             JTextField tf = new JTextField();
             JLabel lb = new JLabel();
             Lbs.add(lb);
-            tf.setBounds(150, labelInc + (i *labelInc), 225, 30);
+
+
+            if(i >= 5)
+                tf.setBounds(125, 60 + (i * 30), 125, 30);
+            else
+                tf.setBounds(125, 30 + (i * 30), 125, 30);
+
             gg.AllTextFieldFontSize(tf);
             Tfs.add(tf);
             mainPanel.add(tf);
         }
-        Tfs.get(7).setEditable(false);
+        
+        
+        ArrayList<Object> cats = ff.read("Category.txt");
+        String []fg = new String[cats.size()];
+        for(int i = 0; i < cats.size(); i++)
+        {
+            fg[i] = ((Admin.Categories)cats.get(i)).getCategory();
+        }
+        JComboBox catC = new JComboBox(fg);
+        catC.setBounds(125, 30 + 5*30, 125, 30);
+        JLabel lb = new JLabel();
+        Lbs.add(lb);
+        Tfs.get(6).setEditable(false);
         // Label Section
         Lbs.get(0).setText("Name:");
         Lbs.get(0).setBounds(10, labelInc, 150, 30);
@@ -131,12 +150,12 @@ public class ProductGUI
         {
             int check = 0;
             int g = 0;
-            for(int i = 0; i < 7; i++)
+            for(int i = 0; i < 6; i++)
             {
                 if(!Tfs.get(i).getText().equals(""))
                     g++;
             }
-            if(g == 7)
+            if(g == 6)
                 check++;
             int len = Tfs.get(2).getText().trim().length(), r = 0;
             for(int i = 0; i < len; i++)
@@ -174,8 +193,8 @@ public class ProductGUI
                 newP.setQuantity(Integer.parseInt(Tfs.get(2).getText().trim()));
                 newP.setParcode(Tfs.get(3).getText());
                 newP.setPrice(Double.parseDouble(Tfs.get(4).getText().trim()));
-                newP.setCategory(Tfs.get(5).getText());
-                newP.setEXP(Tfs.get(6).getText());
+                newP.setCategory(catC.getItemAt(catC.getSelectedIndex()).toString());
+                newP.setEXP(Tfs.get(5).getText());
                 newP.Add();
                 pros.add(newP);
                 JTable tmp = readProducts();
@@ -194,9 +213,21 @@ public class ProductGUI
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 DefaultTableModel tmp = (DefaultTableModel)prosTable.getModel();
-                for(int i = 0; i < 8; i++)
+                for(int i = 0; i < Tfs.size(); i++)
                 {
-                    Tfs.get(i).setText(tmp.getValueAt(prosTable.getSelectedRow(), i).toString());
+                    if(i >= 5)
+                        Tfs.get(i).setText(tmp.getValueAt(prosTable.getSelectedRow(), i+1).toString());
+                    else
+                        Tfs.get(i).setText(tmp.getValueAt(prosTable.getSelectedRow(), i).toString());
+                }
+                String comp = tmp.getValueAt(prosTable.getSelectedRow(), 5).toString();
+                for(int i = 0; i < catC.getItemCount(); i++)
+                {
+                    if(comp.equals(catC.getItemAt(i).toString()))
+                    {
+                        catC.setSelectedIndex(i);
+                        break;
+                    }
                 }
             }
         });
@@ -206,12 +237,12 @@ public class ProductGUI
         {
             int check = 0;
             int g = 0;
-            for(int i = 0; i < 7; i++)
+            for(int i = 0; i < 6; i++)
             {
                 if(!Tfs.get(i).getText().equals(""))
                     g++;
             }
-            if(g == 7)
+            if(g == 6)
                 check++;
             int len = Tfs.get(2).getText().trim().length(), r = 0;
             for(int i = 0; i < len; i++)
@@ -242,11 +273,13 @@ public class ProductGUI
                 check++;
             if(check == 3)
             {
-                String Query = Tfs.get(7).getText() + "@" +Tfs.get(0).getText()
+                // id@name@lastName@quantity@parcode@price@category@EXP@
+                String Query = Tfs.get(6).getText() + "@" +Tfs.get(0).getText()
                         + "@" +Tfs.get(1).getText()+ "@" +Tfs.get(2).getText() +"@"
-                        +Tfs.get(3).getText() +"@" +Tfs.get(4).getText().trim() +"@"
+                        +Tfs.get(3).getText() +"@" +Tfs.get(4).getText().trim() +"@" +
+                        catC.getItemAt(catC.getSelectedIndex()) + "@"
                         +Tfs.get(5).getText() +"@" +Tfs.get(6).getText() +"@";
-                ff.update(Tfs.get(7).getText(), "Product.txt", Query);
+                ff.update(Tfs.get(6).getText(), "Product.txt", Query);
                 JTable tmp = readProducts();
                 DefaultTableModel gf = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(gf);
@@ -260,14 +293,14 @@ public class ProductGUI
         delBtn.setBounds(260, labelInc*9, 120, 30);
         delBtn.addActionListener((ActionEvent e)->
         {
-            if(!Tfs.get(7).getText().equals(""))
+            if(!Tfs.get(6).getText().equals(""))
             {
-                ff.delete(Tfs.get(7).getText(), "Product.txt");
+                ff.delete(Tfs.get(6).getText(), "Product.txt");
                 JTable tmp = readProducts();
                 pros = ff.read("Product.txt");
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
-                for(int i = 0; i < 8; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     Tfs.get(i).setText("");
                 }
@@ -278,10 +311,15 @@ public class ProductGUI
                 }
             }
         });
+        JButton backBtn = new JButton("Back");
+        gg.ButtonBackHome(backBtn);
+        backBtn.setBounds(50, 600, 100, 25);
         prosTable.setDefaultEditor(Object.class, null);
         mainPanel.add(addBtn);
         mainPanel.add(updateBtn);
         mainPanel.add(delBtn);
+        mainPanel.add(backBtn);
+        mainPanel.add(catC);
         mainPanel.setVisible(true);
         mainPanel.setSize(1200,700);
         //mainFrame.add(mainPanel);
