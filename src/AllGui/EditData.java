@@ -30,7 +30,9 @@ public class EditData {
         JLabel lbNewPw = new JLabel("New Password:");
         
         
-        
+        panelEditData.setSize(1200, 700);
+        panelEditData.setBackground(Color.yellow);
+        panelEditData.setLayout(null);
         
         return panelEditData;
         
