@@ -28,7 +28,7 @@ public class EditData {
         JLabel lbNewName = new JLabel("New Name:");
         JLabel lbOldPw = new JLabel("Old Password:");
         JLabel lbNewPw = new JLabel("New Password:");
-        Jlabel lbOldPhone = new JLabel("Old Phone Number:");
+        JLabel lbOldPhone = new JLabel("Old Phone Number:");
         JLabel lbNewPhone = new JLabel("New Phone Number:");
         
         
