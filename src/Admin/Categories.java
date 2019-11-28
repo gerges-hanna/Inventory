@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Categories extends Product.FatherClass {
     
-    
+    public ArrayList<Categories> categorylist = new ArrayList<Categories>();
     final private String filepath="Category.txt";//Final variable can't be modifed
 
     /*
@@ -31,16 +31,16 @@ public class Categories extends Product.FatherClass {
      public void ReadData()
      {
          
-         productList=(ArrayList<ProductClass>)(Object) file.read(filepath);
+         categorylist=(ArrayList<Categories>)(Object) file.read(filepath);
      }
      
 
     @Override
     public boolean Add() {//Query: Category@CategoryDescription
-        if(super.getID()==null)
-             super.setID("");
+        if(super.getCategory()==null)
+             super.setCategory("");
          
-         if(!super.getID().trim().equals(""))
+         if(!super.getCategory().trim().equals(""))
          {
                  super.setQueryFile(super.getCategory() + "@" +super.getCategoryDescription());
                 file.write(super.getQueryFile(), filepath, true);

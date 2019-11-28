@@ -22,7 +22,7 @@ public class Supplier {
     static ArrayList<Object> pros;
     public JPanel mainPanel;
     private int biggestID = 0;
-    public static JTable readProducts()
+    public static JTable readSuppliers()
     {
         Files ff = new Files();
         ArrayList<Object> pros2 = ff.read("Supplier.txt");
@@ -54,8 +54,11 @@ public class Supplier {
     public JPanel run()
     {
         mainPanel = new JPanel();
-        //mainPanel.setSize(mainFrame.getSize());
+        
         mainPanel.setLayout(null);
+        FatherGUI M=new FatherGUI();
+        JButton bckBtn=new JButton("Back");
+        M.ButtonBackHome(bckBtn);
         Files ff = new Files();
         pros = ff.read("Supplier.txt");
         for(int i = 0; i < pros.size(); i++)
@@ -63,12 +66,8 @@ public class Supplier {
             if(Integer.parseInt(((Admin.Suppliers)pros.get(i)).getID().trim()) > biggestID)
                 biggestID = Integer.parseInt(((Admin.Suppliers)pros.get(i)).getID().trim());
         }
-        int labelInc = 25;
-        //JFrame mainF = new JFrame();
-        //mainF.setLayout(null);
-        //mainF.setTitle("Products");
-        //mainF.setBounds(0, 0, 800, 600);
-        //mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        int labelInc = 40;
+        
         // ArrayList for labels and text fields
         ArrayList<JTextField> Tfs = new ArrayList<>();
         ArrayList<JLabel> Lbs = new ArrayList<>();
@@ -78,46 +77,46 @@ public class Supplier {
             JTextField tf = new JTextField();
             JLabel lb = new JLabel();
             Lbs.add(lb);
-            tf.setBounds(145, 30 + (i * 25), 100, 20);
+            tf.setBounds(150, labelInc + (i *labelInc), 225, 30);
             Tfs.add(tf);
             mainPanel.add(tf);
         }
         Tfs.get(6).setEditable(false);//Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
         // Label Section
         ((JLabel)Lbs.get(0)).setText("Name:");
-        ((JLabel)Lbs.get(0)).setBounds(10, 25, 125, 20);
+        ((JLabel)Lbs.get(0)).setBounds(10, labelInc , 150, 30);
         mainPanel.add(((JLabel)Lbs.get(0)));
         ((JLabel)Lbs.get(1)).setText("Last Name:");
-        ((JLabel)Lbs.get(1)).setBounds(10, labelInc * 2, 125, 20);
+        ((JLabel)Lbs.get(1)).setBounds(10, labelInc * 2, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(1)));
         ((JLabel)Lbs.get(2)).setText("Supplier Address:");
-        ((JLabel)Lbs.get(2)).setBounds(10, labelInc * 3, 125, 20);
+        ((JLabel)Lbs.get(2)).setBounds(10, labelInc * 3, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(2)));
         ((JLabel)Lbs.get(3)).setText("Contact Number:");
-        ((JLabel)Lbs.get(3)).setBounds(10, labelInc * 4, 125, 20);
+        ((JLabel)Lbs.get(3)).setBounds(10, labelInc * 4, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(3)));
         ((JLabel)Lbs.get(4)).setText("Supplier Email:");
-        ((JLabel)Lbs.get(4)).setBounds(10, labelInc * 5, 125, 20);
+        ((JLabel)Lbs.get(4)).setBounds(10, labelInc * 5, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(4)));
         ((JLabel)Lbs.get(5)).setText("Category:");
-        ((JLabel)Lbs.get(5)).setBounds(10, labelInc * 6, 125, 20);
+        ((JLabel)Lbs.get(5)).setBounds(10, labelInc * 6, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(5)));
          ((JLabel)Lbs.get(6)).setText("ID:");
-        ((JLabel)Lbs.get(6)).setBounds(10, labelInc * 7, 125, 20);
+        ((JLabel)Lbs.get(6)).setBounds(10, labelInc * 7, 150, 30);
         mainPanel.add(((JLabel)Lbs.get(6)));
         
         // Table Section
-        prosTable = readProducts();
-        prosTable.setBounds(300, 20, 500, 500);
+        prosTable = readSuppliers();
+        prosTable.setBounds(400, 40, 750, 600);
         prosTable.setEnabled(true);
         mainPanel.add(prosTable);
         JScrollPane prosSP = new JScrollPane(prosTable);
-        prosSP.setBounds(300, 20, 500, 500);
+        prosSP.setBounds(400, 40, 750, 600);
         mainPanel.add(prosSP);
 
         //Buttons Section
         JButton addBtn = new JButton("Add");
-        addBtn.setBounds(20, 250, 100, 25);
+        addBtn.setBounds(10, labelInc*8, 120, 30);
         addBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
@@ -153,7 +152,7 @@ public class Supplier {
                 newP.setCategory(Tfs.get(5).getText());
                 newP.Add();
                 pros.add(newP);
-                JTable tmp = readProducts();
+                JTable tmp = readSuppliers();
                 DefaultTableModel s = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(s);
                 biggestID++;
@@ -176,7 +175,7 @@ public class Supplier {
             }
         });
         JButton updateBtn = new JButton("Update");
-        updateBtn.setBounds(125, 250, 100, 25);
+        updateBtn.setBounds(135, labelInc*8, 120, 30);
         updateBtn.addActionListener((ActionEvent e) -> 
         {
             int r = 0;
@@ -201,7 +200,7 @@ public class Supplier {
                 newP.setCategory(Tfs.get(5).getText());
                 ff.delete(newP.getID(), "Supplier.txt");
                 newP.Add();
-                JTable tmp = readProducts();
+                JTable tmp = readSuppliers();
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
             }
@@ -211,13 +210,13 @@ public class Supplier {
             }
         });
         JButton delBtn = new JButton("Delete");
-        delBtn.setBounds(73, 300, 100, 25);
+        delBtn.setBounds(260, labelInc*8, 120, 30);
         delBtn.addActionListener((ActionEvent e)->
         {
             if(!Tfs.get(6).getText().equals(""))
             {
                 ff.delete(Tfs.get(6).getText(), "Supplier.txt");
-                JTable tmp = readProducts();
+                JTable tmp = readSuppliers();
                 pros = ff.read("Supplier.txt");
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
@@ -236,6 +235,7 @@ public class Supplier {
         mainPanel.add(addBtn);
         mainPanel.add(updateBtn);
         mainPanel.add(delBtn);
+        mainPanel.add(bckBtn);
         mainPanel.setVisible(true);
         mainPanel.setSize(1200,700);
         //mainFrame.add(mainPanel);

@@ -80,7 +80,7 @@ public class Files
                         reval.add(fatherClass);
                     }   
                     break;
-                case "Product.txt":
+                 case "Product.txt":
                     // id@name@lastName@quantity@parcode@price@category@EXP@
                     while(in.hasNext())
                     {
@@ -97,7 +97,19 @@ public class Files
                         fatherClass.setEXP(data[7]);
                         reval.add(fatherClass);
                     }   break;
-                case "Login.txt":
+                    case "Category.txt":
+                    // Category@CategoryDescription
+                    while(in.hasNext())
+                    {
+                        fatherClass= new Categories();
+                        String tmp = in.nextLine();
+                        String []data = tmp.split("@");
+                        fatherClass.setCategory(data[0]);
+                        fatherClass.setCategoryDescription(data[1]);        
+                        reval.add(fatherClass);
+                    }  
+                    break;
+                 case "Login.txt":
                     // Order;userName;password;case;
                     while(in.hasNext())
                     {
@@ -168,7 +180,7 @@ public class Files
                     else
                     {
                         Query = ((Admin.Categories)pros.get(i)).getCategory() + "@"
-                                + ((Admin.Categories)pros.get(i)).getCategoryDescription() + "@";
+                                + ((Admin.Categories)pros.get(i)).getCategoryDescription();
                     }
                     write(Query, filePath, append);
                     append = true;

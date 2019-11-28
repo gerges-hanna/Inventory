@@ -60,7 +60,7 @@ public class ProductGUI
             if(Integer.parseInt(((ProductClass)pros.get(i)).getID().trim()) > biggestID)
                 biggestID = Integer.parseInt(((ProductClass)pros.get(i)).getID().trim());
         }
-        int labelInc = 30;
+        int labelInc = 40;
         //JFrame mainF = new JFrame();
         //mainF.setLayout(null);
         //mainF.setTitle("Products");
@@ -75,7 +75,7 @@ public class ProductGUI
             JTextField tf = new JTextField();
             JLabel lb = new JLabel();
             Lbs.add(lb);
-            tf.setBounds(125, 30 + (i * 30), 125, 30);
+            tf.setBounds(150, labelInc + (i *labelInc), 225, 30);
             gg.AllTextFieldFontSize(tf);
             Tfs.add(tf);
             mainPanel.add(tf);
@@ -83,50 +83,50 @@ public class ProductGUI
         Tfs.get(7).setEditable(false);
         // Label Section
         Lbs.get(0).setText("Name:");
-        Lbs.get(0).setBounds(10, 25, 125, 25);
+        Lbs.get(0).setBounds(10, labelInc, 150, 30);
         gg.AllLblFontSize(Lbs.get(0));
         mainPanel.add(((JLabel)Lbs.get(0)));
         Lbs.get(1).setText("Last Name:");
-        Lbs.get(1).setBounds(10, labelInc * 2, 125, 25);
+        Lbs.get(1).setBounds(10, labelInc * 2, 150, 30);
         gg.AllLblFontSize(Lbs.get(1));
         mainPanel.add(((JLabel)Lbs.get(1)));
         Lbs.get(2).setText("Quantity:");
-        Lbs.get(2).setBounds(10, labelInc * 3, 125, 25);
+        Lbs.get(2).setBounds(10, labelInc * 3, 150, 30);
         gg.AllLblFontSize(Lbs.get(2));
         mainPanel.add(((JLabel)Lbs.get(2)));
         Lbs.get(3).setText("Parcode:");
-        Lbs.get(3).setBounds(10, labelInc * 4, 125, 25);
+        Lbs.get(3).setBounds(10, labelInc * 4, 150, 30);
         gg.AllLblFontSize(Lbs.get(3));
         mainPanel.add(((JLabel)Lbs.get(3)));
         Lbs.get(4).setText("Price:");
-        Lbs.get(4).setBounds(10, labelInc * 5, 125, 25);
+        Lbs.get(4).setBounds(10, labelInc * 5, 150, 30);
         gg.AllLblFontSize(Lbs.get(4));
         mainPanel.add(((JLabel)Lbs.get(4)));
         Lbs.get(5).setText("Category:");
-        Lbs.get(5).setBounds(10, labelInc * 6, 125, 25);
+        Lbs.get(5).setBounds(10, labelInc * 6, 150, 30);
         gg.AllLblFontSize(Lbs.get(5));
         mainPanel.add(((JLabel)Lbs.get(5)));
         Lbs.get(6).setText("Expire Date:");
-        Lbs.get(6).setBounds(10, labelInc * 7, 125, 25);
+        Lbs.get(6).setBounds(10, labelInc * 7, 150, 30);
         gg.AllLblFontSize(Lbs.get(6));
         mainPanel.add(((JLabel)Lbs.get(6)));
         Lbs.get(7).setText("ID:");
-        Lbs.get(7).setBounds(10, labelInc * 8, 125, 20);
+        Lbs.get(7).setBounds(10, labelInc * 8, 150, 30);
         gg.AllLblFontSize(Lbs.get(7));
         mainPanel.add(((JLabel)Lbs.get(7)));
         
         // Table Section
         prosTable = readProducts();
-        prosTable.setBounds(300, 20, 500, 500);
+        prosTable.setBounds(400, 40, 750, 600);
         prosTable.setEnabled(true);
         mainPanel.add(prosTable);
         JScrollPane prosSP = new JScrollPane(prosTable);
-        prosSP.setBounds(300, 20, 500, 500);
+        prosSP.setBounds(400, 40, 750, 600);
         mainPanel.add(prosSP);
 
         //Buttons Section
         JButton addBtn = new JButton("Add");
-        addBtn.setBounds(20, 300, 100, 25);
+        addBtn.setBounds(10, labelInc*9, 120, 30);
         addBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
@@ -201,7 +201,7 @@ public class ProductGUI
             }
         });
         JButton updateBtn = new JButton("Update");
-        updateBtn.setBounds(125, 300, 100, 25);
+        updateBtn.setBounds(135, labelInc*9, 120, 30);
         updateBtn.addActionListener((ActionEvent e) -> 
         {
             int check = 0;
@@ -257,7 +257,7 @@ public class ProductGUI
             }
         });
         JButton delBtn = new JButton("Delete");
-        delBtn.setBounds(70, 340, 100, 25);
+        delBtn.setBounds(260, labelInc*9, 120, 30);
         delBtn.addActionListener((ActionEvent e)->
         {
             if(!Tfs.get(7).getText().equals(""))

@@ -8,6 +8,7 @@ package Product;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import Admin.*;
 
 /**
  *
@@ -119,7 +120,23 @@ public abstract class FatherClass {
     }
 
     public void setCategory(String Category) {
+        this.Category=Category;
+     /* Categories c=new Categories();
+      c.ReadData();
+      int check=0;
+      for(int i=0;i<c.categorylist.size();i++)
+      {
+        if(!Category.equals(c.categorylist.get(i).getCategory()))
+        {
         this.Category = Category;
+        check++;
+        }
+      }
+      if (check!=0)
+      {
+          System.out.println("Category already exists");
+      }
+     */
     }
 
     public String getEXP() {

@@ -207,7 +207,7 @@ public class Inventory {
     public static void runPanel()
     {
         panelHome.setSize(1200, 700);
-        panelHome.setVisible(true);
+         panelHome.setVisible(true);
         frame.remove(panel);
         frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);
