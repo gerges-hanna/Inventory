@@ -49,8 +49,8 @@ public class Register extends Client.ClientClass{
         JTextField ph = new  JTextField();
         JButton b1 = new JButton("Submit");
         JButton b2 = new JButton("Log in");
-        JCheckBox box=new JCheckBox("");
-        box.setBounds(fx+403,fy+95,100,40);
+        JCheckBox box=new JCheckBox("Show PassWord");
+        box.setBounds(fx+433,fy+105,120,20);
         box.addActionListener(new ActionListener() {
                 public void actionPerformed (ActionEvent e){
                 
