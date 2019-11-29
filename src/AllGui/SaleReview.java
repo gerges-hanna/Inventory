@@ -283,6 +283,7 @@ public class SaleReview extends Client.ClientClass
         JPanel panelsalereview = new JPanel();
         JButton buttonSaleReview = new JButton("Search");
         JButton backButton = new JButton("Back");
+        JButton resetBtn = new JButton("Reset Table");
         f.ButtonBackHome(backButton);
         
         JTable tableSaleReview = new JTable(updateTable());
@@ -301,6 +302,7 @@ public class SaleReview extends Client.ClientClass
         searchBar.setBounds(270,45,350,30);
         cbsr.setBounds(635, 45, 200, 30);
         buttonSaleReview.setBounds(850,45,100,30);
+        resetBtn.setBounds(850,600,150,30);
         tableSaleReview.setBounds(100,100,1000,400);
         sp.setBounds(100,130,1000,400);
         lbTotal.setBounds(25, 570, 1200, 50);
@@ -309,9 +311,10 @@ public class SaleReview extends Client.ClientClass
         searchBar.setFont(new Font("Tahoma",0,20));
         cbsr.setFont(new Font("Tahoma",0,20));
         buttonSaleReview.setFont(new Font("Tahoma",0,20));
+        resetBtn.setFont(new Font("Tahoma",0,20));
         tableSaleReview.setFont(new Font("Tahoma",0,20));
         lbTotal.setFont(new Font("Tahoma",0,25));
-        tableSaleReview.setRowHeight(20);
+        tableSaleReview.setRowHeight(22);
 
         //colors
         panelsalereview.setBackground(Color.white);
@@ -330,6 +333,7 @@ public class SaleReview extends Client.ClientClass
         panelsalereview.add(lbTotal);
         panelsalereview.add(lbSearchBar);
         panelsalereview.add(backButton);
+        panelsalereview.add(resetBtn);
         panelsalereview.setSize(1200,700);
         // actions
         buttonSaleReview.addActionListener((ActionEvent e) ->
@@ -339,15 +343,17 @@ public class SaleReview extends Client.ClientClass
                 tableSaleReview.setModel( searchTable(searchBar.getText(),cbsr.getSelectedItem().toString() ) );
                 lbTotal.setText("Total Sales:" + " " + Double.toString(totalProfitNumber));
             }
-            else
+        });
+        resetBtn.addActionListener((ActionEvent e) ->
+        {
+            if(!searchBar.getText().equals(""))
             {
-                tableSaleReview.setModel(updateTable());
+                tableSaleReview.setModel( updateTable());
                 lbTotal.setText("Total Sales:" + " " + Double.toString(totalProfitNumber));
             }
-        }
-        );
+        });
         return panelsalereview;
     }
-    ///
+    //
 
 }
