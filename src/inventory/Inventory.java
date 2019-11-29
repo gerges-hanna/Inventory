@@ -259,7 +259,7 @@ public class Inventory {
         panelHome.add(btn9);
         panelHome.add(btn10);
         panelHome.setSize(1200, 700);
-//        panelHome.add(label);
+//      panelHome.add(label);
         panelHome.setVisible(true);
         frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);
