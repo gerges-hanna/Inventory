@@ -50,7 +50,7 @@ public class Register extends Client.ClientClass{
         JButton b1 = new JButton("Submit");
         JButton b2 = new JButton("Log in");
         JCheckBox box=new JCheckBox("");
-        box.setBounds(fx+405,fy+105,18,14);
+        box.setBounds(fx+405,fy+108,18,14);
         box.addActionListener(new ActionListener() {
                 public void actionPerformed (ActionEvent e){
                 
