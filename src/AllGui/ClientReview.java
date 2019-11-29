@@ -202,8 +202,8 @@ public class ClientReview
                             tmpM.addRow(rows[i]);
                         }
                         break;
-                    case "Login ID":
-                        if(((ProductClass)data.get(i)).getID().equals(what))
+                    case "ID":
+                        if(((ProductClass)data.get(i)).getOper_ID().equals(what))
                         {
                             rows[i][0] = ((ProductClass)data.get(i)).getOper_ID();
                             rows[i][1] = ((ProductClass)data.get(i)).getPro_ID();
