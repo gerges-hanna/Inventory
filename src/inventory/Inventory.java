@@ -231,7 +231,7 @@ public class Inventory {
         
 //        JLabel label=new JLabel();
 //        label.setSize(1200, 700);
-//        label.setIcon(new javax.swing.ImageIcon("Background.jpeg"));
+//        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
 //        if(FatherClass.getType().equalsIgnoreCase("User"))
 //        {
 //            btn2.setEnabled(false);
@@ -259,7 +259,7 @@ public class Inventory {
         panelHome.add(btn9);
         panelHome.add(btn10);
         panelHome.setSize(1200, 700);
-//      panelHome.add(label);
+//        panelHome.add(label);
         panelHome.setVisible(true);
         frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);
