@@ -311,6 +311,7 @@ public class SaleReview extends Client.ClientClass
         buttonSaleReview.setFont(new Font("Tahoma",0,20));
         tableSaleReview.setFont(new Font("Tahoma",0,20));
         lbTotal.setFont(new Font("Tahoma",0,25));
+        tableSaleReview.setRowHeight(20);
 
         //colors
         panelsalereview.setBackground(Color.white);
