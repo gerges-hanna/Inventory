@@ -140,6 +140,8 @@ public class Files
                         newLog.setUserName(data[1]);
                         newLog.setPassword(data[2]);
                         newLog.setCase(data[3]);
+                        newLog.setName(data[4]);
+                        newLog.setContactNumber(Integer.parseInt(data[5].trim()));
                         reval.add(newLog);
                     }
                     break;

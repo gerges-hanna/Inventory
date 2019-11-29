@@ -64,25 +64,11 @@ public class Login extends Product.FatherClass{
         {
             UserName="";
         }
-        else if(UserName.equals("")||(
-          UserName.length()>=4    && 
-          UserName.length()<=8    && 
-          UserName.charAt(0)!='@' && 
-          UserName.charAt(0)!=';' && 
-          UserName.charAt(0)!='-' && 
-          UserName.charAt(0)!='+' && 
-          UserName.charAt(0)!='=' &&
-          UserName.charAt(0)!='~' &&
-          UserName.charAt(0)!='$'  ))
-        {
-        this.UserName = UserName;
-        }
         else 
         {
-            System.out.println("Username must be between 4-8 characters and not "
-                    + "starting with (@,;,-,+,=,~,$) ");
-      
+                 this.UserName = UserName;
         }
+        
     }
 
     public String getPassword() {
@@ -92,23 +78,11 @@ public class Login extends Product.FatherClass{
    public void setPassword(String Password) {//entered passwords must be between 4 and 8 characters
         if(Password==null)
          {
-           Password=("");
+           Password="";
          }
-        else if(Password.equals("")||
-        (Password.length()>=4&&Password.length()<=8 && 
-         Password.charAt(0)!='@' &&
-         Password.charAt(0)!=';' &&
-         Password.charAt(0)!='~' &&
-         Password.charAt(0)!='-' &&
-         Password.charAt(0)!='+' &&
-         Password.charAt(0)!='=' &&
-         Password.charAt(0)!='$'))
-        {
-        this.Password = Password;
-        }
         else 
         {
-            System.out.println("Password must be between 4-8 characters and not starting with (@,;,-,+,=,~,$) ");
+                 this.Password = Password;
         }
     
     }
@@ -122,13 +96,10 @@ public class Login extends Product.FatherClass{
         {
             Case="";
         }
-        else if(Case.equals("")||(Case.equalsIgnoreCase("user")||Case.equalsIgnoreCase("client")))
-        {
-        this.Case = Case;
-        }
+        
         else      
         {
-            System.out.println("Enter a valid regiester case (user&client)");
+            this.Case = Case;
         }
        
         
@@ -146,7 +117,8 @@ public class Login extends Product.FatherClass{
 
     @Override
     public boolean Add() {
-     if(getUserName()==null)
+        
+               if(getUserName()==null)
      {
          setUserName("");
      }
@@ -158,6 +130,12 @@ public class Login extends Product.FatherClass{
      {
          setCase("");
      }
+     else if(getName()==null)
+     {
+         setName("");
+     }
+   
+    
         IncreamentID();
         //****************************************
 
@@ -166,10 +144,14 @@ public class Login extends Product.FatherClass{
                 !getCase().equals(""))
         {
 
-            setQueryFile(Order+";"+UserName+";"+Password+";"+Case);
+            setQueryFile(Order+";"+UserName+";"+Password+";"+Case+";"+super.getName()+";"+super.getContactNumber());
 
 
             file.write(super.getQueryFile(), filepath, true);
+            UserName=null;
+            Password=null;
+            super.setContactNumber(0);
+            
             return true;
         }
         else {
@@ -204,9 +186,7 @@ public boolean Checker(String username, String password,String Case)//this funct
                 LoginList.get(i).getPassword().equals(password)&&
                 LoginList.get(i).getCase().equalsIgnoreCase(Case))
         {
-            setOrder(LoginList.get(i).getOrder());
             return true;
-            
         }
       
     }

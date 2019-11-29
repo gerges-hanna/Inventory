@@ -20,7 +20,7 @@ public class ClientClass extends inventory.Login{
     Login log = new Login();
     
     private String address;
-    private Long phoneNum;
+    private int PhoneNumber;
     private String Email;
     private String ID="";
     private String Name;
@@ -75,12 +75,12 @@ public class ClientClass extends inventory.Login{
         this.Email = Email;
     }
 
-    public Long getPhoneNum() {
-        return phoneNum;
+    public int getPhoneNummber() {
+        return PhoneNumber;
     }
 
-    public void setPhoneNum(Long phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhoneNum(int PhoneNumber) {
+        this.PhoneNumber = PhoneNumber;
     }
 
     public String getAddress() {
@@ -91,9 +91,9 @@ public class ClientClass extends inventory.Login{
         this.address = address;
     }
 
-    public ClientClass(String address, Long phoneNum, String Email, String Name, String pass,String confpass) {
+    public ClientClass(String address, int PhoneNumber, String Email, String Name, String pass,String confpass) {
         this.address = address;
-        this.phoneNum = phoneNum;
+        this.PhoneNumber = PhoneNumber;
         this.Email = Email;
         this.Name = Name;
         this.pass = pass;
