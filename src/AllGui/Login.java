@@ -105,7 +105,8 @@ public class Login {
                     {
                         FatherClass.setType(typeComboBox.getSelectedItem()+"");
                         inventory.Inventory s=new Inventory();
-                        FatherClass.setIDlog(log.getOrder());
+                        FatherClass.setIDlog(String.valueOf(log.getOrder()));
+                        System.out.println(log.getOrder());
                         s.HomePage();
                         fLogin.remove(panelLogin);
                         fLogin.dispose();
@@ -119,6 +120,7 @@ public class Login {
                      if (log.getAdmin_UserName().equals(usertxt.getText()) && log.getAdmin_Password().equals(passtxt.getText())) {
                          
                          FatherClass.setType("Admin");
+                         FatherClass.setIDlog("Admin");
                          inventory.Inventory s=new Inventory();
                          s.HomePage();
                         fLogin.dispose();

@@ -33,7 +33,7 @@ public abstract class FatherClass {
     private String SupplierAddress;
     private int ContactNumber;
     private String SupplierEmail;
-    private static int IDlog=0;
+    private static String IDlog;
     private String date;
     private String time;
 
@@ -70,11 +70,11 @@ public abstract class FatherClass {
         this.time = time;
     }
 
-    public static int getIDlog() {
+    public static String getIDlog() {
         return IDlog;
     }
 
-    public static void setIDlog(int IDlog) {
+    public static void setIDlog(String IDlog) {
         FatherClass.IDlog = IDlog;
     }
     
