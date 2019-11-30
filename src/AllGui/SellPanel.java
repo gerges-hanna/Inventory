@@ -118,10 +118,10 @@ public class SellPanel extends Product.ProductClass{
         JLabel lblPrice=new JLabel("Price");
         JLabel lblShowPrice=new JLabel("0.0");
         JLabel lblDate=new JLabel("Date");
-        JLabel label=new JLabel();
-        label.setSize(1200, 700);
-        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
-        
+//        JLabel label=new JLabel();
+//        label.setSize(1200, 700);
+//        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
+//        
         
         
         //label setBound
@@ -469,7 +469,7 @@ public class SellPanel extends Product.ProductClass{
         panel.add(btnReset);
         panel.add(lblDate);
         panel.add(txtDate);
-        panel.add(label);
+//        panel.add(label);
         panel.setSize(1200, 700);
         
         
