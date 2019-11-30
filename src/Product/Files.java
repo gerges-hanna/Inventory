@@ -197,53 +197,74 @@ public class Files
                 }
                 break;
             case "Category.txt":
-                for(int i = 0; i < pros.size(); i++)
+                if(pros.size() == 1)
                 {
-                    if(((Admin.Categories)pros.get(i)).getCategory().equals(id))
-                        continue;
-                    else
+                    write("", filePath, false);
+                }
+                else
+                {
+                    for(int i = 0; i < pros.size(); i++)
                     {
-                        Query = ((Admin.Categories)pros.get(i)).getCategory() + "@"
-                                + ((Admin.Categories)pros.get(i)).getCategoryDescription();
+                        if(((Admin.Categories)pros.get(i)).getCategory().equals(id))
+                            continue;
+                        else
+                        {
+                            Query = ((Admin.Categories)pros.get(i)).getCategory() + "@"
+                                    + ((Admin.Categories)pros.get(i)).getCategoryDescription();
+                        }
+                        write(Query, filePath, append);
+                        append = true;
                     }
-                    write(Query, filePath, append);
-                    append = true;
                 }
                 break;
             case "Supplier.txt":
             //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
-                for(int i = 0; i < pros.size(); i++)
+                if(pros.size() == 1)
                 {
-                    if( ((Admin.Suppliers)pros.get(i)).getID().equals(id))
-                        continue;
-                    else
+                    write("", filePath, false);
+                }
+                else
+                {
+                    for(int i = 0; i < pros.size(); i++)
                     {
-                        Query = ((Admin.Suppliers)pros.get(i)).getID() + "@" +
-                                ((Admin.Suppliers)pros.get(i)).getName() + "@"+
-                                ((Admin.Suppliers)pros.get(i)).getLName() + "@" +
-                                ((Admin.Suppliers)pros.get(i)).getSupplierAddress()
-                                + "@" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
-                                + "@" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
-                                + "@" + ((Admin.Suppliers)pros.get(i)).getCategory() + "@";
+                        if( ((Admin.Suppliers)pros.get(i)).getID().equals(id))
+                            continue;
+                        else
+                        {
+                            Query = ((Admin.Suppliers)pros.get(i)).getID() + "@" +
+                                    ((Admin.Suppliers)pros.get(i)).getName() + "@"+
+                                    ((Admin.Suppliers)pros.get(i)).getLName() + "@" +
+                                    ((Admin.Suppliers)pros.get(i)).getSupplierAddress()
+                                    + "@" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
+                                    + "@" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
+                                    + "@" + ((Admin.Suppliers)pros.get(i)).getCategory() + "@";
+                        }
+                        write(Query, filePath, append);
+                        append = true;
                     }
-                    write(Query, filePath, append);
-                    append = true;
                 }
             case "Login.txt":
                 // Order;userName;password;case;
-                for(int i = 0; i < pros.size(); i++)
+                if(pros.size() == 1)
                 {
-                    if( ((Login)pros.get(i)).getID().equals(id))
-                        continue;
-                    else
+                    write("", filePath, false);
+                }
+                else
+                {
+                    for(int i = 0; i < pros.size(); i++)
                     {
-                        Query = ((Login)pros.get(i)).getOrder() + ";" +
-                                ((Login)pros.get(i)).getUserName() + ";"+
-                                ((Login)pros.get(i)).getPassword() + ";" +
-                                ((Login)pros.get(i)).getCase();
+                        if( ((Login)pros.get(i)).getID().equals(id))
+                            continue;
+                        else
+                        {
+                            Query = ((Login)pros.get(i)).getOrder() + ";" +
+                                    ((Login)pros.get(i)).getUserName() + ";"+
+                                    ((Login)pros.get(i)).getPassword() + ";" +
+                                    ((Login)pros.get(i)).getCase();
+                        }
+                        write(Query, filePath, append);
+                        append = true;
                     }
-                    write(Query, filePath, append);
-                    append = true;
                 }
         }
         return true;
