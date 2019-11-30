@@ -12,6 +12,8 @@ import static Product.ProductClass.ReviewList;
 import static Product.ProductClass.TablePro;
 import static Product.ProductClass.productList;
 import inventory.Inventory;
+import static inventory.Inventory.frame;
+import static inventory.Inventory.panelHome;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -116,6 +118,11 @@ public class SellPanel extends Product.ProductClass{
         JLabel lblPrice=new JLabel("Price");
         JLabel lblShowPrice=new JLabel("0.0");
         JLabel lblDate=new JLabel("Date");
+        JLabel label=new JLabel();
+        label.setSize(1200, 700);
+        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
+        
+        
         
         //label setBound
         lblParcode.setBounds(f.x1, f.y1, 90, 30);
@@ -462,6 +469,7 @@ public class SellPanel extends Product.ProductClass{
         panel.add(btnReset);
         panel.add(lblDate);
         panel.add(txtDate);
+        panel.add(label);
         panel.setSize(1200, 700);
         
         
