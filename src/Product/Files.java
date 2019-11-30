@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Product;
 
 /**
@@ -16,7 +12,7 @@ import Admin.*;
 import inventory.*;
 public class Files 
 {
-   FatherClass fatherClass; 
+    FatherClass fatherClass; 
     // This function is for writing on the file
     // Query is the string that you want to add on the file
     // filePath is the path to the file
@@ -27,7 +23,8 @@ public class Files
     public boolean write(String Query,String filePath ,boolean Append)
     {
         PrintWriter writer=null;
-        try {
+        try
+        {
             System.out.println("Writing Now In .."+filePath);
             writer=new PrintWriter(new FileWriter(new File(filePath),Append));
             if(Query.equals(""))
@@ -36,9 +33,12 @@ public class Files
                 writer.println(Query);
             System.out.println("Writing Done");
             return true;
-        } catch (IOException e) {
+        }
+        catch(IOException e)
+        {
             System.out.println(e);
-        }finally
+        }
+        finally
         {
             if(writer !=null)
                 writer.close();
@@ -80,7 +80,7 @@ public class Files
                         reval.add(fatherClass);
                     }   
                     break;
-                 case "Product.txt":
+                case "Product.txt":
                     // id@name@lastName@quantity@parcode@price@category@EXP@
                     while(in.hasNext())
                     {
@@ -96,8 +96,9 @@ public class Files
                         fatherClass.setCategory(data[6]);
                         fatherClass.setEXP(data[7]);
                         reval.add(fatherClass);
-                    }   break;
-                     case "sellReview.txt":
+                    }
+                    break;
+                case "sellReview.txt":
                     // id@name@lastName@quantity@parcode@price@category@EXP@
                     while(in.hasNext())
                     {
@@ -116,8 +117,9 @@ public class Files
                         fatherClass.setDate(data[8]);
                         fatherClass.setID(data[9]);
                         reval.add(fatherClass);
-                    }   break;
-                    case "Category.txt":
+                    }
+                    break;
+                case "Category.txt":
                     // Category@CategoryDescription
                     while(in.hasNext())
                     {
@@ -129,7 +131,7 @@ public class Files
                         reval.add(fatherClass);
                     }  
                     break;
-                 case "Login.txt":
+                case "Login.txt":
                     // Order;userName;password;case;
                     while(in.hasNext())
                     {
@@ -145,17 +147,6 @@ public class Files
                         reval.add(newLog);
                     }
                     break;
-//                    case "Category.txt":
-//                    while(in.hasNext())
-//                    {
-//                        Categories newCat = new Categories();
-//                        String tmp = in.nextLine();
-//                        String []data = tmp.split("@");
-//                        newCat.setCategory(data[0]);
-//                        newCat.setCategoryDescription(data[1]);
-//                        reval.add(newCat);
-//                    }
-//                    break;
                 default:
                     break;
             }
@@ -234,6 +225,22 @@ public class Files
                                 + "@" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
                                 + "@" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
                                 + "@" + ((Admin.Suppliers)pros.get(i)).getCategory() + "@";
+                    }
+                    write(Query, filePath, append);
+                    append = true;
+                }
+            case "Login.txt":
+                // Order;userName;password;case;
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if( ((Login)pros.get(i)).getID().equals(id))
+                        continue;
+                    else
+                    {
+                        Query = ((Login)pros.get(i)).getOrder() + ";" +
+                                ((Login)pros.get(i)).getUserName() + ";"+
+                                ((Login)pros.get(i)).getPassword() + ";" +
+                                ((Login)pros.get(i)).getCase();
                     }
                     write(Query, filePath, append);
                     append = true;
