@@ -191,7 +191,7 @@ public class Supplier {
             if(r == Tfs.get(3).getText().length())
             {
                 Product.FatherClass newP = new Admin.Suppliers();
-                newP.setID(Integer.toString(biggestID + 1));
+                newP.setID(Tfs.get(6).getText());
                 newP.setName(Tfs.get(0).getText());
                 newP.setLName(Tfs.get(1).getText());
                 newP.setSupplierAddress(Tfs.get(2).getText().trim());

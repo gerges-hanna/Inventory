@@ -243,6 +243,7 @@ public class Files
                         append = true;
                     }
                 }
+                break;
             case "Login.txt":
                 // Order;userName;password;case;
                 if(pros.size() == 1)
