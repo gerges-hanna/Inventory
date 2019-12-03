@@ -89,7 +89,7 @@ public class Inventory {
         JButton btn7=new JButton("Register");
         JButton btn8=new JButton("Category");
         JButton btn9=new JButton("Log Out");
-        JButton btn10=new JButton("Edite");
+        JButton btn10=new JButton("Edit Data");
         btn1.setBounds(10, y1, btnH,btnW);
         btn2.setBounds(180, y1, btnH,btnW);
         btn3.setBounds(350, y1, btnH,btnW);

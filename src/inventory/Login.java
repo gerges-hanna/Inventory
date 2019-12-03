@@ -150,6 +150,7 @@ public class Login extends Product.FatherClass{
             file.write(super.getQueryFile(), filepath, true);
             UserName=null;
             Password=null;
+            super.setName(null);
             super.setContactNumber(0);
             
             return true;

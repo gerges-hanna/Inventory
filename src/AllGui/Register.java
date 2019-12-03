@@ -23,9 +23,13 @@ public class Register extends Client.ClientClass{
     public JPanel Run(){
         
         JPanel p = new JPanel();
-        int fx=350,fy=100,fxt=500,wid=200,hgt=30;
+        int fx=385,fy=160;
+        final String m="\u27F3";
         JButton btn = new JButton("Back");
         f.ButtonBackHome(btn);
+        JButton Clear=new JButton(m);
+        Clear.setBounds(fx+350,fy+300, 40, 35);
+        
         
         JLabel user = new JLabel("Username: ");
         JTextField us = new  JTextField();
@@ -50,7 +54,7 @@ public class Register extends Client.ClientClass{
         JButton b1 = new JButton("Submit");
         JButton b2 = new JButton("Log in");
         JCheckBox box=new JCheckBox("");
-        box.setBounds(fx+405,fy+108,18,14);
+        box.setBounds(fx+405,fy+108,25,14);
         box.addActionListener(new ActionListener() {
                 public void actionPerformed (ActionEvent e){
                 
@@ -225,8 +229,9 @@ public class Register extends Client.ClientClass{
                //Password checking conditions**********************
          //*******************************************************************************************************
                //Phone Number checking condition*************************
-              int r = 0;
-              
+             if(ph.getText().length()>=3&&ph.getText().length()<=15)
+             {
+             int r = 0;
             for(int i = 0; i < ph.getText().length(); i++)
             {
                 if(Character.isDigit(ph.getText().charAt(i)))
@@ -241,7 +246,11 @@ public class Register extends Client.ClientClass{
                 
             }
               else {JOptionPane.showMessageDialog(null, "Enter valid phone number");}
-              
+             }
+             else 
+             {   
+                 JOptionPane.showMessageDialog(null, "Enter a number between 3-15 characters");
+             }
               //**************************************************************************************************************************
               log1.setCase(cb.getItemAt(cb.getSelectedIndex()).toString());
               //***************************************************************************************************************************
@@ -251,7 +260,7 @@ public class Register extends Client.ClientClass{
          {
              JOptionPane.showMessageDialog(null, "You must fill all inputs")
                  ;}
-              if(!log1.getUserName().equals("")&&!log1.getPassword().equals("")&&!log1.getCase().equals("")&&log1.getContactNumber()!=0)
+              if(!log1.getName().equals("")&&!log1.getUserName().equals("")&&!log1.getPassword().equals("")&&!log1.getCase().equals("")&&log1.getContactNumber()!=0)
               {
                   log1.Add();
                     JOptionPane.showMessageDialog(null, "Account created successfully"); 
@@ -264,9 +273,23 @@ public class Register extends Client.ClientClass{
                  
           }//end btn action
         });
+             Clear.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               us.setText("");
+               ps.setText("");
+               cops.setText("");
+               cb.setSelectedItem("..");
+               na.setText("");
+               ph.setText("");
+               
+            }
+        });
         b2.setBounds(fx+250,fy+300, 90, 35);
     
         p.setLayout(null);
+        p.add(Clear);
         p.add(na);
         p.add(box);
         p.add(name);
