@@ -40,14 +40,17 @@ import javax.swing.text.StyleConstants;
  * @author Gerges hanna FCI-H
  */
 public class SellPanel extends Product.ProductClass{
-
+    
+    //Create Objects 
     FatherGUI f=new FatherGUI();
     Product.Files file=new Files();
     ProductClass tosell=new ProductClass();
+    
     //Array Lists
-        ArrayList<String> listCateg=new ArrayList<String>();
-        ArrayList<ProductClass> inSell=new ArrayList<ProductClass>();
-    JTable Tableproduct=null;
+    ArrayList<String> listCateg=new ArrayList<String>();
+    ArrayList<ProductClass> inSell=new ArrayList<ProductClass>();
+    
+    
     
     private String [] sellRow=new String[6];
     private DefaultTableModel sellModel=new DefaultTableModel();
@@ -80,6 +83,8 @@ public class SellPanel extends Product.ProductClass{
         f.x1=40;
         f.x2=140;
         f.x3=420;
+        f.x4=10;
+        f.x5=820;
         f.y1=60;
         f.y2=105;
         f.y3=150;
@@ -87,29 +92,51 @@ public class SellPanel extends Product.ProductClass{
         f.y5=290;
         f.y6=330;
         f.y7=360;
+        f.y8=420;
         
+        //<<<<Tables>>>>>
          /***   ALLproduct   ***/
             // id@name@lastName@quantity@parcode@price@category@EXP@
-            
             ReadData();
             String[][] items=new String[productList.size()][8];
-            Tableproduct=new JTable();
-            Tableproduct.setBounds(10, f.y1+360, 800, 240);
-            JScrollPane sp=new JScrollPane(Tableproduct);
-            sp.setBounds(10, f.y1+360, 800, 240);
+            JTable Tableproduct=new JTable();
             Tableproduct.setModel(setProductTable(items));
             DefaultTableModel Model =(DefaultTableModel)Tableproduct.getModel();
-        /** sell Table**/
+        
+            /** sell Table**/
             String[][] SellItems=new String[3][6];
-            
-            
             String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
             sellModel.setColumnIdentifiers(ColoumnSell);
             JTable tableSell=new JTable();
             tableSell.setModel(sellModel);
+            
+            
+            
+            
+        /** Expire Table **/
+            int sizeList=CalculateAllEXP();
+            String[][] ExpItems=new String[sizeList][6];
+            listConvertToArray(ExpItems);
+            String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
+            JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
+
+            
+            
+            
+            
+        //Table  Scroll 
+            JScrollPane sp=new JScrollPane(Tableproduct);
             JScrollPane sp3 = new JScrollPane(tableSell);
-            tableSell.setBounds(f.x3, f.y1, 750, 280);
+            JScrollPane sp2 = new JScrollPane(tableEXP);
+        //Table setBounds
+            sp.setBounds(f.x4, f.y8, 800, 240);
             sp3.setBounds(f.x3, f.y1, 750, 280);
+            sp2.setBounds(f.x5, f.y8, 350, 240);
+            
+            Tableproduct.setBounds(f.x4, f.y8, 800, 240);
+            tableSell.setBounds(f.x3, f.y1, 750, 280);
+            tableEXP.setBounds(f.x5, f.y8, 350, 240);
+            
         //Label Create 
         JLabel lblParcode=new JLabel("Parcode");
         JLabel lblName=new JLabel("Name");
@@ -151,7 +178,7 @@ public class SellPanel extends Product.ProductClass{
         JButton btnBack=new JButton("Back");
         JButton btnSearch=new JButton("Search");
         JButton btnReset=new JButton("Reset");
-       f.ButtonBackHome(btnBack);
+        f.ButtonBackHome(btnBack);
         
         //Jtextfield create
         JTextField txtParcode=new JTextField();
@@ -396,25 +423,6 @@ public class SellPanel extends Product.ProductClass{
         f.AllTextFieldFontSize(txtCategorey);
         f.AllTextFieldFontSize(txtDate);
         
-        //combo box
-//        Admin.Categories ca=new Admin.Categories();
-//        ca.ReadData();
-//        
-//        listCateg.add("All");
-//        for (int i = 0; i < ca.categorylist.size(); i++) {
-//                listCateg.add(ca.categorylist.get(i).getCategory());
-//        }
-//        
-////        listCateg=(ArrayList<String>)(Object) file.read("Category.txt");
-//        String category[]=new String[listCateg.size()+1];
-//        JComboBox categoreBox=new JComboBox(listCateg.toArray(category));
-//        categoreBox.setBounds(f.x2, f.y3, 250, 40);
-//        
-        
-        //JTable create
-          
-            
-            
             //Table Function
             Tableproduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -435,28 +443,7 @@ public class SellPanel extends Product.ProductClass{
                  //String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
             }
         });
-            
-            
-            
-//            Tableproduct.setFont(new Font("thoma", 0, 20));
-//            Tableproduct.setRowHeight(25);
-            
-            /** Expire Table **/
-            int sizeList=CalculateAllEXP();
-            String[][] ExpItems=new String[sizeList][6];
-            listConvertToArray(ExpItems);
-            String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
-            JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
-            
-            tableEXP.setEnabled(true);
-            JScrollPane sp2 = new JScrollPane(tableEXP);
-            tableEXP.setBounds(820, f.y1+360, 350, 240);
-            sp2.setBounds(820, f.y1+360, 350, 240);
-            
-            
-            
-        
-        
+     
         //Panel ADD 
         panel.setLayout(null);
         panel.add(lblParcode);
@@ -484,13 +471,6 @@ public class SellPanel extends Product.ProductClass{
         panel.add(txtDate);
 //        panel.add(label);
         panel.setSize(1200, 700);
-        
-        
-
-        
-        
-        
-        
         return panel;
     }
     
