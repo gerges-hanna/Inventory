@@ -362,6 +362,19 @@ public class SellPanel extends Product.ProductClass{
                 TablePro.getDataVector().removeAllElements();
                  TablePro.fireTableDataChanged();
                 ReadData();
+                for (int i = 0; i < productList.size(); i++) {
+                    for (int j = 0; j < sellModel.getRowCount(); j++) {
+                        if(productList.get(i).getID().
+                                equalsIgnoreCase(sellModel.getValueAt(j, 0)
+                                        .toString()))
+                        {
+                            productList.get(i).setQuantity(
+                                    productList.get(i).getQuantity()
+                                            -Integer.parseInt((String) sellModel.getValueAt(j, 3)));
+                            
+                        }
+                    }
+                }
                 Tableproduct.setModel(setProductTable(items));
             }
         });
