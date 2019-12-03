@@ -5,36 +5,34 @@
  */
 package Admin;
 
-import Product.Files;
-import Product.ProductClass;
+import Product.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author user
- */
-public class GraphClass {
-    
-    Files ff = new Files();
-    ArrayList<Object> ca = ff.read("Category.txt");
-    ArrayList<Object> products = ff.read("Product.txt");
-    public void test()
+public class GraphClass
+{
+    private final Files f = new Files();
+    private final ArrayList<Integer> categoryQuantities;
+    private final ArrayList<String> categoryNames;
+    public GraphClass()
     {
-        ArrayList<Integer> ints = new ArrayList();
-        
-        for(int i = 0; i < products.size(); i++)
+        ArrayList<Object> dataReaded = f.read("sellReview.txt");
+        categoryQuantities = new ArrayList<>();
+        categoryNames = new ArrayList<>();
+        for(int i = 0; i < dataReaded.size(); i++)
         {
-            int f = 0;
-            for(int g = 0; g < ca.size(); g++)
-            {
-                if(((ProductClass)products.get(i)).getCategory().equals( 
-                        ((Categories)ca.get(g)).getCategory()))
-                {
-                    f = ((ProductClass)products.get(i)).getQuantity();
-                }
-                ints.add(f);
-            }
+            int x = ((Categories)dataReaded.get(i)).getQuantity();
+            String x2 = ((Categories)dataReaded.get(i)).getCategory();
+            categoryQuantities.add(x);
+            categoryNames.add(x2);
         }
     }
-    
+
+    public ArrayList<Integer> getCategoryQuantities()
+    {
+        return categoryQuantities;
+    }
+    public ArrayList<String> getCategoryNames()
+    {
+        return categoryNames;
+    }
 }
