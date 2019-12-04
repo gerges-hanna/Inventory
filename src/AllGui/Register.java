@@ -28,7 +28,7 @@ public class Register extends Client.ClientClass{
         JButton btn = new JButton("Back");
         f.ButtonBackHome(btn);
         JButton Clear=new JButton(m);
-        Clear.setBounds(fx+350,fy+300, 40, 35);
+        Clear.setBounds(fx+350,fy+300, 80, 35);
         
         
         JLabel user = new JLabel("Username: ");

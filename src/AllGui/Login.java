@@ -112,7 +112,7 @@ public class Login {
                         fLogin.dispose();
                     }else
                     {
-                        JOptionPane.showMessageDialog(fLogin, "Incorrect Password");
+                        JOptionPane.showMessageDialog(fLogin, "Inavlid username,password or case");
                     }
                  }
                  else

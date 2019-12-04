@@ -254,14 +254,16 @@ public class Files
                 {
                     for(int i = 0; i < pros.size(); i++)
                     {
-                        if( ((Login)pros.get(i)).getID().equals(id))
+                        if( ((Login)pros.get(i)).getOrder()==Integer.parseInt(id))
                             continue;
                         else
                         {
                             Query = ((Login)pros.get(i)).getOrder() + ";" +
                                     ((Login)pros.get(i)).getUserName() + ";"+
                                     ((Login)pros.get(i)).getPassword() + ";" +
-                                    ((Login)pros.get(i)).getCase();
+                                    ((Login)pros.get(i)).getCase()+";"+
+                                    ((Login)pros.get(i)).getName()+";"+
+                                    ((Login)pros.get(i)).getContactNumber();
                         }
                         write(Query, filePath, append);
                         append = true;
