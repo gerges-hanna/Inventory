@@ -190,16 +190,14 @@ public class Supplier {
             }
             if(r == Tfs.get(3).getText().length())
             {
-                Product.FatherClass newP = new Admin.Suppliers();
-                newP.setID(Tfs.get(6).getText());
-                newP.setName(Tfs.get(0).getText());
-                newP.setLName(Tfs.get(1).getText());
-                newP.setSupplierAddress(Tfs.get(2).getText().trim());
-                newP.setContactNumber(Integer.parseInt(Tfs.get(3).getText()));
-                newP.setSupplierEmail(Tfs.get(4).getText().trim());
-                newP.setCategory(Tfs.get(5).getText());
-                ff.delete(newP.getID(), "Supplier.txt");
-                newP.Add();
+                String newLine = Tfs.get(6).getText() + "@"
+                        + Tfs.get(0).getText() + "@" +
+                        Tfs.get(1).getText() + "@" +
+                        Tfs.get(2).getText().trim() + "@" +
+                        Tfs.get(3).getText() + "@" + 
+                        Tfs.get(4).getText() + "@" +
+                        Tfs.get(5).getText();
+                ff.update(Tfs.get(6).getText(), "Supplier.txt", newLine);
                 JTable tmp = readSuppliers();
                 DefaultTableModel g = (DefaultTableModel)tmp.getModel();
                 prosTable.setModel(g);
