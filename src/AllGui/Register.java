@@ -49,7 +49,7 @@ public class Register extends Client.ClientClass{
         JLabel name = new JLabel("Name: ");
         JTextField na = new  JTextField();
         
-        JLabel phone = new JLabel("Phone Number: ");
+        JLabel phone = new JLabel("Contact Number: ");
         JTextField ph = new  JTextField();
         JButton b1 = new JButton("Submit");
         JButton b2 = new JButton("Log in");
@@ -245,7 +245,7 @@ public class Register extends Client.ClientClass{
                 log1.setContactNumber(Integer.parseInt(ph.getText()));
                 
             }
-              else {JOptionPane.showMessageDialog(null, "Enter valid phone number");}
+              else {JOptionPane.showMessageDialog(null, "Enter a valid contact number");}
              }
              else 
              {   
@@ -258,7 +258,7 @@ public class Register extends Client.ClientClass{
               }
          else if(check1==0)
          {
-             JOptionPane.showMessageDialog(null, "You must fill all inputs")
+             JOptionPane.showMessageDialog(null, "You must fill out all the required fields")
                  ;}
               if(!log1.getName().equals("")&&!log1.getUserName().equals("")&&!log1.getPassword().equals("")&&!log1.getCase().equals("")&&log1.getContactNumber()!=0)
               {

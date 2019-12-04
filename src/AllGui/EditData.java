@@ -40,7 +40,7 @@ public class EditData {
         lbNewName.setBounds(fx, fy-1, 300, 30);
         lbNewName.setFont(new Font("Tahoma", 0, 17));
         //...............................................
-        JLabel lbNewPhone = new JLabel("Phone Number:");
+        JLabel lbNewPhone = new JLabel("Contact Number:");
         lbNewPhone.setBounds(fx, fy+49, 300,30);   
         lbNewPhone.setFont(new Font("Tahoma", 0, 17));
         //...............................................
@@ -170,7 +170,7 @@ public class EditData {
                 log1.setContactNumber(Integer.parseInt(tfNewPhone.getText()));
                 
             }
-              else {JOptionPane.showMessageDialog(null, "Enter valid phone number");}
+              else {JOptionPane.showMessageDialog(null, "Enter a valid contact number");}
              }
              else 
              {   
@@ -215,7 +215,7 @@ public class EditData {
               }
          else if(check1==0)
          {
-             JOptionPane.showMessageDialog(null, "You must fill all inputs")
+             JOptionPane.showMessageDialog(null, "You must fill out all the required fields")
                  ;}
          //************************************************************************
        if(check1!=0)
