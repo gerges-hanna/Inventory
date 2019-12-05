@@ -20,8 +20,8 @@ public class GraphClass
         categoryNames = new ArrayList<>();
         for(int i = 0; i < dataReaded.size(); i++)
         {
-            int x = ((Categories)dataReaded.get(i)).getQuantity();
-            String x2 = ((Categories)dataReaded.get(i)).getCategory();
+            int x = ((FatherClass)dataReaded.get(i)).getQuantity();
+            String x2 = ((FatherClass)dataReaded.get(i)).getCategory();
             categoryQuantities.add(x);
             categoryNames.add(x2);
         }
