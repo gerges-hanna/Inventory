@@ -148,11 +148,12 @@ public class Login extends Product.FatherClass{
 
 
             file.write(super.getQueryFile(), filepath, true);
+            /*this block of code was used to verify that new accounts functionally right
             UserName=null;
             Password=null;
             super.setName(null);
             super.setContactNumber(0);
-            
+            */
             return true;
         }
         else {
@@ -194,4 +195,42 @@ public boolean Checker(String username, String password,String Case)//this funct
     }
     return false;
 }
+
+public int MaxeList()
+{
+    int max=0,i;
+    ReadData();
+    String Query;
+    for(i=0;i<LoginList.size();i++)
+    {
+        if(LoginList.get(i).getOrder()>max)
+        {
+            max=LoginList.get(i).getOrder();
+        }
+       
+    }
+    return max;
+}
+public void setLaste()
+{
+    int a=MaxeList(),i;
+    ReadData();
+    String Query;
+    for(i=0;i<LoginList.size();i++)
+    { 
+         if(LoginList.get(i).getOrder()==a)
+        {
+          
+        Query=LoginList.get(i).getOrder()+";"+
+              LoginList.get(i).getUserName()+";"+
+              LoginList.get(i).getPassword()+";"+
+              LoginList.get(i).getCase()+";"+
+              LoginList.get(i).getName()+";"+
+              LoginList.get(i).getContactNumber();
+        file.delete(String.valueOf(a), filepath);
+        file.write(Query, filepath, true);
+        }
+    }
+}
+
 }   

@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import Product.*;
+import java.util.Collections;
 public class EditData {
     
     
@@ -30,8 +31,11 @@ public class EditData {
         JButton Clear = new JButton(m);
         Clear.setBounds(fx+305,fy+250, 80, 35);
         
-        JCheckBox box=new JCheckBox("");
-        box.setBounds(fx+435,fy+108,25,14);
+        JCheckBox box1=new JCheckBox("");
+        box1.setBounds(fx+435,fy+108,25,14);
+        
+        JCheckBox box2=new JCheckBox("");
+        box2.setBounds(fx+435,fy+208,25,14);
  
         //Labels
         
@@ -91,10 +95,14 @@ public class EditData {
             int i;
             for(i=0;i<log1.LoginList.size();i++)
             {
-               
-                    tfNewName.setText(log1.LoginList.get(Integer.parseInt(FatherClass.getIDlog())).getName());
+                  if(log1.LoginList.get(i).getOrder()==Integer.parseInt(FatherClass.getIDlog()))
+                  {
+                    tfNewName.setText(log1.LoginList.get(i).getName());
                     
-                    tfNewPhone.setText(Integer.toString(log1.LoginList.get(Integer.parseInt(FatherClass.getIDlog())).getContactNumber()));   
+                    tfNewPhone.setText(Integer.toString(log1.LoginList.get(i).getContactNumber()));  
+                    
+                    break;
+                  }
             }
         }
         }
@@ -115,7 +123,7 @@ public class EditData {
     try   //tfNewName..tfNewPhone..pfOldPw..pfNewPw..pfConfirmNewPw
     {
  
-        int check1=0;
+        int check1=0,mainChecker=0;
          if(!tfNewName.getText().equals("")&&!tfNewPhone.getText().equals("")&&!pfOldPw.getText().equals("")&&!pfConfirmNewPw.getText().equals("")&&!pfNewPw.getText().equals(""))
               {
               check1++;
@@ -141,6 +149,7 @@ public class EditData {
                        if(tfNewName.getText().length()==check)
                        {
                       log1.setName(tfNewName.getText());  
+                      mainChecker++;
                        }
                        }  
                     else {
@@ -168,6 +177,7 @@ public class EditData {
             {
                 
                 log1.setContactNumber(Integer.parseInt(tfNewPhone.getText()));
+                mainChecker++;
                 
             }
               else {JOptionPane.showMessageDialog(null, "Enter a valid contact number");}
@@ -195,7 +205,8 @@ public class EditData {
                        check++;
                        if(pfNewPw.getText().length()==check)
                        {
-                      log1.setPassword(pfNewPw.getText());  
+                      log1.setPassword(pfNewPw.getText());
+                      mainChecker++;
                        }
                        }  
                     else {
@@ -218,47 +229,48 @@ public class EditData {
              JOptionPane.showMessageDialog(null, "You must fill out all the required fields")
                  ;}
          //************************************************************************
-       if(check1!=0)
+       if(check1!=0&&mainChecker==3)
       {
+          mainChecker=0;
                  log1.ReadData();
-                  int i,checker2=0;
+                  int i;
                  String OldUser,OldCase;
                   Files f1=new Files();
             for(i=0;i<log1.LoginList.size();i++)
             {
-                OldUser=log1.LoginList.get(Integer.parseInt(FatherClass.getIDlog())).getUserName();
-                OldCase=log1.LoginList.get(Integer.parseInt(FatherClass.getIDlog())).getCase();
-                if(!pfOldPw.getText().equals(log1.LoginList.get(Integer.parseInt(FatherClass.getIDlog())).getPassword()))
+                if(log1.LoginList.get(i).getOrder()==Integer.parseInt(FatherClass.getIDlog()))
                 {
-                    checker2=1;
-                    break;
-                }   
-                   else if(!log1.getName().equals("")&&!log1.getPassword().equals("")&&log1.getContactNumber()!=0)
-              {
+                OldUser=log1.LoginList.get(i).getUserName();
+                OldCase=log1.LoginList.get(i).getCase();
+                
+                if(pfOldPw.getText().equals(log1.LoginList.get(i).getPassword()))
+    /*&&!log1.getName().equals("")&&!log1.getPassword().equals("")&&log1.getContactNumber()!=0) used before to check edit setting is functionally right*/
+                {
+                
                    String Query = FatherClass.getIDlog() +";"+ 
                                   OldUser +";"+
-                                  pfNewPw.getText() +";"+
+                                  log1.getPassword() +";"+
                                   OldCase +";"+
-                                  tfNewName.getText() +";"+
-                                  tfNewPhone.getText() ;
+                                  log1.getName() +";"+
+                                  log1.getContactNumber() ;
                     f1.update(FatherClass.getIDlog(), "Login.txt", Query);
                     JOptionPane.showMessageDialog(null, "Data has been changed successfully"); 
-                    /*log1.setOrder(0);
-                    log1.setUserName(null);
+                    log1.setLaste();
+                    /*
+                    log1.setName(null);
                     log1.setPassword(null);
-                    log1.setCase(null);
-                    log1.setContactNumber(0);*/
+                    log1.setContactNumber(0);
+                    */
                     break;
               }
-            }
-              if(checker2==1)
+           // }
+              else
                 {
                     JOptionPane.showMessageDialog(null, "Current Password didnt match"); 
-                    checker2=0;
                 }
-            
+            }
       }
-         
+      }  
          
              
               
@@ -270,42 +282,43 @@ public class EditData {
           }//end btn action
         });
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
+         
         
         //*****************************************************************************************
         
-          box.addActionListener(new ActionListener() {
+          box1.addActionListener(new ActionListener() {
                 public void actionPerformed (ActionEvent e){
                 
-                if(box.isSelected())
+                if(box1.isSelected())
                 { 
                     pfNewPw.setEchoChar((char)0);
                     pfConfirmNewPw.setEchoChar((char)0);
-                    pfOldPw.setEchoChar((char)0);
                 }
                 else 
                 {
                 pfNewPw.setEchoChar('*');
                 pfConfirmNewPw.setEchoChar('*');
-                pfOldPw.setEchoChar('*');
                 }
                 
                 }
                 });
         
+          
+          box2.addActionListener(new ActionListener() {
+                public void actionPerformed (ActionEvent e){
+                
+                if(box2.isSelected())
+                { 
+                    pfOldPw.setEchoChar((char)0);
+                }
+                else 
+                {
+                pfOldPw.setEchoChar('*');
+                }
+                
+                }
+                });
         //*****************************************************************************************
         
         Clear.addActionListener(new ActionListener() {
@@ -327,7 +340,8 @@ public class EditData {
         panelEditData.add(lbNewName);
         panelEditData.add(CrntPw);
         panelEditData.add(lbNewPhone);
-        panelEditData.add(box);
+        panelEditData.add(box1);
+        panelEditData.add(box2);
         panelEditData.add(lbNewPw);
         panelEditData.add(Back);
         panelEditData.add(Update);

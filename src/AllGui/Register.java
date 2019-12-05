@@ -125,7 +125,7 @@ public class Register extends Client.ClientClass{
     try
     {
  
-        int check1=0;
+        int check1=0,mainChecker=0;
          if(!us.getText().equals("")&&!ps.getText().equals("")&&!na.getText().equals("")&&!cops.getText().equals("")&&!cb.getItemAt(cb.getSelectedIndex()).toString().equals("..")&&!ph.getText().equals(""))
               {
               check1++;
@@ -150,7 +150,8 @@ public class Register extends Client.ClientClass{
                        check++;
                        if(na.getText().length()==check)
                        {
-                      log1.setName(na.getText());  
+                      log1.setName(na.getText()); 
+                      mainChecker++;
                        }
                        }  
                     else {
@@ -185,6 +186,7 @@ public class Register extends Client.ClientClass{
                        if(us.getText().length()==check&&!usernameChecker())
                        {
                       log1.setUserName(us.getText());  
+                       mainChecker++;
                        }
                        }  
                     else {
@@ -216,6 +218,7 @@ public class Register extends Client.ClientClass{
                        if(ps.getText().length()==check)
                        {
                       log1.setPassword(ps.getText());  
+                       mainChecker++;
                        }
                        }  
                     else {
@@ -243,6 +246,7 @@ public class Register extends Client.ClientClass{
             {
                 
                 log1.setContactNumber(Integer.parseInt(ph.getText()));
+                 mainChecker++;
                 
             }
               else {JOptionPane.showMessageDialog(null, "Enter a valid contact number");}
@@ -252,7 +256,11 @@ public class Register extends Client.ClientClass{
                  JOptionPane.showMessageDialog(null, "Enter a number between 3-15 characters");
              }
               //**************************************************************************************************************************
+              
+              if(cb.getItemAt(cb.getSelectedIndex()).toString().equals("User")||cb.getItemAt(cb.getSelectedIndex()).toString().equals("Client")){
               log1.setCase(cb.getItemAt(cb.getSelectedIndex()).toString());
+              mainChecker++;
+              }
               //***************************************************************************************************************************
   
               }
@@ -260,8 +268,10 @@ public class Register extends Client.ClientClass{
          {
              JOptionPane.showMessageDialog(null, "You must fill out all the required fields")
                  ;}
-              if(!log1.getName().equals("")&&!log1.getUserName().equals("")&&!log1.getPassword().equals("")&&!log1.getCase().equals("")&&log1.getContactNumber()!=0)
+              if(mainChecker==5)
+                  /*if(!log1.getName().equals("")&&!log1.getUserName().equals("")&&!log1.getPassword().equals("")&&!log1.getCase().equals("")&&log1.getContactNumber()!=0)this block of code was used to verify that new accounts setting functionally right before this one*/
               {
+                  mainChecker=0;
                   log1.Add();
                     JOptionPane.showMessageDialog(null, "Account created successfully"); 
               }
@@ -283,7 +293,6 @@ public class Register extends Client.ClientClass{
                cb.setSelectedItem("..");
                na.setText("");
                ph.setText("");
-               
             }
         });
         b2.setBounds(fx+250,fy+300, 90, 35);
