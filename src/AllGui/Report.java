@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package AllGui;
-/*
+
 import Admin.GraphClass;
 import java.awt.*;
 import java.io.File;
 import javax.swing.*;
+
+/*
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -21,7 +23,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author user
  */
 
-/*
+
 public class Report  {
     
     public JPanel Run(){
@@ -31,6 +33,7 @@ public class Report  {
         JButton bBack=new JButton("Back");
        f.ButtonBackHome(bBack);
        
+       /*
        
        // To Make Variable From GraphClass
        GraphClass gc = new GraphClass();
@@ -60,7 +63,7 @@ public class Report  {
         frame.setVisible(true);
         frame.setSize(1200,700);
         frame.setResizable(false);
-        
+        */
         
         
         p.add(bBack);
@@ -72,4 +75,3 @@ public class Report  {
     }
     
 }
-*/
