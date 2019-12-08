@@ -231,7 +231,7 @@ public class Inventory {
         
 //        JLabel label=new JLabel();
 //        label.setSize(1200, 700);
-//        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
+//      label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
 //        if(FatherClass.getType().equalsIgnoreCase("User"))
 //        {
 //            btn2.setEnabled(false);

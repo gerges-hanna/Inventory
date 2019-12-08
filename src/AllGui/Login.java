@@ -38,23 +38,21 @@ public class Login implements RunMethod {
          
 
     public void FrameConfigration(JFrame f) {
-        f.setSize(450,300);  
+        f.setSize(700,338);  
         f.setLocationRelativeTo(null); 
         f.setLayout(null);    
         f.setVisible(true);
         f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void panelMainConfigration(JPanel jPanel1, JFrame frame1) {
-        jPanel1.setSize(450, 300); //To change body of generated methods, choose Tools | Templates.
+   /* public void panelMainConfigration(JPanel jPanel1, JFrame frame1) {
+        jPanel1.setSize(700, 338); //To change body of generated methods, choose Tools | Templates.
         jPanel1.setBackground(Color.RED);
         
-    }
+    }*/
     
     
 
-    
-    
          
      
  
@@ -64,31 +62,45 @@ public class Login implements RunMethod {
     public JPanel Run()
     { 
         
-        int x1=60,x2=160;
+        //set icon
+    
+    JLabel label=new JLabel();
+    label.setBounds(0,0,500 ,338);
+            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AllGui/flat-pharmacist-attending-customers-background_23-2148168554.jpg"))); // NOI18N
+//**************
+        int x1=360,x2=460;
         JButton btn1=new JButton("Login");
+        JButton btn2=new JButton("Register");
         JLabel userlbl=new JLabel("Username");
         userlbl.setBounds(x1, 5, 180, 100);
         JLabel passlbl=new JLabel("Password");
-        passlbl.setBounds(x1, 40, 180, 100);
+        passlbl.setBounds(x1, 55, 180, 100);
         JTextField usertxt=new JTextField();
         usertxt.setBounds(x2, 40, 180, 30);
         JPasswordField passtxt=new JPasswordField();
-        passtxt.setBounds(x2, 80, 180, 30);
+        passtxt.setBounds(x2, 90, 180, 30);
         JComboBox typeComboBox=new javax.swing.JComboBox();
         typeComboBox.setModel(new DefaultComboBoxModel(new String[]
         { "Admin", "User", "Client"}));
-        typeComboBox.setBounds(x2, 120, 100, 20);
-        btn1.setBounds(x2, 150, 100, 30);
+        typeComboBox.setBounds(x2, 140, 100, 25);
+        btn1.setBounds(x2-1, 250, 100, 30);
+     
+        btn2.setBounds(x2+99, 250, 100, 30);
         
-        panelLogin.setSize(450, 300);
+        panelLogin.setSize(700, 338);
+        panelLogin.setBackground(Color.getHSBColor(220, 222, 227));
         panelLogin.setLayout(null);
         // panel contains
+       
         panelLogin.add(userlbl);
         panelLogin.add(usertxt);
         panelLogin.add(passlbl);
         panelLogin.add(passtxt);
         panelLogin.add(typeComboBox);
         panelLogin.add(btn1);
+        panelLogin.add(btn2);
+
+        panelLogin.add(label);
         //Font
         ft.AllTextFieldFontSize(usertxt);
         ft.AllTextFieldFontSize(passtxt);
