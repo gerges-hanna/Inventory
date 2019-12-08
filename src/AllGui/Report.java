@@ -10,32 +10,22 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
-/*
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-*/
+
 /**
  *
  * @author user
  */
 
 
-public class Report implements RunMethod {
-    
-    @Override
-    public JPanel Run(){
-        
-        JPanel p = new JPanel();
-        FatherGUI f=new FatherGUI();
-        JButton bBack=new JButton("Back");
-       f.ButtonBackHome(bBack);
-       
-       /*
-       
+public class Report extends FatherGUI  {
+    public void Run(){
        // To Make Variable From GraphClass
        GraphClass gc = new GraphClass();
        
@@ -64,15 +54,11 @@ public class Report implements RunMethod {
         frame.setVisible(true);
         frame.setSize(1200,700);
         frame.setResizable(false);
-        */
-        
-        
-        p.add(bBack);
-        p.setBackground(Color.WHITE);
-        p.setLayout(null);
-        p.setVisible(true);
-        p.setSize(1200,700);
-        return p;
+        frame.setLocationRelativeTo(null);
+
     }
+
+    
+    
     
 }

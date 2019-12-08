@@ -14,6 +14,7 @@ import AllGui.Supplier;
 import static Product.ProductClass.productList;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -42,42 +43,11 @@ public class Inventory {
     /**
      * @param args the command line arguments
      */
-    /*
-     public static void setProductTable(String [][] items)
-    {
-        for (int i = 0; i < productList.size(); i++) {
-            
-       }
-            
-            for (int i = 0; i < productList.size(); i++) {
-                
-                    items[i][0]=productList.get(i).getID();
-                    items[i][1]=productList.get(i).getName();
-                    items[i][2]=productList.get(i).getLName();
-                    items[i][3]=String.valueOf(productList.get(i).getQuantity());
-                    items[i][4]=productList.get(i).getParcode();
-                    items[i][5]=String.valueOf(productList.get(i).getPrice());
-                    items[i][6]=productList.get(i).getCategory();
-                    items[i][7]=productList.get(i).getEXP();
-//                    if(ExpireRemainder(productList.get(i).getEXP()))
-//                    {
-//                        ExpObject.setID(productList.get(i).getID());
-//                        ExpObject.setName(productList.get(i).getName());
-//                        ExpObject.setQuantity(productList.get(i).getQuantity());
-//                        ExpObject.setParcode(productList.get(i).getParcode());
-//                        ExpObject.setRemainderDay(getRemainderDay());
-//                        ExpObject.setCategory(productList.get(i).getCategory());
-//                        ExpObject.setPrice(productList.get(i).getPrice());
-//                        ListExp.add(ExpObject);
-//                    }
-                
-            
-        }
-    }
-    */
+
+    
     public static void HomePage() {
         panelHome=new JPanel();
-        int btnH=120,btnW=120;
+        int btnH=142,btnW=72;
         int y1=5;
         int y2=150;
         JButton btn1=new JButton("Sell");
@@ -90,17 +60,53 @@ public class Inventory {
         JButton btn8=new JButton("Category");
         JButton btn9=new JButton("Log Out");
         JButton btn10=new JButton("Edit Data");
-        btn1.setBounds(10, y1, btnH,btnW);
-        btn2.setBounds(180, y1, btnH,btnW);
-        btn3.setBounds(350, y1, btnH,btnW);
-        btn4.setBounds(520, y1, btnH,btnW);
-        btn5.setBounds(690, y1, btnH,btnW);
-        btn6.setBounds(860, y1, btnH,btnW);
-        btn7.setBounds(1030, y1, btnH,btnW);
-        //Second Line
-        btn8.setBounds(10, y2, btnH,btnW);
-        btn9.setBounds(180, y2, btnH,btnW);
-        btn10.setBounds(350, y2, btnH, btnW);
+        btn1.setBounds(386, 92, btnH,btnW);
+        btn2.setBounds(671, 93, btnH,btnW);
+        btn3.setBounds(257,432, btnH,btnW);
+        btn4.setBounds(257, 196, btnH,btnW);
+        btn5.setBounds(903, 315, btnH,btnW);
+        btn6.setBounds(800, 196, btnH,btnW);
+        btn7.setBounds(385,536, btnH,btnW);
+//        //Second Line
+        btn8.setBounds(153, 315, btnH,btnW);
+        btn9.setBounds(671,536, btnH,btnW);
+        btn10.setBounds(800,433, btnH, btnW);
+        //Button Color
+          btn1.setBackground(new Color(38, 34, 15));
+          btn2.setBackground(new Color(38, 34, 15));
+          btn3.setBackground(new Color(38, 34, 15));
+          btn4.setBackground(new Color(38, 34, 15));
+          btn5.setBackground(new Color(38, 34, 15));
+          btn6.setBackground(new Color(38, 34, 15));
+          btn7.setBackground(new Color(38, 34, 15));
+          btn8.setBackground(new Color(38, 34, 15));
+          btn9.setBackground(new Color(38, 34, 15));
+          btn10.setBackground(new Color(38, 34, 15));
+          
+        //Button font Color
+          btn1.setForeground(Color.WHITE);
+          btn2.setForeground(Color.WHITE);
+          btn3.setForeground(Color.WHITE);
+          btn4.setForeground(Color.WHITE);
+          btn5.setForeground(Color.WHITE);
+          btn6.setForeground(Color.WHITE);
+          btn7.setForeground(Color.WHITE);
+          btn8.setForeground(Color.WHITE);
+          btn9.setForeground(Color.WHITE);
+          btn10.setForeground(Color.WHITE);
+          
+        //Button text Size
+          btn1.setFont(new Font("Tahoma", 0, 20));
+          btn2.setFont(new Font("Tahoma", 0, 20));
+          btn3.setFont(new Font("Tahoma", 0, 20));
+          btn4.setFont(new Font("Tahoma", 0, 20));
+          btn5.setFont(new Font("Tahoma", 0, 20));
+          btn6.setFont(new Font("Tahoma", 0, 18));
+          btn7.setFont(new Font("Tahoma", 0, 20));
+          btn8.setFont(new Font("Tahoma", 0, 20));
+          btn9.setFont(new Font("Tahoma", 0, 20));
+          btn10.setFont(new Font("Tahoma", 0, 20));
+          
         //BTN Functions
         btn1.addActionListener(new ActionListener() {
 
@@ -158,12 +164,9 @@ public class Inventory {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelHome.setVisible(false);
-                frame.remove(panelHome);
+                
                 AllGui.Report s=new Report();
-                panel=s.Run();
-                frame.add(panel);
-                fatherGUI.FrameConfigration(frame);
+                s.Run();
             }
         });
         btn6.addActionListener(new ActionListener() {
@@ -229,25 +232,28 @@ public class Inventory {
             }
         });
         
-//        JLabel label=new JLabel();
-//        label.setSize(1200, 700);
-//      label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
-//        if(FatherClass.getType().equalsIgnoreCase("User"))
-//        {
-//            btn2.setEnabled(false);
-//            btn5.setEnabled(false);
-//            btn8.setEnabled(false);
-//        }else if(FatherClass.getType().equalsIgnoreCase("Client"))
-//        {
-//            btn2.setEnabled(false);
-//            btn3.setEnabled(false);
-//            btn4.setEnabled(false);
-//            btn5.setEnabled(false);
-//            btn8.setEnabled(false);
-//        }
+        JLabel label=new JLabel();
+        label.setIcon(new javax.swing.ImageIcon
+        (frame.getClass().getResource("/inventory/newcolor9-01.png")));
+        label.setBounds(0, 0, 1200, 700);
+        if(FatherClass.getType().equalsIgnoreCase("User"))
+        {
+            btn2.setEnabled(false);
+            btn5.setEnabled(false);
+            btn8.setEnabled(false);
+        }else if(FatherClass.getType().equalsIgnoreCase("Client"))
+        {
+            btn2.setEnabled(false);
+            btn3.setEnabled(false);
+            btn4.setEnabled(false);
+            btn5.setEnabled(false);
+            btn8.setEnabled(false);
+        }else if(FatherClass.getType().equalsIgnoreCase("Admin"))
+        {
+            btn10.setEnabled(false);
+        }
         
         panelHome.setLayout(null);
-        panelHome.setBackground(Color.yellow);
         panelHome.add(btn1);
         panelHome.add(btn2);
         panelHome.add(btn3);
@@ -259,7 +265,7 @@ public class Inventory {
         panelHome.add(btn9);
         panelHome.add(btn10);
         panelHome.setSize(1200, 700);
-//        panelHome.add(label);
+        panelHome.add(label);
         panelHome.setVisible(true);
         frame.add(panelHome);
         fatherGUI.FrameConfigration(frame);
@@ -278,9 +284,9 @@ public class Inventory {
     }
     public static void main(String[] args) {
         // TODO code application logic here
-        HomePage(); 
-//        AllGui.Login l=new AllGui.Login();
-//        l.run();
+       // HomePage(); 
+        AllGui.Login l=new AllGui.Login();
+        l.Run();
 //        
 
        

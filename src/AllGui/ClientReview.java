@@ -286,10 +286,8 @@ public class ClientReview implements RunMethod
         tableSaleReview.setRowHeight(22);
 
         //colors
-        panelsalereview.setBackground(Color.white);
         searchBar.setBackground(Color.white);
-        cbsr.setBackground(Color.white);   
-        tableSaleReview.setBackground(Color.LIGHT_GRAY);
+        cbsr.setBackground(Color.white);
 
         panelsalereview.setLayout(null);
         panelsalereview.setSize(1200, 700); 

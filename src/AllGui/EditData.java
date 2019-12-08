@@ -254,7 +254,7 @@ public class EditData implements RunMethod {
                                   OldCase +";"+
                                   log1.getName() +";"+
                                   log1.getContactNumber() ;
-                    f1.update(FatherClass.getIDlog(), "Login.txt", Query);
+                    log1.Update(FatherClass.getIDlog(), Query);
                     JOptionPane.showMessageDialog(null, "Data has been changed successfully"); 
                     log1.setLaste();
                     /*

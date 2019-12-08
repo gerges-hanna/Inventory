@@ -148,8 +148,8 @@ public class SellPanel extends Product.ProductClass implements RunMethod{
         JLabel lblDate=new JLabel("Date");
 //        JLabel label=new JLabel();
 //        label.setSize(1200, 700);
-//        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/Background.jpeg")));
-//        
+//        label.setIcon(new javax.swing.ImageIcon(frame.getClass().getResource("/inventory/MainSada-01.jpeg")));
+////        
         
         
         //label setBound
@@ -474,7 +474,7 @@ public class SellPanel extends Product.ProductClass implements RunMethod{
         panel.add(btnReset);
         panel.add(lblDate);
         panel.add(txtDate);
-//        panel.add(label);
+       // panel.add(label);
         panel.setSize(1200, 700);
         return panel;
     }

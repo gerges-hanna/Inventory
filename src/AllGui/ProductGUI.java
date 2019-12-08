@@ -63,12 +63,6 @@ public class ProductGUI implements RunMethod
                 biggestID = Integer.parseInt(((ProductClass)pros.get(i)).getID().trim());
         }
         int labelInc = 40;
-        //JFrame mainF = new JFrame();
-        //mainF.setLayout(null);
-        //mainF.setTitle("Products");
-        //mainF.setBounds(0, 0, 800, 600);
-        //mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // ArrayList for labels and text fields
         ArrayList<JTextField> Tfs = new ArrayList<>();
         ArrayList<JLabel> Lbs = new ArrayList<>();
         // initialize the the Tfs and Lbs

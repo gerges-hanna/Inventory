@@ -237,7 +237,6 @@ public class Supplier implements RunMethod {
         mainPanel.add(bckBtn);
         mainPanel.setVisible(true);
         mainPanel.setSize(1200,700);
-        //mainFrame.add(mainPanel);
         return mainPanel;
     }
     //

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Client;
-import Product.ImportannFunctions;
 import inventory.Login;
 import java.io.File;
 import java.util.ArrayList;

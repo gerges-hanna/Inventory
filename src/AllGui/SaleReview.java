@@ -31,16 +31,6 @@ public class SaleReview extends Client.ClientClass implements RunMethod
         totalProfitNumber = 0;
         for(int i = 0; i < data.size(); i++)
         {
-            /*fatherClass.setOper_ID(data[0]); 
-            fatherClass.setPro_ID(data[1]);
-            fatherClass.setName(data[2]);
-            fatherClass.setParcode(data[4]);
-            fatherClass.setQuantity(Integer.parseInt(data[4].trim()));
-            fatherClass.setCategory(data[5]);
-            fatherClass.setPrice(Double.parseDouble(data[6].trim()));
-            fatherClass.setTime(data[7]);
-            fatherClass.setDate(data[8]);
-            fatherClass.setID(data[9]);*/
             rows[i][0] = ((ProductClass)data.get(i)).getOper_ID();
             rows[i][1] = ((ProductClass)data.get(i)).getPro_ID();
             rows[i][2] = ((ProductClass)data.get(i)).getName();
@@ -318,10 +308,8 @@ public class SaleReview extends Client.ClientClass implements RunMethod
         tableSaleReview.setRowHeight(22);
 
         //colors
-        panelsalereview.setBackground(Color.white);
         searchBar.setBackground(Color.white);
-        cbsr.setBackground(Color.white);   
-        tableSaleReview.setBackground(Color.LIGHT_GRAY);
+        cbsr.setBackground(Color.white);
 
         panelsalereview.setLayout(null);
         panelsalereview.setSize(1200, 700); 
