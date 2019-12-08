@@ -24,8 +24,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 
 
-public class Report  {
+public class Report implements RunMethod {
     
+    @Override
     public JPanel Run(){
         
         JPanel p = new JPanel();

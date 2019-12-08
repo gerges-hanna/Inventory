@@ -16,10 +16,11 @@ import java.awt.event.*;
  *
  * @author Paula Samir
  */
-public class Register extends Client.ClientClass{
+public class Register extends Client.ClientClass implements RunMethod{
   public  inventory.Login log1=new inventory.Login();
   FatherGUI f = new FatherGUI();
     
+  @Override
     public JPanel Run(){
         
         JPanel p = new JPanel();

@@ -5,10 +5,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import Product.*;
 import java.util.Collections;
-public class EditData {
+public class EditData implements RunMethod {
     
     
-    public JPanel run(){
+    @Override
+    public JPanel Run() {
         
         FatherGUI f=new FatherGUI();
         inventory.Login log1=new inventory.Login();

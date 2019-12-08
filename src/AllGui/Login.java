@@ -28,7 +28,7 @@ import javax.swing.text.StyleConstants;
  *
  * @author Gerges hanna FCI-H
  */
-public class Login {
+public class Login implements RunMethod {
     //initialize Gui 
       private FatherGUI ft=new FatherGUI();
       private JFrame fLogin=new JFrame("Login");
@@ -60,7 +60,8 @@ public class Login {
  
     
     
-    public void run()
+      @Override
+    public JPanel Run()
     { 
         
         int x1=60,x2=160;
@@ -145,8 +146,10 @@ public class Login {
         
 
         
-      
+      return panelLogin;
     }
+
+    
     
  
 

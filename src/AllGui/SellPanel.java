@@ -39,7 +39,7 @@ import javax.swing.text.StyleConstants;
  *
  * @author Gerges hanna FCI-H
  */
-public class SellPanel extends Product.ProductClass{
+public class SellPanel extends Product.ProductClass implements RunMethod{
     
     //Create Objects 
     FatherGUI f=new FatherGUI();
@@ -73,6 +73,7 @@ public class SellPanel extends Product.ProductClass{
         t5.setText("");
         lbl.setText("0.0");
     }
+    @Override
     public JPanel Run()
     {
         
@@ -321,7 +322,11 @@ public class SellPanel extends Product.ProductClass{
                             TablePro.getValueAt(0, 5)+"@"+
                             TablePro.getValueAt(0, 6)+"@"+
                             TablePro.getValueAt(0, 7));
-                    file.update(TablePro.getValueAt(0, 0).toString(),"Product.txt", getQueryFile());
+                    //file.update(TablePro.getValueAt(0, 0).toString(),"Product.txt", getQueryFile());
+                    if(!Update(TablePro.getValueAt(0, 0).toString(), getQueryFile()))
+                    {
+                        JOptionPane.showMessageDialog(frame,"there is Some thing wrong please restart program");
+                    }
                     TablePro.removeRow(0);
                 }
                 ReadData();

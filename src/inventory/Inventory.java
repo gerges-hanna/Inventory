@@ -86,7 +86,7 @@ public class Inventory {
         JButton btn4=new JButton("Supplier");
         JButton btn5=new JButton("Graph");
         JButton btn6=new JButton("My purchases");
-        JButton btn7=new JButton("Register");
+        JButton btn7=new JButton("Contact Us");
         JButton btn8=new JButton("Category");
         JButton btn9=new JButton("Log Out");
         JButton btn10=new JButton("Edit Data");
@@ -123,7 +123,7 @@ public class Inventory {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.SaleReview s=new SaleReview();
-                panel=s.run();
+                panel=s.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
             }
@@ -135,7 +135,7 @@ public class Inventory {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.ProductGUI s=new AllGui.ProductGUI();
-                panel=s.run();
+                panel=s.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
             }
@@ -148,7 +148,7 @@ public class Inventory {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.Supplier s=new AllGui.Supplier();
-                panel=s.run();
+                panel=s.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
               
@@ -173,7 +173,7 @@ public class Inventory {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.ClientReview r=new AllGui.ClientReview();
-                panel=r.run();
+                panel=r.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
             }
@@ -184,7 +184,7 @@ public class Inventory {
             public void actionPerformed(ActionEvent ae) {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
-                AllGui.Register r=new AllGui.Register();
+                AllGui.ContactUs r=new AllGui.ContactUs();
                 panel=r.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
@@ -210,7 +210,7 @@ public class Inventory {
             public void actionPerformed(ActionEvent ae) {
                 AllGui.Login l=new AllGui.Login();
                 FatherClass.setType(null);
-                l.run();
+                l.Run();
                 frame.remove(panelHome);
                 frame.dispose();
             }
@@ -223,7 +223,7 @@ public class Inventory {
                 panelHome.setVisible(false);
                 frame.remove(panelHome);
                 AllGui.EditData s=new EditData();
-                panel=s.run();
+                panel=s.Run();
                 frame.add(panel);
                 fatherGUI.FrameConfigration(frame);
             }

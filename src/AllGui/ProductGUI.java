@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.table.*;
 
 
-public class ProductGUI
+public class ProductGUI implements RunMethod
 {
     static JTable prosTable = null;
     static ArrayList<Object> pros;
@@ -48,7 +48,8 @@ public class ProductGUI
         JTable reval = new JTable(tab);
         return reval;
     }
-    public JPanel run()
+    @Override
+    public JPanel Run()
     {
         FatherGUI gg = new FatherGUI();
         mainPanel = new JPanel();

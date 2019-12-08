@@ -10,7 +10,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class ClientReview
+public class ClientReview implements RunMethod
 {
     private double totalProfitNumber;
     private DefaultTableModel updateTable()
@@ -243,7 +243,8 @@ public class ClientReview
     }
 
         
-    public JPanel run()
+    @Override
+    public JPanel Run()
     {
         FatherGUI f=new FatherGUI();
         //Create

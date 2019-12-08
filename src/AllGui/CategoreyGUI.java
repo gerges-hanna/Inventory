@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Gerges hanna FCI-H
  */
-public class CategoreyGUI {
+public class CategoreyGUI implements RunMethod{
     
  static JTable prosTable = null;
     static ArrayList<Object> pros;
@@ -41,6 +41,7 @@ public class CategoreyGUI {
         JTable reval = new JTable(tab);
         return reval;
     }
+    @Override
     public JPanel Run()
     {
         FatherGUI M=new FatherGUI();

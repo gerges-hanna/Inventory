@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-public class SaleReview extends Client.ClientClass
+public class SaleReview extends Client.ClientClass implements RunMethod
 {
     private Border Border;
     private double totalProfitNumber;
@@ -273,7 +273,8 @@ public class SaleReview extends Client.ClientClass
         return reval;
     }
 
-    public JPanel run()
+    @Override
+    public JPanel Run()
     {
 
 

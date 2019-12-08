@@ -16,7 +16,7 @@ import javax.swing.table.*;
  *
  * @author bebo
  */
-public class Supplier {
+public class Supplier implements RunMethod {
 
     static JTable prosTable = null;
     static ArrayList<Object> pros;
@@ -51,7 +51,8 @@ public class Supplier {
         JTable reval = new JTable(tab);
         return reval;
     }
-    public JPanel run()
+    @Override
+    public JPanel Run()
     {
         mainPanel = new JPanel();
         
