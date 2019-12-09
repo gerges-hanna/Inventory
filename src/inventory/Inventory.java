@@ -233,8 +233,7 @@ public class Inventory {
         });
         
         JLabel label=new JLabel();
-        label.setIcon(new javax.swing.ImageIcon
-        (frame.getClass().getResource("/inventory/newcolor9-01.png")));
+        label.setIcon(new ImageIcon("src/inventory/newcolor9-01.png"));
         label.setBounds(0, 0, 1200, 700);
         if(FatherClass.getType().equalsIgnoreCase("User"))
         {
