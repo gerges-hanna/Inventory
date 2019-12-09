@@ -19,6 +19,7 @@ import java.awt.event.*;
 public class Register extends Client.ClientClass implements RunMethod{
   public  inventory.Login log1=new inventory.Login();
   FatherGUI f = new FatherGUI();
+  
     
   @Override
     public JPanel Run(){
@@ -26,8 +27,7 @@ public class Register extends Client.ClientClass implements RunMethod{
         JPanel p = new JPanel();
         int fx=385,fy=160;
         final String m="\u27F3";
-        JButton btn = new JButton("Back");
-        f.ButtonBackHome(btn);
+        
         JButton Clear=new JButton(m);
         Clear.setBounds(fx+350,fy+300, 80, 35);
         
@@ -284,7 +284,7 @@ public class Register extends Client.ClientClass implements RunMethod{
                  
           }//end btn action
         });
-             Clear.addActionListener(new ActionListener() {
+        Clear.addActionListener(new ActionListener() {
             
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -296,6 +296,17 @@ public class Register extends Client.ClientClass implements RunMethod{
                ph.setText("");
             }
         });
+        b2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                AllGui.Login.fLogin.dispose();
+                AllGui.Login.fLogin.remove(p);
+                AllGui.Login l=new Login();
+                l.Run();
+                
+            }
+        });
         b2.setBounds(fx+250,fy+300, 90, 35);
     
         p.setLayout(null);
@@ -303,7 +314,6 @@ public class Register extends Client.ClientClass implements RunMethod{
         p.add(na);
         p.add(box);
         p.add(name);
-        p.add(btn);
         p.add(user);
         p.add(us);
         p.add(pass);

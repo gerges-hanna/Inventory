@@ -31,12 +31,15 @@ import javax.swing.text.StyleConstants;
 public class Login implements RunMethod {
     //initialize Gui 
       private FatherGUI ft=new FatherGUI();
-      private JFrame fLogin=new JFrame("Login");
+      public static JFrame fLogin=new JFrame("Login");
      private  JPanel panelLogin=new JPanel();
     //here the type of class is responsible for this gui
          inventory.Login log=new inventory.Login();
          
-
+    public void closeJframe()
+    {
+        fLogin.dispose();
+    }
     public void FrameConfigration(JFrame f) {
         f.setSize(700,338);  
         f.setLocationRelativeTo(null); 
@@ -90,6 +93,18 @@ public class Login implements RunMethod {
         panelLogin.setSize(700, 338);
         panelLogin.setBackground(Color.getHSBColor(220, 222, 227));
         panelLogin.setLayout(null);
+        btn2.addActionListener(new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+         panelLogin.setVisible(false);
+         Register r=new Register();
+         fLogin.setSize(1200, 700);
+         fLogin.setLocationRelativeTo(null);
+         fLogin.add(r.Run());
+         
+        }
+    });
         // panel contains
        
         panelLogin.add(userlbl);

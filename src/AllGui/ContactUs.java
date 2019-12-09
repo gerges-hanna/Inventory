@@ -34,9 +34,9 @@ public class ContactUs implements RunMethod
             tr.close();
             
         }
-        catch(MessagingException ee)
+        catch(Exception ee)
         {
-            System.out.println(ee);
+            JOptionPane.showMessageDialog(null, ee);
         }
              
     }
