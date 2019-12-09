@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.mail.*;    
 import javax.mail.internet.*;
 
-
+//
 public class ContactUs implements RunMethod
 {
     private final FatherGUI fatherGUI = new FatherGUI();
