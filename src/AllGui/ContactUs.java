@@ -3,22 +3,22 @@ package AllGui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.*;
+//import java.util.*;
 import javax.swing.*;
-/*import javax.mail.*;    
-import javax.mail.internet.*;   */
+//import javax.mail.*;    
+//import javax.mail.internet.*;
 
 
 public class ContactUs implements RunMethod
 {
+    private final FatherGUI fatherGUI = new FatherGUI();
     /*public static void send(String from,String password,String to,String sub,String msg)
     {   
         Properties props = System.getProperties();
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-
-        //get Session   
+  
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage generateMailMessage = new MimeMessage(session);
         try
@@ -40,8 +40,6 @@ public class ContactUs implements RunMethod
         }
              
     }*/
-  
-    private final FatherGUI fatherGUI = new FatherGUI();
     
     @Override
     public JPanel Run()
@@ -83,8 +81,9 @@ public class ContactUs implements RunMethod
         JButton backBtn = new JButton("Back");
         fatherGUI.ButtonBackHome(backBtn);
         sendBtn.setBounds(340, 540, 100, 25);
-        resetBtn.setBounds(450, 540, 100, 25);
-        
+        resetBtn.setBounds(450, 540, 80, 25);
+        sendBtn.setFont(new Font("Arial", 1, 16));
+        resetBtn.setFont(new Font("Arial", 0, 14));
         resetBtn.addActionListener( (ActionEvent e) ->
         {
             emailTF.setText("");
