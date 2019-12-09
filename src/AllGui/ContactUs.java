@@ -3,16 +3,16 @@ package AllGui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-//import java.util.*;
+import java.util.*;
 import javax.swing.*;
-//import javax.mail.*;    
-//import javax.mail.internet.*;
+import javax.mail.*;    
+import javax.mail.internet.*;
 
 
 public class ContactUs implements RunMethod
 {
     private final FatherGUI fatherGUI = new FatherGUI();
-    /*public static void send(String from,String password,String to,String sub,String msg)
+    public static void send(String from,String password,String to,String sub,String msg)
     {   
         Properties props = System.getProperties();
         props.put("mail.smtp.port", "587");
@@ -39,7 +39,7 @@ public class ContactUs implements RunMethod
             System.out.println(ee);
         }
              
-    }*/
+    }
     
     @Override
     public JPanel Run()
@@ -94,7 +94,7 @@ public class ContactUs implements RunMethod
         {
             if(!emailTF.getText().equals("") && !passwordTF.getText().equals("") && !textA.getText().equals(""))
             {
-                //send(emailTF.getText(), passwordTF.getText(), "androw230@gmail.com", "Feedback", textA.getText());
+                send(emailTF.getText(), passwordTF.getText(), "androw230@gmail.com", "Feedback", textA.getText());
             }
             else
                 JOptionPane.showMessageDialog(null, "Please fill all the fields");
