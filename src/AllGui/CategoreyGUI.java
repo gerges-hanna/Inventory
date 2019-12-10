@@ -6,6 +6,7 @@
 package AllGui;
 
 import Product.Files;
+import Admin.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class CategoreyGUI implements RunMethod{
     
  static JTable prosTable = null;
     static ArrayList<Object> pros;
+    static Categories s = new Categories();
     public JPanel mainPanel;
     public static JTable readProducts()
     {
@@ -142,21 +144,66 @@ public class CategoreyGUI implements RunMethod{
                 for(int i = 0; i < 2; i++)
                 {
                     Tfs.get(i).setText(tmp.getValueAt(prosTable.getSelectedRow(), i).toString());
+                    
                 }
+                s.setCategory(Tfs.get(0).getText());
+                s.setCategoryDescription(Tfs.get(1).getText());
             }
         });
         JButton updateBtn = new JButton("Update");
         updateBtn.setBounds(135, labelInc*3, 120, 30);
         updateBtn.addActionListener((ActionEvent e) -> 
         {
-            Product.FatherClass newP = new Admin.Categories();
+            /*Product.FatherClass newP = new Admin.Categories();
             newP.setCategory(Tfs.get(0).getText());
             newP.setCategoryDescription(Tfs.get(1).getText());
-            ff.delete(newP.getCategory(), "Category.txt");
+            ff.delete(s.getCategory(), "Category.txt");
             newP.Add();
             JTable tmp = readProducts();
             DefaultTableModel g = (DefaultTableModel)tmp.getModel();
-            prosTable.setModel(g);
+            prosTable.setModel(g);*/
+            int check = 0;
+            int r = 0;
+            for(int i = 0; i < 2; i++)
+            {
+                if(!Tfs.get(i).getText().equals(""))
+                {
+                    r++;
+                }
+            }
+            if(r == 2)
+                check++;
+            
+            if(check == 1)
+            {
+                boolean append = true;
+                for(int i = 0; i < pros.size(); i++)
+                {
+                    if(Tfs.get(0).getText().equals( ((Admin.Categories)pros.get(i)).getCategory()))
+                    {
+                        append = false;
+                        break;
+                    }
+                }
+                if(append)
+                {
+                    //Supplier Query:ID@Name@LName@SupplierAddress@ContactNumber@SupplierEmail@Category
+                    Product.FatherClass newP = new Admin.Categories();
+                    newP.setCategory(Tfs.get(0).getText());
+                    newP.setCategoryDescription(Tfs.get(1).getText());
+                    ff.delete(s.getCategory(), "Category.txt");
+                    newP.Add();
+                    JTable tmp = readProducts();
+                    DefaultTableModel g = (DefaultTableModel)tmp.getModel();
+                    prosTable.setModel(g);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Category already exists");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid input");
+            }
         });
         JButton delBtn = new JButton("Delete");
         delBtn.setBounds(260, labelInc*3, 120, 30);
