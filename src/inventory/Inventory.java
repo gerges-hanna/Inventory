@@ -70,8 +70,8 @@ public class Inventory {
 //        //Second Line
         btn8.setBounds(153, 315, btnH,btnW);
         btn9.setBounds(671,536, btnH,btnW);
-        btn10.setBounds(800,433, btnH, btnW);
-        //Button Color
+        btn10.setBounds(800,433, btnH, btnW);      
+ //Button Color
           btn1.setBackground(new Color(38, 34, 15));
           btn2.setBackground(new Color(38, 34, 15));
           btn3.setBackground(new Color(38, 34, 15));

@@ -44,6 +44,15 @@ public class ContactUs implements RunMethod
     @Override
     public JPanel Run()
     {
+        int x=325;
+        
+        
+        //set icon
+        JLabel label=new JLabel();
+        label.setBounds(0, 2, 1200, 700);
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AllGui/pharma.jpg"))); // NOI18N
+        //.......................................
+        
         // Main panel
         JPanel mainPanel = new JPanel();
         //mainPanel.setBackground(Color.yellow);
@@ -53,26 +62,26 @@ public class ContactUs implements RunMethod
         //Text Fields
         JTextField emailTF = new JTextField();
         JPasswordField passwordTF = new JPasswordField();
-        emailTF.setBounds(500, 100, 250, 30);
-        passwordTF.setBounds(500, 150, 250, 30);
+        emailTF.setBounds(x-2, 160, 290, 50);
+        passwordTF.setBounds(x+310, 160, 290, 50);
         
         //Labels
-        JLabel emailLBL = new JLabel("Email: ");
-        JLabel pwLBL = new JLabel("Password: ");
-        JLabel goodExpLBL = new JLabel("Tell us anything");
-        emailLBL.setBounds(430, 100, 250, 30);
-        pwLBL.setBounds(400, 150, 250, 30);
-        goodExpLBL.setBounds(520, 200, 250, 30);
+        JLabel emailLBL = new JLabel("Email ");
+        JLabel pwLBL = new JLabel("Password ");
+        JLabel goodExpLBL = new JLabel("Message");
+        emailLBL.setBounds(x+3, 130, 250, 30);
+        pwLBL.setBounds(x+315, 130, 250, 30);
+        goodExpLBL.setBounds(x+5, 245, 250, 30);
         
         //Text Area
         JTextArea textA = new JTextArea();
-        textA.setBounds(340, 230, 500, 300);
+        textA.setBounds(x, 280, 600, 300);
         textA.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         mainPanel.add(textA);
         
         //Scroll Panes
         JScrollPane sp = new JScrollPane(textA);
-        sp.setBounds(340, 230, 500, 300);
+        sp.setBounds(x, 280, 600, 300);
         mainPanel.add(sp);
         
         //Buttons
@@ -80,8 +89,8 @@ public class ContactUs implements RunMethod
         JButton resetBtn = new JButton("Reset");
         JButton backBtn = new JButton("Back");
         fatherGUI.ButtonBackHome(backBtn);
-        sendBtn.setBounds(340, 540, 100, 25);
-        resetBtn.setBounds(450, 540, 80, 25);
+        sendBtn.setBounds(x+215, 585, 100, 25);
+        resetBtn.setBounds(x+315, 585, 80, 25);
         sendBtn.setFont(new Font("Arial", 1, 16));
         resetBtn.setFont(new Font("Arial", 0, 14));
         resetBtn.addActionListener( (ActionEvent e) ->
@@ -116,6 +125,7 @@ public class ContactUs implements RunMethod
         mainPanel.add(sendBtn);
         mainPanel.add(resetBtn);
         mainPanel.add(backBtn);
+        mainPanel.add(label);
         
         return mainPanel;
     }
