@@ -28,6 +28,14 @@ public class Register extends Client.ClientClass implements RunMethod{
         int fx=385,fy=160;
         final String m="\u27F3";
         
+                //set icon
+          
+        JLabel label=new JLabel();
+        label.setBounds(0, 2, 1200, 700);
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AllGui/pharma.jpg"))); // NOI18N
+        //.......................................
+        
+        
         JButton Clear=new JButton(m);
         Clear.setBounds(fx+350,fy+300, 80, 35);
         
@@ -72,7 +80,7 @@ public class Register extends Client.ClientClass implements RunMethod{
                 
                 }
                 });
-        p.setBackground(Color.LIGHT_GRAY);
+
         
         //BOUNDS 
         
@@ -326,6 +334,7 @@ public class Register extends Client.ClientClass implements RunMethod{
         p.add(ph);
         p.add(b1);
         p.add(b2);
+        p.add(label);
         p.setSize(1200, 700);
         p.setLayout(null);
         p.setVisible(true);

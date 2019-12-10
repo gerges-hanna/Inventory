@@ -16,8 +16,16 @@ public class EditData implements RunMethod {
         int fx=375,fy=175;
         final String m="\u27F3";
         //Panel
-        
+ 
         JPanel panelEditData = new JPanel();
+   
+         //set icon
+          
+        JLabel label=new JLabel();
+        label.setBounds(0, 2, 1200, 700);
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AllGui/pharma.jpg"))); // NOI18N
+        //.......................................
+        
         
         //Buttons
         
@@ -62,8 +70,6 @@ public class EditData implements RunMethod {
         CrntPw.setFont(new Font("Tahoma", 0, 17));
         //...............................................
   
-        
-        
         
         
         //TextFields
@@ -353,6 +359,7 @@ public class EditData implements RunMethod {
         panelEditData.add(lbConfirmNewPw);
         panelEditData.add(pfConfirmNewPw);
         panelEditData.add(Clear);
+        panelEditData.add(label);
         
         
         
@@ -360,8 +367,8 @@ public class EditData implements RunMethod {
         
         
         panelEditData.setSize(1200, 700);
-        panelEditData.setBackground(Color.LIGHT_GRAY);
         panelEditData.setLayout(null);
+        panelEditData.setVisible(true);
         
         return panelEditData;
         
