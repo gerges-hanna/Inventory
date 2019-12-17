@@ -36,8 +36,8 @@ public class Register extends Client.ClientClass implements RunMethod{
         //.......................................
         
         
-        JButton Clear=new JButton(m);
-        Clear.setBounds(fx+350,fy+300, 80, 35);
+        JButton Clear=new JButton(new ImageIcon("G:\\10227.png"));  
+        Clear.setBounds(fx+350,fy+300, 40, 35);
         
         
         JLabel user = new JLabel("Username: ");

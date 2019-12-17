@@ -103,7 +103,7 @@ public class ContactUs implements RunMethod
         {
             if(!emailTF.getText().equals("") && !passwordTF.getText().equals("") && !textA.getText().equals(""))
             {
-                send(emailTF.getText(), passwordTF.getText(), "hope1pharmacy@gmail.com", "Feedback", textA.getText());
+                send(emailTF.getText(), passwordTF.getText(), "androw240@gmail.com", "Feedback", textA.getText());
             }
             else
                 JOptionPane.showMessageDialog(null, "Please fill all the fields");

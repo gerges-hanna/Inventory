@@ -50,12 +50,12 @@ public class Inventory {
         int btnH=142,btnW=72;
         int y1=5;
         int y2=150;
-        JButton btn1=new JButton("Sell");
-        JButton btn2=new JButton("SellReview");
+        JButton btn1=new JButton("Buy");
+        JButton btn2=new JButton("Sell Review");
         JButton btn3=new JButton("Product");
         JButton btn4=new JButton("Supplier");
         JButton btn5=new JButton("Graph");
-        JButton btn6=new JButton("My purchases");
+        JButton btn6=new JButton("My Purchases");
         JButton btn7=new JButton("Contact Us");
         JButton btn8=new JButton("Category");
         JButton btn9=new JButton("Log Out");
@@ -286,6 +286,8 @@ public class Inventory {
        // HomePage(); 
         AllGui.Login l=new AllGui.Login();
         l.Run();
+        
+        
 //        
 
        

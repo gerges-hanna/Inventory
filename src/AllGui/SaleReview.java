@@ -22,7 +22,7 @@ public class SaleReview extends Client.ClientClass implements RunMethod
         tmpM.addColumn("Parcode");
         tmpM.addColumn("Qunatity");
         tmpM.addColumn("Category");
-        tmpM.addColumn("Sell");
+        tmpM.addColumn("Price");
         tmpM.addColumn("Time");
         tmpM.addColumn("Date");
         tmpM.addColumn("Login ID");
@@ -58,7 +58,7 @@ public class SaleReview extends Client.ClientClass implements RunMethod
         tmpM.addColumn("Parcode");
         tmpM.addColumn("Qunatity");
         tmpM.addColumn("Category");
-        tmpM.addColumn("Sell");
+        tmpM.addColumn("Price");
         tmpM.addColumn("Time");
         tmpM.addColumn("Date");
         tmpM.addColumn("Login ID");
@@ -171,7 +171,7 @@ public class SaleReview extends Client.ClientClass implements RunMethod
                         tmpM.addRow(rows[i]);
                     }
                     break;
-                case "Sell":
+                case "Price":
                     if((((ProductClass)data.get(i)).getPrice()) == Double.parseDouble(what))
                     {
                         rows[i][0] = ((ProductClass)data.get(i)).getOper_ID();
@@ -255,7 +255,7 @@ public class SaleReview extends Client.ClientClass implements RunMethod
             "Parcode",
             "Qunatity",
             "Category",
-            "Sell",
+            "Price",
             "Time",
             "Date",
             "Login ID"
@@ -278,6 +278,7 @@ public class SaleReview extends Client.ClientClass implements RunMethod
         f.ButtonBackHome(backButton);
         
         JTable tableSaleReview = new JTable(updateTable());
+        tableSaleReview.setDefaultEditor(Object.class, null);
         JScrollPane sp=new JScrollPane(tableSaleReview); 
         
         JComboBox cbsr = new JComboBox(comboboxData());

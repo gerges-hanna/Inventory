@@ -69,7 +69,7 @@ public class Files
                     {
                         fatherClass= new Suppliers();
                         String tmp = in.nextLine();
-                        String []data = tmp.split("@");
+                        String []data = tmp.split(";");
                         fatherClass.setID(data[0]);
                         fatherClass.setName(data[1]);
                         fatherClass.setLName(data[2]);
@@ -231,13 +231,13 @@ public class Files
                             continue;
                         else
                         {
-                            Query = ((Admin.Suppliers)pros.get(i)).getID() + "@" +
-                                    ((Admin.Suppliers)pros.get(i)).getName() + "@"+
-                                    ((Admin.Suppliers)pros.get(i)).getLName() + "@" +
+                            Query = ((Admin.Suppliers)pros.get(i)).getID() + ";" +
+                                    ((Admin.Suppliers)pros.get(i)).getName() + ";"+
+                                    ((Admin.Suppliers)pros.get(i)).getLName() + ";" +
                                     ((Admin.Suppliers)pros.get(i)).getSupplierAddress()
-                                    + "@" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
-                                    + "@" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
-                                    + "@" + ((Admin.Suppliers)pros.get(i)).getCategory() + "@";
+                                    + ";" + ((Admin.Suppliers)pros.get(i)).getContactNumber()
+                                    + ";" + ((Admin.Suppliers)pros.get(i)).getSupplierEmail()
+                                    + ";" + ((Admin.Suppliers)pros.get(i)).getCategory() + ";";
                         }
                         write(Query, filePath, append);
                         append = true;

@@ -101,14 +101,16 @@ public class SellPanel extends Product.ProductClass implements RunMethod{
             ReadData();
             String[][] items=new String[productList.size()][8];
             JTable Tableproduct=new JTable();
+            Tableproduct.setDefaultEditor(Object.class, null);
             Tableproduct.setModel(setProductTable(items));
             DefaultTableModel Model =(DefaultTableModel)Tableproduct.getModel();
         
             /** sell Table**/
             String[][] SellItems=new String[3][6];
-            String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","sell"};
+            String[] ColoumnSell={"ID","Name","Parcode","Quantity","Categorey","Price"};
             sellModel.setColumnIdentifiers(ColoumnSell);
             JTable tableSell=new JTable();
+            tableSell.setDefaultEditor(Object.class, null);
             tableSell.setModel(sellModel);
             
             
@@ -120,6 +122,7 @@ public class SellPanel extends Product.ProductClass implements RunMethod{
             listConvertToArray(ExpItems);
             String[] ColoumnEXP={"ID","Name","Parcode","Quantity","Categorey","EXP After"};
             JTable tableEXP=new JTable(ExpItems,ColoumnEXP);
+            tableEXP.setDefaultEditor(Object.class, null);
 
             
             
@@ -172,13 +175,14 @@ public class SellPanel extends Product.ProductClass implements RunMethod{
         
         //btn create
         JButton btnAdd=new JButton("ADD");
-        JButton btnClear=new JButton("Clear");
+        JButton btnClear=new JButton(new ImageIcon("G:\\10227.png"));
         JButton btnBuy=new JButton("Buy");
         JButton btnRemove=new JButton("Remove");
-        JButton btnDeleteBoard=new JButton("Delet Board");
+        JButton btnDeleteBoard=new JButton("Delete Board");
         JButton btnBack=new JButton("Back");
         JButton btnSearch=new JButton("Search");
         JButton btnReset=new JButton("Reset");
+        JButton btnPrint=new JButton("Print");
         f.ButtonBackHome(btnBack);
         
         //Jtextfield create

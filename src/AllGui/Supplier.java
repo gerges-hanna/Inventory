@@ -191,12 +191,12 @@ public class Supplier implements RunMethod {
             }
             if(r == Tfs.get(3).getText().length())
             {
-                String newLine = Tfs.get(6).getText() + "@"
-                        + Tfs.get(0).getText() + "@" +
-                        Tfs.get(1).getText() + "@" +
-                        Tfs.get(2).getText().trim() + "@" +
-                        Tfs.get(3).getText() + "@" + 
-                        Tfs.get(4).getText() + "@" +
+                String newLine = Tfs.get(6).getText() + ";"
+                        + Tfs.get(0).getText() + ";" +
+                        Tfs.get(1).getText() + ";" +
+                        Tfs.get(2).getText().trim() + ";" +
+                        Tfs.get(3).getText() + ";" + 
+                        Tfs.get(4).getText() + ";" +
                         Tfs.get(5).getText();
                 ff.update(Tfs.get(6).getText(), "Supplier.txt", newLine);
                 JTable tmp = readSuppliers();

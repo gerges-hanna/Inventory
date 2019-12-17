@@ -37,8 +37,8 @@ public class EditData implements RunMethod {
         Update.setBounds(fx+180, fy+250, 120, 35);
         
         
-        JButton Clear = new JButton(m);
-        Clear.setBounds(fx+305,fy+250, 80, 35);
+       JButton Clear=new JButton(new ImageIcon("G:\\10227.png"));  
+        Clear.setBounds(fx+320,fy+250, 40, 35);
         
         JCheckBox box1=new JCheckBox("");
         box1.setBounds(fx+435,fy+108,25,14);

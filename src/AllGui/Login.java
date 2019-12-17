@@ -78,7 +78,7 @@ public class Login implements RunMethod {
         userlbl.setBounds(x1, 5, 180, 100);
         JLabel passlbl=new JLabel("Password");
         passlbl.setBounds(x1, 55, 180, 100);
-        JTextField usertxt=new JTextField();
+        JTextField usertxt=new JTextField("HopeAdmin");
         usertxt.setBounds(x2, 40, 180, 30);
         JPasswordField passtxt=new JPasswordField();
         passtxt.setBounds(x2, 90, 180, 30);
@@ -151,6 +151,7 @@ public class Login implements RunMethod {
                          FatherClass.setIDlog("Admin");
                          inventory.Inventory s=new Inventory();
                          s.HomePage();
+                           fLogin.remove(panelLogin);
                         fLogin.dispose();
                      }else
                      {

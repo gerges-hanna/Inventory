@@ -37,12 +37,12 @@ public class Suppliers extends Product.FatherClass{
          if(!super.getID().trim().equals(""))
          {
             super.setQueryFile(
-                    super.getID()+"@"
-                    +super.getName()+"@"
-                    +super.getLName() +"@"
-                    +super.getSupplierAddress()+"@"
-                    +super.getContactNumber()+"@"
-                    +super.getSupplierEmail()+"@"
+                    super.getID()+";"
+                    +super.getName()+";"
+                    +super.getLName() +";"
+                    +super.getSupplierAddress()+";"
+                    +super.getContactNumber()+";"
+                    +super.getSupplierEmail()+";"
                    +super.getCategory()
              );
             
